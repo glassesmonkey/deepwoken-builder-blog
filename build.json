@@ -145,9 +145,9 @@
       "Blind"
     ]
   },
-  "Miscellaneous": {
-    "Investment Points": "325",
-    "Points Spent": "5"
+  "Miscellaneous（实时更新投资点数）": {
+    "Investment Points（剩余点数，初始值325）": "325",
+    "Points Spent（已使用点数，初始值5）": "5"
   }
 }
 
