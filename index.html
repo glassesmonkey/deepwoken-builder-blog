@@ -354,11 +354,88 @@
                   </div>
                 </div>
               </div>
-
-            <div id="mantras-tab" class="tab-content hidden">
-                <h2 class="text-lg font-bold mb-2 text-ink">Mantras</h2>
-                <!-- 添加Mantras相关的内容 -->
-            </div>
+              
+              <!-- mantras-tab -->
+              <div id="mantras-tab" class="tab-content hidden">
+                <div class="grid grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                  <!-- Left column (Obtainable Mantras) -->
+                  <div class="col-span-1 bg-gray-800 rounded-lg p-4">
+                    <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtainable Mantras</h3>
+                    <div class="space-y-4">
+                      <div>
+                        <div class="text-lg font-bold mb-2 text-yellow-400">Combat</div>
+                        <ul class="space-y-1" id="obtainable-combat">
+                          <li class="cursor-pointer hover:text-green-400">Pumpkin Pitch</li>
+                          <li class="cursor-pointer hover:text-green-400">Brachial Spear</li>
+                          <li class="cursor-pointer hover:text-green-400">Dread Breath</li>
+                          <li class="cursor-pointer hover:text-green-400">Mecha Gatling</li>
+                          <li class="cursor-pointer hover:text-green-400">Coral Spear</li>
+                          <li class="cursor-pointer hover:text-green-400">Whirling Blade</li>
+                          <li class="cursor-pointer hover:text-green-400">Abyssal Ridge</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <div class="text-lg font-bold mb-2 text-blue-400">Mobility</div>
+                        <ul class="space-y-1" id="obtainable-mobility">
+                          <li class="cursor-pointer hover:text-green-400">Beast Burrow</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <div class="text-lg font-bold mb-2 text-green-400">Support</div>
+                        <ul class="space-y-1" id="obtainable-support">
+                          <li class="cursor-pointer hover:text-green-400">Enforcer Pull</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <div class="text-lg font-bold mb-2 text-purple-400">Wisp</div>
+                        <ul class="space-y-1" id="obtainable-wisp">
+                          <!-- Add Wisp mantras here if any -->
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Right column (Obtained Mantras) -->
+                  <div class="col-span-1">
+                    <div class="bg-gray-800 rounded-lg p-4 mb-4">
+                      <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtained Mantras</h3>
+                      <div id="obtained-mantras-container" class="space-y-4">
+                        <div id="obtained-combat">
+                          <div class="flex justify-between items-center mb-2">
+                            <span class="text-lg font-bold text-yellow-400">Combat</span>
+                            <span class="text-sm text-red-400"><span id="combat-count">0</span>/3</span>
+                          </div>
+                          <ul class="space-y-1"></ul>
+                        </div>
+                        <div id="obtained-wildcard">
+                          <div class="flex justify-between items-center mb-2">
+                            <span class="text-lg font-bold text-purple-400">Wildcard</span>
+                            <span class="text-sm text-red-400"><span id="wildcard-count">0</span>/3</span>
+                          </div>
+                          <ul class="space-y-1"></ul>
+                        </div>
+                        <div id="obtained-mobility">
+                          <div class="flex justify-between items-center mb-2">
+                            <span class="text-lg font-bold text-blue-400">Mobility</span>
+                            <span class="text-sm text-red-400"><span id="mobility-count">0</span>/1</span>
+                          </div>
+                          <ul class="space-y-1"></ul>
+                        </div>
+                        <div id="obtained-support">
+                          <div class="flex justify-between items-center mb-2">
+                            <span class="text-lg font-bold text-green-400">Support</span>
+                            <span class="text-sm text-red-400"><span id="support-count">0</span>/1</span>
+                          </div>
+                          <ul class="space-y-1"></ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg p-4">
+                      <p class="text-sm text-yellow-400">Hold click on a mantra to view it's modifications.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             <div id="weapons-tab" class="tab-content hidden">
                 <h2 class="text-lg font-bold mb-2 text-ink">Weapons</h2>
@@ -397,6 +474,7 @@
     <script src="js/main.js"></script>
     <script src="./js/builder/talents.js"></script>
     <script src="./js/switchtab.js"></script>
+    <script src="./js/builder/mantras.js"></script>
 </body>
 
 </html>
