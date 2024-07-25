@@ -34,6 +34,43 @@ const powerDisplay = document.getElementById('power');
 const nextPowerDisplay = document.getElementById('next-power');
 const raceSelect = document.getElementById('race-select');
 
+//TraitChange
+const specialTraits = ['vitality', 'erudition', 'proficiency', 'songchant'];
+
+function handleSpecialTraitChange(event) {
+    const input = event.target;
+    let newValue = parseInt(input.value) || 0;
+
+    // 确保单个特殊属性不超过6且不小于0
+    newValue = Math.min(Math.max(newValue, 0), 6);
+
+    // 计算所有特殊属性的总和
+    let totalSpecialTraits = 0;
+    specialTraits.forEach(trait => {
+        const traitInput = document.getElementById(`${trait}-input`);
+        if (traitInput === input) {
+            totalSpecialTraits += newValue;
+        } else {
+            totalSpecialTraits += parseInt(traitInput.value) || 0;
+        }
+    });
+
+    // 如果总和超过12，调整当前输入值
+    if (totalSpecialTraits > 12) {
+        newValue -= totalSpecialTraits - 12;
+        newValue = Math.max(newValue, 0); // 确保不会变成负数
+    }
+
+    // 更新输入值
+    input.value = newValue;
+    input.dataset.oldValue = newValue;
+
+    // 可选：添加用户反馈
+    if (newValue !== parseInt(event.target.value)) {
+        alert(`The total of special traits cannot exceed 12. Adjusted ${input.id.replace('-input', '')} to ${newValue}.`);
+    }
+}
+
 // 更新显示的函数
 function updateDisplay() {
     investmentPointsDisplay.textContent = investmentPoints;
@@ -81,6 +118,9 @@ function updatePower(change) {
 // 处理输入变化的函数
 function handleInputChange(event) {
     const input = event.target;
+    if (specialTraits.includes(input.id.replace('-input', ''))) {
+        return; // 如果是特殊属性，不进行常规处理
+    }
     let newValue = parseInt(input.value) || 0;
     const oldValue = parseInt(input.dataset.oldValue) || 0;
     
@@ -153,6 +193,13 @@ function initialize() {
         input.value = initialBonus;
         input.dataset.oldValue = initialBonus;
         input.addEventListener('change', handleInputChange);
+    });
+
+    specialTraits.forEach(trait => {
+        const input = document.getElementById(`${trait}-input`);
+        input.value = 0;
+        input.dataset.oldValue = 0;
+        input.addEventListener('input', handleSpecialTraitChange); // 注意这里改为 'input' 事件
     });
 
     // 为种族选择添加事件监听器
