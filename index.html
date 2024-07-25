@@ -251,10 +251,109 @@
                 </div>
             </div>
 
+            <!-- talents-tab -->
             <div id="talents-tab" class="tab-content hidden">
-                <h2 class="text-lg font-bold mb-2 text-ink">Talents</h2>
-                <!-- 添加Talents相关的内容 -->
-            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-dark-parchment text-ink">
+                  <div class="col-span-1 overflow-y-auto h-[calc(100vh-200px)]" id="available-talents">
+                    <div class="mb-4">
+                      <button class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center" data-category="Common">
+                        Common
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </button>
+                      <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Common" data-talent="Time To Go">Time To Go</li>
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Common" data-talent="Kick Off">Kick Off</li>
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Common" data-talent="Steady Footing">Steady Footing</li>
+                        <!-- Add more Common talents here -->
+                      </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                      <button class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center" data-category="Rare">
+                        Rare
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </button>
+                      <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Rare" data-talent="An Ironsinger's Instinct">An Ironsinger's Instinct</li>
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Rare" data-talent="Phantom Edge">Phantom Edge</li>
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Rare" data-talent="Everchanging Aegis">Everchanging Aegis</li>
+                        <!-- Add more Rare talents here -->
+                      </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                      <button class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center" data-category="Advanced">
+                        Advanced
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </button>
+                      <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Advanced" data-talent="Ghost">Ghost</li>
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Advanced" data-talent="Reinforced Armor">Reinforced Armor</li>
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Advanced" data-talent="Ether Overdrive">Ether Overdrive</li>
+                        <!-- Add more Advanced talents here -->
+                      </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                      <button class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center" data-category="Oath">
+                        Oath
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </button>
+                      <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Oath" data-talent="All-Seeing Eye">All-Seeing Eye</li>
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Oath" data-talent="Protagonist Syndrome">Protagonist Syndrome</li>
+                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Oath" data-talent="Luminous Flash">Luminous Flash</li>
+                        <!-- Add more Oath talents here -->
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-span-1 bg-gray-800 p-4 rounded-lg" id="selected-talents">
+                    <h3 class="text-2xl font-bold mb-4 text-white border-b border-gray-600 pb-2">Selected Talents</h3>
+                    
+                    <div class="space-y-4">
+                      <div class="talent-category">
+                        <div class="flex justify-between items-center mb-2">
+                          <span class="text-lg font-semibold text-gray-300">Common</span>
+                          <span class="text-lg font-bold text-blue-400">0</span>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                          <!-- Selected Common talents will be inserted here -->
+                        </ul>
+                      </div>
+                  
+                      <div class="talent-category">
+                        <div class="flex justify-between items-center mb-2">
+                          <span class="text-lg font-semibold text-gray-300">Rare</span>
+                          <span class="text-lg font-bold text-purple-400">0</span>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                          <!-- Selected Rare talents will be inserted here -->
+                        </ul>
+                      </div>
+                  
+                      <div class="talent-category">
+                        <div class="flex justify-between items-center mb-2">
+                          <span class="text-lg font-semibold text-gray-300">Advanced</span>
+                          <span class="text-lg font-bold text-green-400">0</span>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                          <!-- Selected Advanced talents will be inserted here -->
+                        </ul>
+                      </div>
+                  
+                      <div class="talent-category">
+                        <div class="flex justify-between items-center mb-2">
+                          <span class="text-lg font-semibold text-gray-300">Oath</span>
+                          <span class="text-lg font-bold text-yellow-400">0</span>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                          <!-- Selected Oath talents will be inserted here -->
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             <div id="mantras-tab" class="tab-content hidden">
                 <h2 class="text-lg font-bold mb-2 text-ink">Mantras</h2>
@@ -296,7 +395,7 @@
     </script>
 
     <script src="js/main.js"></script>
-    <!-- <script src="js/states.js"></script> -->
+    <script src="./js/builder/talents.js"></script>
     <script src="./js/switchtab.js"></script>
 </body>
 
