@@ -6,20 +6,20 @@
   },
   "Meta Stats": {
     "Race（下拉单选框）": [
-      "Etrean",
-      "Celtor",
-      "Adret",
-      "Canor",
-      "Gremor",
-      "Khan",
-      "Felinor",
-      "Chrysid",
-      "Vesperian",
-      "Capra",
-      "Ganymede",
-      "Tiran",
-      "Drakkard",
-      "Lightborn"
+      "Etrean",（Agility+2，Intelligence+3）
+      "Celtor",（Intelligence+2，Charisma+3）
+      "Adret",（Willpower+2，Charisma+3）
+      "Canor",（Strength+3，，Charisma+2）
+      "Gremor",（Strength+2，Fortitude+3）
+      "Khan",（Strength+3，Agility+2）
+      "Felinor",（Agility+3，Charisma+2）
+      "Chrysid",（Agility+2，Charisma+3）
+      "Vesperian",（Fortitude+3，Willpower+2）
+      "Capra",（Intelligence+3，Willpower+2）
+      "Ganymede",（Intelligence+2，Willpower+3）
+      "Tiran",（Agility+3，Willpower+2）
+      "Drakkard",（Fortitude+3，Agility+2）
+      "Lightborn"，（Strength+2，Fortitude+ 2，Agility+2，，Intelligence+2，Willpower+2）
     ],
     "Oath（下拉单选框）": [
       "Oathless",

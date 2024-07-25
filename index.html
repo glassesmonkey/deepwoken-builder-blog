@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepwoken Builder - Stats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'parchment': '#f0e6d2',
+                        'dark-parchment': '#d0c0a0',
+                        'ink': '#2c2c2c',
+                        'light-ink': '#4a4a4a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #2c2c2c;
+            color: #2c2c2c;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .content-box {
+            background-color: #f0e6d2;
+            border: 2px solid #2c2c2c;
+        }
+
+        .stat-input {
+            background-color: #e0d6c2;
+            border: 1px solid #2c2c2c;
+            color: #2c2c2c;
+            width: 50px;
+            text-align: center;
+            padding: 2px;
+            border-radius: 4px;
+        }
+
+        .custom-select {
+            background-color: #e0d6c2;
+            border: 1px solid #2c2c2c;
+            color: #2c2c2c;
+        }
+    </style>
+</head>
+
+<body class="p-4">
+    <div class="builder-container max-w-4xl mx-auto p-2 sm:p-4 bg-ink rounded-lg">
+        <div class="tabs flex bg-dark-parchment rounded-t-lg overflow-x-auto">
+            <button class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink" data-tab="stats">
+                Stats
+            </button>
+            <button class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink" data-tab="talents">
+                Talents
+            </button>
+            <button class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink" data-tab="mantras">
+                Mantras
+            </button>
+            <button class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink" data-tab="weapons">
+                Weapons
+            </button>
+            <button class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink" data-tab="summary">
+                Summary
+            </button>
+        </div>
+        <!--content  div -->
+        <div class="content bg-dark-parchment p-4  space-y-4">
+            <div id="stats-tab" class="tab-content">
+                <div class="content bg-dark-parchment p-4 rounded-lg space-y-4">
+                    <div class="content-box p-3 rounded-lg">
+                        <h2 class="text-lg font-bold mb-2 text-ink">Basic Info</h2>
+                        <input type="text" placeholder="Build Name"
+                            class="w-full p-2 mb-2 rounded bg-parchment border border-ink text-sm text-ink">
+                        <input type="text" placeholder="Build Description"
+                            class="w-full p-2 mb-2 rounded bg-parchment border border-ink text-sm text-ink">
+                        <input type="text" placeholder="Author"
+                            class="w-full p-2 rounded bg-parchment border border-ink text-sm text-ink">
+                    </div>
+
+                    <div class="content-box p-3 rounded-lg">
+                        <h2 class="text-lg font-bold mb-2 text-ink">Meta Stats</h2>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block mb-1 text-sm text-light-ink">Race</label>
+                                <select id="race-select" class="w-full p-2 rounded custom-select text-sm">
+                                    <option value="Etrean">Etrean (AGL ⇑, INT ⇑)</option>
+                                    <option value="Celtor">Celtor (INT ⇑, CHA ⇑)</option>
+                                    <option value="Adret">Adret (WIL ⇑, CHA ⇑)</option>
+                                    <option value="Canor">Canor (STR ⇑, CHA ⇑)</option>
+                                    <option value="Gremor">Gremor (STR ⇑, FOR ⇑)</option>
+                                    <option value="Khan">Khan (STR ⇑, AGL ⇑)</option>
+                                    <option value="Felinor">Felinor (AGL ⇑, CHA ⇑)</option>
+                                    <option value="Chrysid">Chrysid (AGL ⇑, CHA ⇑)</option>
+                                    <option value="Vesperian">Vesperian (FOR ⇑, WIL ⇑)</option>
+                                    <option value="Capra">Capra (INT ⇑, WIL ⇑)</option>
+                                    <option value="Ganymede">Ganymede (INT ⇑, WIL ⇑)</option>
+                                    <option value="Tiran">Tiran (AGL ⇑, WIL ⇑)</option>
+                                    <option value="Drakkard">Drakkard (FOR ⇑, AGL ⇑)</option>
+                                    <option value="Lightborn">Lightborn (ALL but CHA ⇑ )</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm text-light-ink">Bell</label>
+                                <select class="w-full p-2 rounded custom-select text-sm">
+                                    <option>Blood Scourge</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm text-light-ink">Outfit</label>
+                                <select class="w-full p-2 rounded custom-select text-sm">
+                                    <option>Black Diver</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="content-box p-3 rounded-lg">
+                            <h2 class="text-lg font-bold mb-2 text-ink">Power</h2>
+                            <p class="text-sm">Power: <span id="power">0</span></p>
+                            <p class="text-sm">Next Power: <span id="next-power">25</span> points</p>
+                        </div>
+                        <div class="content-box p-3 rounded-lg">
+                            <h2 class="text-lg font-bold mb-2 text-ink">Weapon Stats</h2>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="text-sm text-light-ink">Light Wep.</div>
+                                <!-- <input type="number" value="0" class="stat-input"> -->
+                                    <input type="number" id="light-wep-input" class="stat-input" min="0" max="100">
+                                <div class="text-sm text-light-ink">Medium Wep.</div>
+                                    <input type="number" id="medium-wep-input" class="stat-input" min="0" max="100">
+                                <div class="text-sm text-light-ink">Heavy Wep.</div>
+                                    <input type="number" id="heavy-wep-input" class="stat-input" min="0" max="100">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                        
+                        <div class="content-box p-3 rounded-lg">
+                            <h2 class="text-lg font-bold mb-2 text-ink">Stats</h2>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="text-sm text-light-ink">Strength</div>
+                                <input type="number" id="strength-input" class="stat-input" min="0" data-base="0">
+                                <div class="text-sm text-light-ink">Fortitude</div>
+                                <input type="number" id="fortitude-input" class="stat-input" min="0" data-base="0">
+                                <div class="text-sm text-light-ink">Agility</div>
+                                <input type="number" id="agility-input" class="stat-input" min="0" data-base="0">
+                                <div class="text-sm text-light-ink">Intelligence</div>
+                                <input type="number" id="intelligence-input" class="stat-input" min="0" data-base="0">
+                                <div class="text-sm text-light-ink">Willpower</div>
+                                <input type="number" id="willpower-input" class="stat-input" min="0" data-base="0">
+                                <div class="text-sm text-light-ink">Charisma</div>
+                                <input type="number" id="charisma-input" class="stat-input" min="0" data-base="0">
+                            </div>
+                        </div>
+
+
+                        
+                        <div class="content-box p-3 rounded-lg">
+                            <h2 class="text-lg font-bold mb-2 text-ink">Attunement Stats</h2>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="text-sm text-light-ink">Flamecharm</div><input type="number"
+                                    class="stat-input" min="0" max="100">
+                                <div class="text-sm text-light-ink">Frostdraw</div><input type="number"
+                                    class="stat-input" min="0" max="100">
+                                <div class="text-sm text-light-ink">Thundercall</div><input type="number"
+                                    class="stat-input" min="0" max="100">
+                                <div class="text-sm text-light-ink">Galebreathe</div><input type="number"
+                                    class="stat-input" min="0" max="100">
+                                <div class="text-sm text-light-ink">Shadowcast</div><input type="number"
+                                    class="stat-input" min="0" max="100">
+                                <div class="text-sm text-light-ink">Ironsing</div><input type="number"
+                                    class="stat-input" min="0" max="100">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="content-box p-3 rounded-lg">
+                            <h2 class="text-lg font-bold mb-2 text-ink">Traits</h2>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="text-sm text-light-ink">Vitality</div>
+                                
+                                    <input type="number" id="vitality-input" class="stat-input special-stat-input" min="0" max="6" data-exclude-from-calculation>
+                                <div class="text-sm text-light-ink">Erudition</div>
+                                    <input type="number" id="erudition-input" class="stat-input special-stat-input" min="0" max="6" data-exclude-from-calculation>
+                                <div class="text-sm text-light-ink">Proficiency</div>
+                                    <input type="number" id="proficiency-input" class="stat-input special-stat-input" min="0" max="6" data-exclude-from-calculation>
+                                <div class="text-sm text-light-ink">Songchant</div>
+                                    <input type="number" id="songchant-input" class="stat-input special-stat-input" min="0" max="6" data-exclude-from-calculation>
+                            </div>
+                        </div>
+                        <div class="content-box p-3 rounded-lg">
+                            <h2 class="text-lg font-bold mb-2 text-ink">Boons and Flaws</h2>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block mb-1 text-sm text-light-ink">Boon 1</label>
+                                    <select class="w-full p-2 rounded custom-select text-sm">
+                                        <option>None</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block mb-1 text-sm text-light-ink">Boon 2</label>
+                                    <select class="w-full p-2 rounded custom-select text-sm">
+                                        <option>None</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block mb-1 text-sm text-light-ink">Flaw 1</label>
+                                    <select class="w-full p-2 rounded custom-select text-sm">
+                                        <option>None</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block mb-1 text-sm text-light-ink">Flaw 2</label>
+                                    <select class="w-full p-2 rounded custom-select text-sm">
+                                        <option>None</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-box p-3 rounded-lg">
+                        <h2 class="text-lg font-bold mb-2 text-ink">Investment Points</h2>
+                        <p class="text-sm">Investment Points: <span id="investment-points">325</span></p>
+                        <p class="text-sm">Points Spent: <span id="points-spent">5</span></p>
+                    </div>
+
+                    <div class="content-box p-3 rounded-lg">
+                        <select class="w-full p-2 mb-2 rounded custom-select text-sm">
+                            <option>Local builds</option>
+                        </select>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button
+                                class="bg-blue-600 hover:bg-blue-700 text-parchment font-bold py-2 px-4 rounded text-sm">
+                                Export build as link
+                            </button>
+                            <button
+                                class="bg-green-600 hover:bg-green-700 text-parchment font-bold py-2 px-4 rounded text-sm">
+                                Save loaded build
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="talents-tab" class="tab-content hidden">
+                <h2 class="text-lg font-bold mb-2 text-ink">Talents</h2>
+                <!-- 添加Talents相关的内容 -->
+            </div>
+
+            <div id="mantras-tab" class="tab-content hidden">
+                <h2 class="text-lg font-bold mb-2 text-ink">Mantras</h2>
+                <!-- 添加Mantras相关的内容 -->
+            </div>
+
+            <div id="weapons-tab" class="tab-content hidden">
+                <h2 class="text-lg font-bold mb-2 text-ink">Weapons</h2>
+                <!-- 添加Weapons相关的内容 -->
+            </div>
+
+            <div id="summary-tab" class="tab-content hidden">
+                <h2 class="text-lg font-bold mb-2 text-ink">Summary</h2>
+                <!-- 添加Summary相关的内容 -->
+            </div>
+        </div>
+
+
+    </div>
+    <style>
+        .tab-button.active {
+            border-bottom-color: #2c2c2c; /* 使用您的 ink 颜色 */
+            background-color: #f0e6d2; /* 使用您的 parchment 颜色 */
+        }
+    </style>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.tab-button');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                // 这里添加切换内容的逻辑
+            });
+        });
+    });
+    </script>
+
+    <script src="js/main.js"></script>
+    <!-- <script src="js/states.js"></script> -->
+    <script src="./js/switchtab.js"></script>
+</body>
+
+</html>
