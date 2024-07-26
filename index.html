@@ -354,7 +354,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <!-- mantras-tab -->
               <div id="mantras-tab" class="tab-content hidden">
                 <div class="grid grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
@@ -436,11 +436,80 @@
                   </div>
                 </div>
               </div>
-
+            <!-- weapons-tab -->
             <div id="weapons-tab" class="tab-content hidden">
-                <h2 class="text-lg font-bold mb-2 text-ink">Weapons</h2>
-                <!-- 添加Weapons相关的内容 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                  <div class="col-span-1 md:col-span-2">
+                    <h2 class="text-2xl font-bold mb-4 text-yellow-400">Weapon Damage Calculator</h2>
+                  </div>
+                  <div class="col-span-1">
+                    <div class="mb-4">
+                      <label for="weapon1" class="block text-sm font-bold mb-2">Weapon 1</label>
+                      <select id="weapon1" class="w-full bg-gray-800 text-white rounded p-2">
+                        <option value="">Select a weapon</option>
+                      </select>
+                    </div>
+                    <div class="mb-4">
+                      <label for="weapon2" class="block text-sm font-bold mb-2">Weapon 2 (Optional)</label>
+                      <select id="weapon2" class="w-full bg-gray-800 text-white rounded p-2">
+                        <option value="">Select a weapon</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-span-1">
+                    <div class="mb-4">
+                      <label for="attributeLevel" class="block text-sm font-bold mb-2">Attribute Level</label>
+                      <input type="number" id="attributeLevel" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100">
+                    </div>
+                    <div class="mb-4">
+                      <label for="proficiency" class="block text-sm font-bold mb-2">Weapon Proficiency</label>
+                      <input type="number" id="proficiency" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100">
+                    </div>
+                  </div>
+                  <div class="col-span-1 md:col-span-2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="mb-4">
+                      <label for="stars" class="block text-sm font-bold mb-2">Weapon Stars</label>
+                      <input type="number" id="stars" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="3">
+                    </div>
+                    <div class="mb-4">
+                      <label for="starType" class="block text-sm font-bold mb-2">Star Type</label>
+                      <select id="starType" class="w-full bg-gray-800 text-white rounded p-2">
+                        <option value="damage">Damage</option>
+                        <option value="penetration">Penetration</option>
+                        <option value="weight">Weight</option>
+                      </select>
+                    </div>
+                    </div>
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="mb-4">
+                      <label for="additionalPenetration" class="block text-sm font-bold mb-2">Additional Penetration (%)</label>
+                      <input type="number" id="additionalPenetration" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="50">
+                    </div>
+                    <div class="mb-4">
+                      <label for="bleedChance" class="block text-sm font-bold mb-2">Bleed Chance (%)</label>
+                      <input type="number" id="bleedChance" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100">
+                    </div>
+                </div>
             </div>
+                    <button id="calculateDamage" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      Calculate Damage
+                    </button>
+                  </div>
+                  <div id="weaponDetails" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
+                  <div id="result" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
+                  <div class="col-span-1 md:col-span-2">
+                    <canvas id="damageChart"></canvas>
+                  </div>
+                  <div id="result" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
+  
+                  <div class="col-span-1 md:col-span-2 bg-gray-800 p-4 rounded-lg mt-4">
+                    <canvas id="damageChart"></canvas>
+                  </div>
+                </div>
+            
+              </div>
 
             <div id="summary-tab" class="tab-content hidden">
                 <h2 class="text-lg font-bold mb-2 text-ink">Summary</h2>
@@ -475,6 +544,8 @@
     <script src="./js/builder/talents.js"></script>
     <script src="./js/switchtab.js"></script>
     <script src="./js/builder/mantras.js"></script>
+    <script src="./js/builder/weapons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>
