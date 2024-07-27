@@ -454,6 +454,14 @@ function addWeaponEventListeners() {
             }
             displayResult(result1, result2);
             updateChart(result1, result2);
+            // 滚动到图表
+            const chartElement = document.getElementById('damageChart');
+            if (chartElement) {
+                // 给一个短暂的延迟，确保图表已经渲染
+                setTimeout(() => {
+                    chartElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
         }
     });
 }
