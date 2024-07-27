@@ -47,6 +47,11 @@
             border: 1px solid #2c2c2c;
             color: #2c2c2c;
         }
+
+        .weapon-category {
+            color: #ffd700; /* 金色 */
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -459,18 +464,18 @@
                   <div class="col-span-1">
                     <div class="mb-4">
                       <label for="attributeLevel" class="block text-sm font-bold mb-2">Attribute Level</label>
-                      <input type="number" id="attributeLevel" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100">
+                      <input type="number" id="attributeLevel" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100" value="0">
                     </div>
                     <div class="mb-4">
                       <label for="proficiency" class="block text-sm font-bold mb-2">Weapon Proficiency</label>
-                      <input type="number" id="proficiency" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100">
+                      <input type="number" id="proficiency" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100" value="0">
                     </div>
                   </div>
                   <div class="col-span-1 md:col-span-2">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="mb-4">
                       <label for="stars" class="block text-sm font-bold mb-2">Weapon Stars</label>
-                      <input type="number" id="stars" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="3">
+                      <input type="number" id="stars" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="3" value="0">
                     </div>
                     <div class="mb-4">
                       <label for="starType" class="block text-sm font-bold mb-2">Star Type</label>
@@ -485,11 +490,11 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="mb-4">
                       <label for="additionalPenetration" class="block text-sm font-bold mb-2">Additional Penetration (%)</label>
-                      <input type="number" id="additionalPenetration" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="50">
+                      <input type="number" id="additionalPenetration" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="50" value="0">
                     </div>
                     <div class="mb-4">
                       <label for="bleedChance" class="block text-sm font-bold mb-2">Bleed Chance (%)</label>
-                      <input type="number" id="bleedChance" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100">
+                      <input type="number" id="bleedChance" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100" value="0">
                     </div>
                 </div>
             </div>

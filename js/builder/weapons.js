@@ -2,8 +2,39 @@
 let weapons = {};
 
 function initializeWeaponsTab() {
-    parseWeaponsData(exampleWeaponsData);
-    addWeaponEventListeners();
+    // parseWeaponsData(exampleWeaponsData);
+    fetch('./js/builder/weapons.json')
+        .then(response => response.json())
+        .then(data => {
+            parseWeaponsData(JSON.stringify(data));
+            addWeaponEventListeners();
+            applyWeaponCategoryStyle()
+        })
+        .catch(error => console.error('Error loading weapons data:', error));
+
+}
+
+function applyWeaponCategoryStyle() {
+    const selects = document.querySelectorAll('#weapon1, #weapon2');
+    selects.forEach(select => {
+        const optgroups = select.querySelectorAll('optgroup');
+        optgroups.forEach(optgroup => {
+            if (optgroup.label.startsWith('Light Weapons - Daggers')) {
+                optgroup.style.color = '#ffd700'; // 红色，您可以更改为您想要的颜色
+            } else {
+                optgroup.style.color = '#ffd700'; // 其他类别保持金色
+            }
+            optgroup.style.fontWeight = 'bold';
+            
+            // 重置 option 元素的样式
+            const options = optgroup.querySelectorAll('option');
+            options.forEach(option => {
+                option.style.color = '#F9F6EE'; // 清除颜色样式
+                option.style.fontWeight = ''; // 清除字体粗细样式
+                console.log("option.style.color = ''")
+            });
+        });
+    });
 }
 
 function parseWeaponsData(jsonData) {
@@ -30,6 +61,7 @@ function populateWeaponSelects() {
             });
         });
     });
+    applyWeaponCategoryStyle();
 }
 
 function displayWeaponDetails(weapon1, weapon2) {
