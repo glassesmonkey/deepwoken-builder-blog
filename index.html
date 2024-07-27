@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Deepwoken Builder: Create and optimize your Deepwoken character builds with our interactive tool. Plan your skills, attributes, and strategy risk-free!">
     <title>Deepwoken Builder - Stats</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -49,51 +50,70 @@
         }
 
         .weapon-category {
-            color: #ffd700; /* 金色 */
+            color: #ffd700;
             font-weight: bold;
         }
     </style>
 </head>
 
 <body class="p-4">
+    <header class="flex items-center justify-center mb-6">
+        <img src="/assets/icons/logo.webp" alt="Deepwoken Builder Logo" class="w-12 h-12 mr-4">
+        <h1 class="text-3xl font-bold text-yellow-400">Deepwoken Builder</h1>
+    </header>
     <div class="builder-container max-w-4xl mx-auto p-2 sm:p-4 bg-ink rounded-lg">
         <div class="tabs flex bg-dark-parchment rounded-t-lg overflow-x-auto">
-            <button class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink" data-tab="stats">
+            <button
+                class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
+                data-tab="stats">
                 Stats
             </button>
-            <button class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink" data-tab="talents">
+            <button
+                class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
+                data-tab="talents">
                 Talents
             </button>
-            <button class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink" data-tab="mantras">
+            <button
+                class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
+                data-tab="mantras">
                 Mantras
             </button>
-            <button class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink" data-tab="weapons">
+            <button
+                class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
+                data-tab="weapons">
                 Weapons
             </button>
-            <button class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink" data-tab="summary">
+            <button
+                class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
+                data-tab="summary">
                 Summary
             </button>
         </div>
-        <!--content  div -->
+        <!--stats  div -->
         <div class="content bg-dark-parchment p-4  space-y-4">
             <div id="stats-tab" class="tab-content">
-                <div class="content bg-dark-parchment p-4 rounded-lg space-y-4">
-                    <div class="content-box p-3 rounded-lg">
-                        <h2 class="text-lg font-bold mb-2 text-ink">Basic Info</h2>
-                        <input type="text" placeholder="Build Name"
-                            class="w-full p-2 mb-2 rounded bg-parchment border border-ink text-sm text-ink">
-                        <input type="text" placeholder="Build Description"
-                            class="w-full p-2 mb-2 rounded bg-parchment border border-ink text-sm text-ink">
-                        <input type="text" placeholder="Author"
-                            class="w-full p-2 rounded bg-parchment border border-ink text-sm text-ink">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                    <div class="col-span-1 md:col-span-2">
+                        <h2 class="text-2xl font-bold mb-4 text-yellow-400">Character Stats</h2>
                     </div>
-
-                    <div class="content-box p-3 rounded-lg">
-                        <h2 class="text-lg font-bold mb-2 text-ink">Meta Stats</h2>
+                    <!-- Basic Info -->
+                    <div class="col-span-1 md:col-span-2 bg-gray-800 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Basic Info</h3>
+                        <input type="text" placeholder="Build Name"
+                            class="w-full p-2 mb-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
+                        <input type="text" placeholder="Build Description"
+                            class="w-full p-2 mb-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
+                        <input type="text" placeholder="Author"
+                            class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Meta Stats</h3>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block mb-1 text-sm text-light-ink">Race</label>
-                                <select id="race-select" class="w-full p-2 rounded custom-select text-sm">
+                                <label class="block mb-1 text-sm text-gray-400">Race</label>
+                                <select id="race-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
                                     <option value="Etrean">Etrean (AGL ⇑, INT ⇑)</option>
                                     <option value="Celtor">Celtor (INT ⇑, CHA ⇑)</option>
                                     <option value="Adret">Adret (WIL ⇑, CHA ⇑)</option>
@@ -111,438 +131,759 @@
                                 </select>
                             </div>
                             <div>
-                                <label class="block mb-1 text-sm text-light-ink">Bell</label>
-                                <select class="w-full p-2 rounded custom-select text-sm">
+                                <label class="block mb-1 text-sm text-gray-400">Bell</label>
+                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
                                     <option>Blood Scourge</option>
+                                    <option>Payback</option>
+                                    <option>Crazy Slots</option>
+                                    <option>Shard Bow</option>
+                                    <option>Run It Back</option>
+                                    <option>Gravity Field</option>
+                                    <option>Preservation</option>
+                                    <option>Smokescreen</option>
+                                    <option>Smite</option>
+                                    <option>Resurrection</option>
+                                    <option>Wind Up</option>
+                                    <option>Sacred Field</option>
+                                    <option>Portals</option>
+                                    <option>Jar Of Souls</option>
+                                    <option>Dimensional Travel</option>
+                                    <option>Teleportation</option>
                                 </select>
                             </div>
                             <div>
-                                <label class="block mb-1 text-sm text-light-ink">Outfit</label>
-                                <select class="w-full p-2 rounded custom-select text-sm">
+                                <label class="block mb-1 text-sm text-gray-400">Outfit</label>
+                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
                                     <option>Black Diver</option>
+                                    <option>Ignition Deepdelver</option>
+                                    <option>Prophet's Cloak</option>
+                                    <option>Authority Commander</option>
+                                    <option>Legion Centurion</option>
+                                    <option>Navaen Warchief</option>
+                                    <option>Justicar's Armour</option>
+                                    <option>Summer Dragoon</option>
+                                    <option>Ferryman's Coat</option>
+                                    <option>Royal Etrean Guard</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm text-gray-400">Origin</label>
+                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                    <option>Castaway</option>
+                                    <option>Lone Warrior</option>
+                                    <option>Deepbound</option>
+                                    <option>Voidwalker</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm text-gray-400">Murmur</label>
+                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                    <option>Ardour</option>
+                                    <option>Tacet</option>
+                                    <option>Rhythm</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm text-gray-400">Oath</label>
+                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                    <option>Oathless</option>
+                                    <option>Blindseer</option>
+                                    <option>Visionshaper</option>
+                                    <option>Starkindred</option>
+                                    <option>Arcwarder</option>
+                                    <option>Linkstrider</option>
+                                    <option>Jetstriker</option>
+                                    <option>Dawnwalker</option>
+                                    <option>Contractor</option>
+                                    <option>Silentheart</option>
+                                    <option>Fadetrimmer</option>
+                                    <option>Saltchemist</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="content-box p-3 rounded-lg">
-                            <h2 class="text-lg font-bold mb-2 text-ink">Power</h2>
-                            <p class="text-sm">Power: <span id="power">0</span></p>
-                            <p class="text-sm">Next Power: <span id="next-power">25</span> points</p>
-                        </div>
-                        <div class="content-box p-3 rounded-lg">
-                            <h2 class="text-lg font-bold mb-2 text-ink">Weapon Stats</h2>
-                            <div class="grid grid-cols-2 gap-2">
-                                <div class="text-sm text-light-ink">Light Wep.</div>
-                                <!-- <input type="number" value="0" class="stat-input"> -->
-                                    <input type="number" id="light-wep-input" class="stat-input" min="0" max="100">
-                                <div class="text-sm text-light-ink">Medium Wep.</div>
-                                    <input type="number" id="medium-wep-input" class="stat-input" min="0" max="100">
-                                <div class="text-sm text-light-ink">Heavy Wep.</div>
-                                    <input type="number" id="heavy-wep-input" class="stat-input" min="0" max="100">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-                        
-                        <div class="content-box p-3 rounded-lg">
-                            <h2 class="text-lg font-bold mb-2 text-ink">Stats</h2>
-                            <div class="grid grid-cols-2 gap-2">
-                                <div class="text-sm text-light-ink">Strength</div>
-                                <input type="number" id="strength-input" class="stat-input" min="0" data-base="0">
-                                <div class="text-sm text-light-ink">Fortitude</div>
-                                <input type="number" id="fortitude-input" class="stat-input" min="0" data-base="0">
-                                <div class="text-sm text-light-ink">Agility</div>
-                                <input type="number" id="agility-input" class="stat-input" min="0" data-base="0">
-                                <div class="text-sm text-light-ink">Intelligence</div>
-                                <input type="number" id="intelligence-input" class="stat-input" min="0" data-base="0">
-                                <div class="text-sm text-light-ink">Willpower</div>
-                                <input type="number" id="willpower-input" class="stat-input" min="0" data-base="0">
-                                <div class="text-sm text-light-ink">Charisma</div>
-                                <input type="number" id="charisma-input" class="stat-input" min="0" data-base="0">
-                            </div>
-                        </div>
-
-
-                        
-                        <div class="content-box p-3 rounded-lg">
-                            <h2 class="text-lg font-bold mb-2 text-ink">Attunement Stats</h2>
-                            <div class="grid grid-cols-2 gap-2">
-                                <div class="text-sm text-light-ink">Flamecharm</div><input type="number"
-                                    class="stat-input" min="0" max="100">
-                                <div class="text-sm text-light-ink">Frostdraw</div><input type="number"
-                                    class="stat-input" min="0" max="100">
-                                <div class="text-sm text-light-ink">Thundercall</div><input type="number"
-                                    class="stat-input" min="0" max="100">
-                                <div class="text-sm text-light-ink">Galebreathe</div><input type="number"
-                                    class="stat-input" min="0" max="100">
-                                <div class="text-sm text-light-ink">Shadowcast</div><input type="number"
-                                    class="stat-input" min="0" max="100">
-                                <div class="text-sm text-light-ink">Ironsing</div><input type="number"
-                                    class="stat-input" min="0" max="100">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="content-box p-3 rounded-lg">
-                            <h2 class="text-lg font-bold mb-2 text-ink">Traits</h2>
-                            <div class="grid grid-cols-2 gap-2">
-                                <div class="text-sm text-light-ink">Vitality</div>
-                                    <input type="number" id="vitality-input" class="stat-input" data-special-trait min="0" max="6">
-                                <div class="text-sm text-light-ink">Erudition</div>
-                                    <input type="number" id="erudition-input" class="stat-input" data-special-trait min="0" max="6">
-                                <div class="text-sm text-light-ink">Proficiency</div>
-                                    <input type="number" id="proficiency-input" class="stat-input" data-special-trait min="0" max="6">
-                                <div class="text-sm text-light-ink">Songchant</div>
-                                    <input type="number" id="songchant-input" class="stat-input" data-special-trait min="0" max="6">
-                            </div>
-                        </div>
-                        <div class="content-box p-3 rounded-lg">
-                            <h2 class="text-lg font-bold mb-2 text-ink">Boons and Flaws</h2>
-                            <div class="grid grid-cols-2 gap-2">
-                                <div>
-                                    <label class="block mb-1 text-sm text-light-ink">Boon 1</label>
-                                    <select class="w-full p-2 rounded custom-select text-sm">
-                                        <option>None</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block mb-1 text-sm text-light-ink">Boon 2</label>
-                                    <select class="w-full p-2 rounded custom-select text-sm">
-                                        <option>None</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block mb-1 text-sm text-light-ink">Flaw 1</label>
-                                    <select class="w-full p-2 rounded custom-select text-sm">
-                                        <option>None</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block mb-1 text-sm text-light-ink">Flaw 2</label>
-                                    <select class="w-full p-2 rounded custom-select text-sm">
-                                        <option>None</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content-box p-3 rounded-lg">
-                        <h2 class="text-lg font-bold mb-2 text-ink">Investment Points</h2>
-                        <p class="text-sm">Investment Points: <span id="investment-points">325</span></p>
-                        <p class="text-sm">Points Spent: <span id="points-spent">5</span></p>
-                    </div>
-
-                    <div class="content-box p-3 rounded-lg">
-                        <select class="w-full p-2 mb-2 rounded custom-select text-sm">
-                            <option>Local builds</option>
-                        </select>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button
-                                class="bg-blue-600 hover:bg-blue-700 text-parchment font-bold py-2 px-4 rounded text-sm">
-                                Export build as link
-                            </button>
-                            <button
-                                class="bg-green-600 hover:bg-green-700 text-parchment font-bold py-2 px-4 rounded text-sm">
-                                Save loaded build
-                            </button>
-                        </div>
-                    </div>
                 </div>
-            </div>
-
-            <!-- talents-tab -->
-            <div id="talents-tab" class="tab-content hidden">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-dark-parchment text-ink">
-                  <div class="col-span-1 overflow-y-auto h-[calc(100vh-200px)]" id="available-talents">
-                    <div class="mb-4">
-                      <button class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center" data-category="Common">
-                        Common
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                      </button>
-                      <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Common" data-talent="Time To Go">Time To Go</li>
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Common" data-talent="Kick Off">Kick Off</li>
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Common" data-talent="Steady Footing">Steady Footing</li>
-                        <!-- Add more Common talents here -->
-                      </ul>
-                    </div>
-                    
-                    <div class="mb-4">
-                      <button class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center" data-category="Rare">
-                        Rare
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                      </button>
-                      <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Rare" data-talent="An Ironsinger's Instinct">An Ironsinger's Instinct</li>
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Rare" data-talent="Phantom Edge">Phantom Edge</li>
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Rare" data-talent="Everchanging Aegis">Everchanging Aegis</li>
-                        <!-- Add more Rare talents here -->
-                      </ul>
-                    </div>
-                    
-                    <div class="mb-4">
-                      <button class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center" data-category="Advanced">
-                        Advanced
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                      </button>
-                      <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Advanced" data-talent="Ghost">Ghost</li>
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Advanced" data-talent="Reinforced Armor">Reinforced Armor</li>
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Advanced" data-talent="Ether Overdrive">Ether Overdrive</li>
-                        <!-- Add more Advanced talents here -->
-                      </ul>
-                    </div>
-                    
-                    <div class="mb-4">
-                      <button class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center" data-category="Oath">
-                        Oath
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                      </button>
-                      <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Oath" data-talent="All-Seeing Eye">All-Seeing Eye</li>
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Oath" data-talent="Protagonist Syndrome">Protagonist Syndrome</li>
-                        <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Oath" data-talent="Luminous Flash">Luminous Flash</li>
-                        <!-- Add more Oath talents here -->
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-span-1 bg-gray-800 p-4 rounded-lg" id="selected-talents">
-                    <h3 class="text-2xl font-bold mb-4 text-white border-b border-gray-600 pb-2">Selected Talents</h3>
-                    
-                    <div class="space-y-4">
-                      <div class="talent-category">
-                        <div class="flex justify-between items-center mb-2">
-                          <span class="text-lg font-semibold text-gray-300">Common</span>
-                          <span class="text-lg font-bold text-blue-400">0</span>
-                        </div>
-                        <ul class="list-disc list-inside text-gray-400 space-y-1">
-                          <!-- Selected Common talents will be inserted here -->
-                        </ul>
-                      </div>
-                  
-                      <div class="talent-category">
-                        <div class="flex justify-between items-center mb-2">
-                          <span class="text-lg font-semibold text-gray-300">Rare</span>
-                          <span class="text-lg font-bold text-purple-400">0</span>
-                        </div>
-                        <ul class="list-disc list-inside text-gray-400 space-y-1">
-                          <!-- Selected Rare talents will be inserted here -->
-                        </ul>
-                      </div>
-                  
-                      <div class="talent-category">
-                        <div class="flex justify-between items-center mb-2">
-                          <span class="text-lg font-semibold text-gray-300">Advanced</span>
-                          <span class="text-lg font-bold text-green-400">0</span>
-                        </div>
-                        <ul class="list-disc list-inside text-gray-400 space-y-1">
-                          <!-- Selected Advanced talents will be inserted here -->
-                        </ul>
-                      </div>
-                  
-                      <div class="talent-category">
-                        <div class="flex justify-between items-center mb-2">
-                          <span class="text-lg font-semibold text-gray-300">Oath</span>
-                          <span class="text-lg font-bold text-yellow-400">0</span>
-                        </div>
-                        <ul class="list-disc list-inside text-gray-400 space-y-1">
-                          <!-- Selected Oath talents will be inserted here -->
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- mantras-tab -->
-              <div id="mantras-tab" class="tab-content hidden">
-                <div class="grid grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
-                  <!-- Left column (Obtainable Mantras) -->
-                  <div class="col-span-1 bg-gray-800 rounded-lg p-4">
-                    <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtainable Mantras</h3>
-                    <div class="space-y-4">
-                      <div>
-                        <div class="text-lg font-bold mb-2 text-yellow-400">Combat</div>
-                        <ul class="space-y-1" id="obtainable-combat">
-                          <li class="cursor-pointer hover:text-green-400">Pumpkin Pitch</li>
-                          <li class="cursor-pointer hover:text-green-400">Brachial Spear</li>
-                          <li class="cursor-pointer hover:text-green-400">Dread Breath</li>
-                          <li class="cursor-pointer hover:text-green-400">Mecha Gatling</li>
-                          <li class="cursor-pointer hover:text-green-400">Coral Spear</li>
-                          <li class="cursor-pointer hover:text-green-400">Whirling Blade</li>
-                          <li class="cursor-pointer hover:text-green-400">Abyssal Ridge</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <div class="text-lg font-bold mb-2 text-blue-400">Mobility</div>
-                        <ul class="space-y-1" id="obtainable-mobility">
-                          <li class="cursor-pointer hover:text-green-400">Beast Burrow</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <div class="text-lg font-bold mb-2 text-green-400">Support</div>
-                        <ul class="space-y-1" id="obtainable-support">
-                          <li class="cursor-pointer hover:text-green-400">Enforcer Pull</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <div class="text-lg font-bold mb-2 text-purple-400">Wisp</div>
-                        <ul class="space-y-1" id="obtainable-wisp">
-                          <!-- Add Wisp mantras here if any -->
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Right column (Obtained Mantras) -->
-                  <div class="col-span-1">
-                    <div class="bg-gray-800 rounded-lg p-4 mb-4">
-                      <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtained Mantras</h3>
-                      <div id="obtained-mantras-container" class="space-y-4">
-                        <div id="obtained-combat">
-                          <div class="flex justify-between items-center mb-2">
-                            <span class="text-lg font-bold text-yellow-400">Combat</span>
-                            <span class="text-sm text-red-400"><span id="combat-count">0</span>/3</span>
-                          </div>
-                          <ul class="space-y-1"></ul>
-                        </div>
-                        <div id="obtained-wildcard">
-                          <div class="flex justify-between items-center mb-2">
-                            <span class="text-lg font-bold text-purple-400">Wildcard</span>
-                            <span class="text-sm text-red-400"><span id="wildcard-count">0</span>/3</span>
-                          </div>
-                          <ul class="space-y-1"></ul>
-                        </div>
-                        <div id="obtained-mobility">
-                          <div class="flex justify-between items-center mb-2">
-                            <span class="text-lg font-bold text-blue-400">Mobility</span>
-                            <span class="text-sm text-red-400"><span id="mobility-count">0</span>/1</span>
-                          </div>
-                          <ul class="space-y-1"></ul>
-                        </div>
-                        <div id="obtained-support">
-                          <div class="flex justify-between items-center mb-2">
-                            <span class="text-lg font-bold text-green-400">Support</span>
-                            <span class="text-sm text-red-400"><span id="support-count">0</span>/1</span>
-                          </div>
-                          <ul class="space-y-1"></ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="bg-gray-800 rounded-lg p-4">
-                      <p class="text-sm text-yellow-400">Hold click on a mantra to view it's modifications.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <!-- weapons-tab -->
-            <div id="weapons-tab" class="tab-content hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
-                  <div class="col-span-1 md:col-span-2">
-                    <h2 class="text-2xl font-bold mb-4 text-yellow-400">Weapon Damage Calculator</h2>
-                  </div>
-                  <div class="col-span-1">
-                    <div class="mb-4">
-                      <label for="weapon1" class="block text-sm font-bold mb-2">Weapon 1</label>
-                      <select id="weapon1" class="w-full bg-gray-800 text-white rounded p-2">
-                        <option value="">Select a weapon</option>
-                      </select>
+                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Power</h3>
+                        <p class="text-sm">Power: <span id="power" class="text-white">0</span></p>
+                        <p class="text-sm">Next Power: <span id="next-power" class="text-white">30</span> points</p>
                     </div>
-                    <div class="mb-4">
-                      <label for="weapon2" class="block text-sm font-bold mb-2">Weapon 2 (Optional)</label>
-                      <select id="weapon2" class="w-full bg-gray-800 text-white rounded p-2">
-                        <option value="">Select a weapon</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-span-1">
-                    <div class="mb-4">
-                      <label for="attributeLevel" class="block text-sm font-bold mb-2">Attribute Level</label>
-                      <input type="number" id="attributeLevel" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100" value="0">
-                    </div>
-                    <div class="mb-4">
-                      <label for="proficiency" class="block text-sm font-bold mb-2">Weapon Proficiency</label>
-                      <input type="number" id="proficiency" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100" value="0">
-                    </div>
-                  </div>
-                  <div class="col-span-1 md:col-span-2">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="mb-4">
-                      <label for="stars" class="block text-sm font-bold mb-2">Weapon Stars</label>
-                      <input type="number" id="stars" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="3" value="0">
-                    </div>
-                    <div class="mb-4">
-                      <label for="starType" class="block text-sm font-bold mb-2">Star Type</label>
-                      <select id="starType" class="w-full bg-gray-800 text-white rounded p-2">
-                        <option value="damage">Damage</option>
-                        <option value="penetration">Penetration</option>
-                        <option value="weight">Weight</option>
-                      </select>
-                    </div>
-                    </div>
-                    <div class="col-span-1 md:col-span-2">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="mb-4">
-                      <label for="additionalPenetration" class="block text-sm font-bold mb-2">Additional Penetration (%)</label>
-                      <input type="number" id="additionalPenetration" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="50" value="0">
-                    </div>
-                    <div class="mb-4">
-                      <label for="bleedChance" class="block text-sm font-bold mb-2">Bleed Chance (%)</label>
-                      <input type="number" id="bleedChance" class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100" value="0">
-                    </div>
-                </div>
-            </div>
-                    <button id="calculateDamage" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                      Calculate Damage
-                    </button>
-                  </div>
-                  <div id="weaponDetails" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
-                  <div id="result" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
-                  <div class="col-span-1 md:col-span-2">
-                    <canvas id="damageChart"></canvas>
-                  </div>
-                  <div id="result" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
-  
-                  <div class="col-span-1 md:col-span-2 bg-gray-800 p-4 rounded-lg mt-4">
-                    <canvas id="damageChart"></canvas>
-                  </div>
-                </div>
-            
-              </div>
 
-            <div id="summary-tab" class="tab-content hidden">
-                <h2 class="text-lg font-bold mb-2 text-ink">Summary</h2>
-                <!-- 添加Summary相关的内容 -->
+                    <!-- Weapon Stats -->
+                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Weapon Stats</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="text-sm text-gray-400">Light Wep.</div>
+                            <input type="number" id="light-wep-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                max="100">
+                            <div class="text-sm text-gray-400">Medium Wep.</div>
+                            <input type="number" id="medium-wep-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                max="100">
+                            <div class="text-sm text-gray-400">Heavy Wep.</div>
+                            <input type="number" id="heavy-wep-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                max="100">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Stats</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="text-sm text-gray-400">Strength</div>
+                            <input type="number" id="strength-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                data-base="0">
+                            <div class="text-sm text-gray-400">Fortitude</div>
+                            <input type="number" id="fortitude-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                data-base="0">
+                            <div class="text-sm text-gray-400">Agility</div>
+                            <input type="number" id="agility-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                data-base="0">
+                            <div class="text-sm text-gray-400">Intelligence</div>
+                            <input type="number" id="intelligence-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                data-base="0">
+                            <div class="text-sm text-gray-400">Willpower</div>
+                            <input type="number" id="willpower-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                data-base="0">
+                            <div class="text-sm text-gray-400">Charisma</div>
+                            <input type="number" id="charisma-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                data-base="0">
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Attunement Stats</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="text-sm text-gray-400">Flamecharm</div>
+                            <input type="number"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                max="100">
+                            <div class="text-sm text-gray-400">Frostdraw</div><input type="number"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                max="100">
+                            <div class="text-sm text-gray-400">Thundercall</div><input type="number"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                max="100">
+                            <div class="text-sm text-gray-400">Galebreathe</div><input type="number"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                max="100">
+                            <div class="text-sm text-gray-400">Shadowcast</div><input type="number"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                max="100">
+                            <div class="text-sm text-gray-400">Ironsing</div><input type="number"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
+                                max="100">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Traits</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="text-sm text-gray-400">Vitality</div>
+                            <input type="number" id="vitality-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                data-special-trait min="0" max="6">
+                            <div class="text-sm text-gray-400">Erudition</div>
+                            <input type="number" id="erudition-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                data-special-trait min="0" max="6">
+                            <div class="text-sm text-gray-400">Proficiency</div>
+                            <input type="number" id="proficiency-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                data-special-trait min="0" max="6">
+                            <div class="text-sm text-gray-400">Songchant</div>
+                            <input type="number" id="songchant-input"
+                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                data-special-trait min="0" max="6">
+                        </div>
+                    </div>
+                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Boons and Flaws</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block mb-1 text-sm text-gray-400">Boon 1</label>
+                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                    <option>None</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm text-gray-400">Boon 2</label>
+                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                    <option>None</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm text-gray-400">Flaw 1</label>
+                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                    <option>None</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm text-gray-400">Flaw 2</label>
+                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                    <option>None</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investment Points -->
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                    <div class="col-span-1 md:col-span-2 bg-gray-800 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Investment Points</h3>
+                        <p class="text-sm text-gray-300">Investment Points: <span id="investment-points"
+                                class="text-white">325</span></p>
+                        <p class="text-sm text-gray-300">Points Spent: <span id="points-spent"
+                                class="text-white">5</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                    <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+                        <option>Local builds</option>
+                    </select>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                            Export build as link
+                        </button>
+                        <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
+                            Save loaded build
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- talents-tab -->
+        <div id="talents-tab" class="tab-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-dark-parchment text-ink">
+                <div class="col-span-1 overflow-y-auto h-[calc(100vh-200px)]" id="available-talents">
+                    <div class="mb-4">
+                        <button
+                            class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center"
+                            data-category="Common">
+                            Common
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="chevron-down">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Time To Go">Time To Go</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Kick Off">Kick Off</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Steady Footing">Steady Footing</li>
+                            <!-- Add more Common talents here -->
+                        </ul>
+                    </div>
+
+                    <div class="mb-4">
+                        <button
+                            class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center"
+                            data-category="Rare">
+                            Rare
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="chevron-down">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="An Ironsinger's Instinct">An Ironsinger's Instinct
+                            </li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Phantom Edge">Phantom Edge</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Everchanging Aegis">Everchanging Aegis</li>
+                            <!-- Add more Rare talents here -->
+                        </ul>
+                    </div>
+
+                    <div class="mb-4">
+                        <button
+                            class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center"
+                            data-category="Advanced">
+                            Advanced
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="chevron-down">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Ghost">Ghost</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Reinforced Armor">Reinforced Armor</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Ether Overdrive">Ether Overdrive</li>
+                            <!-- Add more Advanced talents here -->
+                        </ul>
+                    </div>
+
+                    <div class="mb-4">
+                        <button
+                            class="talent-category w-full text-left font-bold py-2 px-4 bg-parchment rounded-t-lg flex justify-between items-center"
+                            data-category="Oath">
+                            Oath
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="chevron-down">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Oath" data-talent="All-Seeing Eye">All-Seeing Eye</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Oath" data-talent="Protagonist Syndrome">Protagonist Syndrome</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Oath" data-talent="Luminous Flash">Luminous Flash</li>
+                            <!-- Add more Oath talents here -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-span-1 bg-gray-800 p-4 rounded-lg" id="selected-talents">
+                    <h3 class="text-2xl font-bold mb-4 text-white border-b border-gray-600 pb-2">Selected Talents</h3>
+
+                    <div class="space-y-4">
+                        <div class="talent-category">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-lg font-semibold text-gray-300">Common</span>
+                                <span class="text-lg font-bold text-blue-400">0</span>
+                            </div>
+                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                                <!-- Selected Common talents will be inserted here -->
+                            </ul>
+                        </div>
+
+                        <div class="talent-category">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-lg font-semibold text-gray-300">Rare</span>
+                                <span class="text-lg font-bold text-purple-400">0</span>
+                            </div>
+                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                                <!-- Selected Rare talents will be inserted here -->
+                            </ul>
+                        </div>
+
+                        <div class="talent-category">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-lg font-semibold text-gray-300">Advanced</span>
+                                <span class="text-lg font-bold text-green-400">0</span>
+                            </div>
+                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                                <!-- Selected Advanced talents will be inserted here -->
+                            </ul>
+                        </div>
+
+                        <div class="talent-category">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-lg font-semibold text-gray-300">Oath</span>
+                                <span class="text-lg font-bold text-yellow-400">0</span>
+                            </div>
+                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                                <!-- Selected Oath talents will be inserted here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+                    <option>Local builds</option>
+                </select>
+                <div class="grid grid-cols-2 gap-2">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                        Export build as link
+                    </button>
+                    <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
+                        Save loaded build
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- mantras-tab -->
+        <div id="mantras-tab" class="tab-content hidden">
+            <div class="grid grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                <!-- Left column (Obtainable Mantras) -->
+                <div class="col-span-1 bg-gray-800 rounded-lg p-4">
+                    <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtainable Mantras</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="text-lg font-bold mb-2 text-yellow-400">Combat</div>
+                            <ul class="space-y-1" id="obtainable-combat">
+                                <li class="cursor-pointer hover:text-green-400">Pumpkin Pitch</li>
+                                <li class="cursor-pointer hover:text-green-400">Brachial Spear</li>
+                                <li class="cursor-pointer hover:text-green-400">Dread Breath</li>
+                                <li class="cursor-pointer hover:text-green-400">Mecha Gatling</li>
+                                <li class="cursor-pointer hover:text-green-400">Coral Spear</li>
+                                <li class="cursor-pointer hover:text-green-400">Whirling Blade</li>
+                                <li class="cursor-pointer hover:text-green-400">Abyssal Ridge</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="text-lg font-bold mb-2 text-blue-400">Mobility</div>
+                            <ul class="space-y-1" id="obtainable-mobility">
+                                <li class="cursor-pointer hover:text-green-400">Beast Burrow</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="text-lg font-bold mb-2 text-green-400">Support</div>
+                            <ul class="space-y-1" id="obtainable-support">
+                                <li class="cursor-pointer hover:text-green-400">Enforcer Pull</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="text-lg font-bold mb-2 text-purple-400">Wisp</div>
+                            <ul class="space-y-1" id="obtainable-wisp">
+                                <!-- Add Wisp mantras here if any -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right column (Obtained Mantras) -->
+                <div class="col-span-1">
+                    <div class="bg-gray-800 rounded-lg p-4 mb-4">
+                        <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtained Mantras</h3>
+                        <div id="obtained-mantras-container" class="space-y-4">
+                            <div id="obtained-combat">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-lg font-bold text-yellow-400">Combat</span>
+                                    <span class="text-sm text-red-400"><span id="combat-count">0</span>/3</span>
+                                </div>
+                                <ul class="space-y-1"></ul>
+                            </div>
+                            <div id="obtained-wildcard">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-lg font-bold text-purple-400">Wildcard</span>
+                                    <span class="text-sm text-red-400"><span id="wildcard-count">0</span>/3</span>
+                                </div>
+                                <ul class="space-y-1"></ul>
+                            </div>
+                            <div id="obtained-mobility">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-lg font-bold text-blue-400">Mobility</span>
+                                    <span class="text-sm text-red-400"><span id="mobility-count">0</span>/1</span>
+                                </div>
+                                <ul class="space-y-1"></ul>
+                            </div>
+                            <div id="obtained-support">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-lg font-bold text-green-400">Support</span>
+                                    <span class="text-sm text-red-400"><span id="support-count">0</span>/1</span>
+                                </div>
+                                <ul class="space-y-1"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg p-4">
+                        <p class="text-sm text-yellow-400">Hold click on a mantra to view it's modifications.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+                    <option>Local builds</option>
+                </select>
+                <div class="grid grid-cols-2 gap-2">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                        Export build as link
+                    </button>
+                    <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
+                        Save loaded build
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- weapons-tab -->
+        <div id="weapons-tab" class="tab-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                <div class="col-span-1 md:col-span-2">
+                    <h2 class="text-2xl font-bold mb-4 text-yellow-400">Weapon Damage Calculator</h2>
+                </div>
+                <div class="col-span-1">
+                    <div class="mb-4">
+                        <label for="weapon1" class="block text-sm font-bold mb-2">Weapon 1</label>
+                        <select id="weapon1" class="w-full bg-gray-800 text-white rounded p-2">
+                            <option value="">Select a weapon</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="weapon2" class="block text-sm font-bold mb-2">Weapon 2 (Optional)</label>
+                        <select id="weapon2" class="w-full bg-gray-800 text-white rounded p-2">
+                            <option value="">Select a weapon</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <div class="mb-4">
+                        <label for="attributeLevel" class="block text-sm font-bold mb-2">Attribute Level</label>
+                        <input type="number" id="attributeLevel" class="w-full bg-gray-800 text-white rounded p-2"
+                            min="0" max="100" value="0">
+                    </div>
+                    <div class="mb-4">
+                        <label for="proficiency" class="block text-sm font-bold mb-2">Weapon Proficiency</label>
+                        <input type="number" id="proficiency" class="w-full bg-gray-800 text-white rounded p-2" min="0"
+                            max="100" value="0">
+                    </div>
+                </div>
+                <div class="col-span-1 md:col-span-2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="mb-4">
+                            <label for="stars" class="block text-sm font-bold mb-2">Weapon Stars</label>
+                            <input type="number" id="stars" class="w-full bg-gray-800 text-white rounded p-2" min="0"
+                                max="3" value="0">
+                        </div>
+                        <div class="mb-4">
+                            <label for="starType" class="block text-sm font-bold mb-2">Star Type</label>
+                            <select id="starType" class="w-full bg-gray-800 text-white rounded p-2">
+                                <option value="damage">Damage</option>
+                                <option value="penetration">Penetration</option>
+                                <option value="weight">Weight</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="mb-4">
+                                <label for="additionalPenetration" class="block text-sm font-bold mb-2">Additional
+                                    Penetration (%)</label>
+                                <input type="number" id="additionalPenetration"
+                                    class="w-full bg-gray-800 text-white rounded p-2" min="0" max="50" value="0">
+                            </div>
+                            <div class="mb-4">
+                                <label for="bleedChance" class="block text-sm font-bold mb-2">Bleed Chance (%)</label>
+                                <input type="number" id="bleedChance" class="w-full bg-gray-800 text-white rounded p-2"
+                                    min="0" max="100" value="0">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="calculateDamage"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Calculate Damage
+                    </button>
+                </div>
+                <div id="weaponDetails" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
+                <div id="result" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
+                <div class="col-span-1 md:col-span-2">
+                    <canvas id="damageChart"></canvas>
+                </div>
+                <div id="result" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
+
+
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+                    <option>Local builds</option>
+                </select>
+                <div class="grid grid-cols-2 gap-2">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                        Export build as link
+                    </button>
+                    <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
+                        Save loaded build
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- "summary-tab" -->
+<!-- "summary-tab" -->
+<div id="summary-tab" class="tab-content hidden">
+    <div class="grid grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+        <div class="col-span-1">
+            <h2 class="text-2xl font-bold mb-4 text-yellow-400">Character Summary</h2>
+        </div>
+        
+        <!-- User Summary Input -->
+        <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+            <h3 class="text-lg font-bold mb-2 text-yellow-400">Your Character Summary</h3>
+            <p class="text-sm text-gray-400 mb-2">Use this space to describe your character build, strategy, or any other notes you want to remember:</p>
+            <textarea id="user-summary" class="w-full h-64 p-2 bg-gray-700 text-white border border-gray-600 rounded-lg resize-y" placeholder="Enter your character summary here..."></textarea>
+        </div>
+
+
+
+        <!-- Save and Export Options -->
+        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+            <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+                <option>Local builds</option>
+            </select>
+            <div class="grid grid-cols-2 gap-2">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    Export build as link
+                </button>
+                <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    Save loaded build
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
 
     </div>
+
+    <!-- Add this section just before the closing </body> tag -->
+<div class="blog-preview bg-ink text-gray-300 py-8">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-yellow-400 mb-6">Deepwoken Builder FAQ</h2>
+        <article class="bg-gray-800 rounded-lg p-6 shadow-lg">
+            <h3 class="text-2xl font-bold text-white mb-4">How to Use Deepwoken Builder: A Beginner's Guide</h3>
+            <p class="text-gray-400 mb-4">Hey there, Deepwoken fans! 👋 Ready to level up your game? Let's dive into the world of Deepwoken Builder and see how this nifty tool can help you crush it in the game.</p>
+            <h4 class="text-xl font-semibold text-yellow-400 mb-2">What's the Deal with Deepwoken Builder?</h4>
+            <p class="text-gray-400 mb-4">Deepwoken Builder is like your secret weapon for creating killer characters in Deepwoken. It's a fan-made tool that lets you play around with different builds without risking your neck in the actual game. Pretty sweet, right?</p>
+            <h4 class="text-xl font-semibold text-yellow-400 mb-2">Getting Started: Easy as Pie</h4>
+            <ol class="list-decimal list-inside text-gray-400 mb-4">
+                <li>Fire up your browser and search for "Deepwoken Builder"</li>
+                <li>Click on the official link (make sure it's legit!)</li>
+                <li>Boom! You're in. Now you can start tinkering with your dream character</li>
+            </ol>
+            <h4 class="text-xl font-semibold text-yellow-400 mb-2">The Good Stuff: What Can You Do?</h4>
+            <ol class="list-decimal list-inside text-gray-400 mb-4">
+                <li>Mix and match different attributes</li>
+                <li>Mess around with skills and see what clicks</li>
+                <li>Plan your character's path without breaking a sweat</li>
+            </ol>
+            <h4 class="text-xl font-semibold text-yellow-400 mb-2">Pro Tips for Newbies</h4>
+            <ol class="list-decimal list-inside text-gray-400 mb-4">
+                <li>Don't go crazy with one stat. Balance is key, folks!</li>
+                <li>Try out weird combos. You might stumble on something awesome</li>
+                <li>Remember, practice makes perfect. Keep at it!</li>
+            </ol>
+            <p class="text-gray-400 mb-4">So, what are you waiting for? Jump in and start building! With Deepwoken Builder, you'll be creating epic characters faster than you can say "power level." Have fun, and may the best build win! 🏆</p>
+            <div class="flex justify-between items-center mt-6">
+                <a href="#" class="text-blue-400 hover:text-blue-300 transition duration-300">Read More</a>
+                <a href="https://deepwoken.fandom.com/wiki/Deepwoken_Wiki" target="_blank" class="text-green-400 hover:text-green-300 transition duration-300">Official Deepwoken Game Page</a>
+            </div>
+        </article>
+        <article class="bg-gray-800 rounded-lg p-6 shadow-lg">
+            <h3 class="text-2xl font-bold text-white mb-4">Deepwoken Builder: Your Ultimate Guide to Dominating Talents 🏆</h3>
+            
+            <p class="text-gray-400 mb-4">Yo, Deepwoken builder fam! 👋 Ready to create a character so OP with your Deepwoken builder that it'll make the devs cry? 😈 This Deepwoken builder guide is your ticket to becoming a true Deepwoken builder legend. 🌟</p>
+            
+            <h4 class="text-xl font-semibold text-yellow-400 mb-2">What's the Deal with Deepwoken Builder? 🤔</h4>
+            <p class="text-gray-400 mb-4">Listen up, noobs! 👀 The Deepwoken builder is your secret weapon for crafting god-tier characters. Every time you level up in your Deepwoken builder, you'll pick Talents that'll have you stomping newbies and bosses alike. 💪</p>
+            
+            <h4 class="text-xl font-semibold text-yellow-400 mb-2">Deepwoken Builder Talent Trinity: Common, Rare, and "Holy Crap!" Advanced 🔥</h4>
+            <ol class="list-decimal list-inside text-gray-400 mb-4">
+                <li><strong>Common Talents</strong>: Don't sleep on these in your Deepwoken builder, fam. 😴 They're the bread and butter of any solid Deepwoken builder setup. 🥊</li>
+                <li><strong>Rare Talents</strong>: This is where your Deepwoken builder gets spicy. 🌶️ We're talking game-changing abilities that'll make your Deepwoken builder character unstoppable. 🤤</li>
+                <li><strong>Advanced Talents</strong>: Holy mother of Deepwoken builder! 🤯 These bad boys will have your Deepwoken builder character cackling like a supervillain. 😎</li>
+            </ol>
+            
+            <h4 class="text-xl font-semibold text-yellow-400 mb-2">Pro Tips for Deepwoken Builder Masters (AKA How to Git Gud) 🧠</h4>
+            <ul class="list-disc list-inside text-gray-400 mb-4">
+                <li>Use your Deepwoken builder to mix and match Talents like you're making the world's deadliest cocktail 🍹</li>
+                <li>Level your Deepwoken builder attributes with the big brain energy of a 5Head 🧠</li>
+                <li>In your Deepwoken builder, Common Talents can be clutch AF - don't be a talent snob 🎭</li>
+                <li>If your Deepwoken builder Talent choices suck, hit that "Fold" button faster than you can say "RNG plz" 🃏</li>
+            </ul>
+            
+            <h4 class="text-xl font-semibold text-yellow-400 mb-2">Deepwoken Builder TL;DR 📚</h4>
+            <p class="text-gray-400 mb-4">Mastering the Deepwoken builder is like becoming the Einstein of virtual ass-kicking. 🧑‍🔬 Play around with different combos in your Deepwoken builder until you find a setup that's more broken than EA's servers. 💻</p>
+            
+            <p class="text-gray-400 mb-4">Ready to ascend to godhood with your Deepwoken builder? 🙌 Fire up our Deepwoken builder tool and create a character so awesome, it'll make RNGesus himself weep tears of joy! 😭</p>
+            
+            <p class="text-gray-400 mb-4">Now go forth and may the Deepwoken builder be ever in your favor, you beautiful Deepwoken degenerates! 🚀</p>
+            
+            <div class="flex justify-between items-center mt-6">
+                <a href="#" class="text-blue-400 hover:text-blue-300 transition duration-300">More Deepwoken Builder Tips</a>
+                <a href="https://deepwoken.fandom.com/wiki/Talents" target="_blank" class="text-green-400 hover:text-green-300 transition duration-300">Official Deepwoken Wiki</a>
+            </div>
+        </article>
+        <article class="bg-gray-800 rounded-lg p-6 shadow-lg">
+            <h1 class="text-3xl font-bold text-white mb-4">Deepwoken Builder: Master the Weapon System with Epic DPS Charts 📊🗡️</h1>
+            
+            <p class="text-gray-400 mb-4">Yo, Deepwoken fam! 👋 Ready to build a character that'll make other players rage quit? Then listen up, 'cause we're about to deep dive into the weapon system and show you how our Deepwoken builder can turn you into a DPS god. This guide is your cheat code to becoming a Deepwoken builder legend. 🌟</p>
+            
+            <h2 class="text-2xl font-semibold text-yellow-400 mb-2">What's the Deal with Weapons in Deepwoken? 🤔</h2>
+            <p class="text-gray-400 mb-4">Alright, noobs, pay attention. 👀 Weapons in Deepwoken are like the secret sauce that takes your character from zero to hero. Every time you level up in your Deepwoken builder, you'll get to pick new weapons that'll have you owning newbies and bosses alike. 💪</p>
+            
+            <h2 class="text-2xl font-semibold text-yellow-400 mb-2">The Weapon Trinity: Light, Medium, and Heavy 🔥</h2>
+            <ol class="list-decimal list-inside text-gray-400 mb-4">
+                <li class="mb-2"><strong class="text-white">Light Weapons</strong>: Fast AF boi. Perfect for those "I'm gonna poke you to death" builds. Daggers, fists, and guns fall into this category.</li>
+                <li class="mb-2"><strong class="text-white">Medium Weapons</strong>: The jack of all trades. Not too slow, not too fast, just right for the indecisive Deepwoken builder. Swords, spears, and clubs are your go-to here.</li>
+                <li class="mb-2"><strong class="text-white">Heavy Weapons</strong>: Slow but hit like a truck. If you want to one-shot everything (including your FPS), go for greataxes, greatswords, or greathammers.</li>
+            </ol>
+            
+            <h2 class="text-2xl font-semibold text-yellow-400 mb-2">Exclusive Feature: DPS Comparison Charts 📈</h2>
+            <p class="text-gray-400 mb-4">Now, here's where our Deepwoken builder gets extra spicy. We've got this sick feature that lets you compare the DPS of two weapons side by side. It's like weapon stats on steroids! 💉💪</p>
+            
+            <p class="text-gray-400 mb-4">Here's why this feature is gonna blow your mind:</p>
+            <ul class="list-disc list-inside text-gray-400 mb-4">
+                <li class="mb-2">See exactly how your weapon choices stack up against each other</li>
+                <li class="mb-2">Spot those hidden gem weapons that everyone else is sleeping on</li>
+                <li class="mb-2">Optimize your build like a pro, even if you suck at math</li>
+                <li class="mb-2">Settle those "my weapon is better than yours" arguments once and for all</li>
+            </ul>
+            
+            <p class="text-gray-400 mb-4">Just pick any two weapons in our Deepwoken builder, hit that compare button, and boom! You've got a sexy chart showing you the cold, hard DPS facts. It's like having a mini-Deepwoken scientist in your pocket. 🥼🔬</p>
+            
+            <h2 class="text-2xl font-semibold text-yellow-400 mb-2">Pro Tips for Deepwoken Builders (AKA How to Git Gud) 🧠</h2>
+            <ul class="list-disc list-inside text-gray-400 mb-4">
+                <li class="mb-2">Use our DPS comparison charts to mix and match weapon types like you're making the world's deadliest cocktail 🍹</li>
+                <li class="mb-2">Pay attention to scaling - it's not the size that matters, it's how you use it 😉</li>
+                <li class="mb-2">Don't sleep on those sweet, sweet enchantments. They can turn a meh weapon into an OP beast</li>
+                <li class="mb-2">If your weapon choices suck, hit that Deepwoken builder reset button faster than you can say "RNG plz"</li>
+            </ul>
+            
+            <h2 class="text-2xl font-semibold text-yellow-400 mb-2">TL;DR</h2>
+            <p class="text-gray-400 mb-4">Mastering weapons in Deepwoken is like becoming the Einstein of virtual ass-kicking. With our Deepwoken builder's exclusive DPS comparison charts, you'll be theory-crafting like a pro in no time.</p>
+            
+            <p class="text-gray-400 mb-4">Ready to become the weapon master? Fire up our Deepwoken builder tool, use those sexy DPS charts, and create a loadout so awesome, it'll make RNGesus himself weep tears of joy! 😭</p>
+            
+            <p class="text-gray-400 mb-4">Now go forth and may the weapons (and charts) be ever in your favor, you beautiful Deepwoken degenerates! 🚀</p>
+            
+            <div class="flex justify-between items-center mt-6">
+                <a href="#" class="text-blue-400 hover:text-blue-300 transition duration-300">More Deepwoken Builder Tips</a>
+                <a href="https://deepwoken.fandom.com/wiki/Weapons" target="_blank" class="text-green-400 hover:text-green-300 transition duration-300">Official Deepwoken Wiki</a>
+            </div>
+        </article>
+    </div>
+</div>
     <style>
         .tab-button.active {
-            border-bottom-color: #2c2c2c; /* 使用您的 ink 颜色 */
-            background-color: #f0e6d2; /* 使用您的 parchment 颜色 */
+            border-bottom-color: #2c2c2c;
+            background-color: #f0e6d2;
         }
     </style>
-    
+
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const tabs = document.querySelectorAll('.tab-button');
-        
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                // 这里添加切换内容的逻辑
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab-button');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                });
             });
         });
-    });
     </script>
 
     <script src="js/main.js"></script>

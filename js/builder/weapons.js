@@ -1,9 +1,7 @@
-// 全局武器数据对象
 let weapons = {};
 
 function initializeWeaponsTab() {
-    // parseWeaponsData(exampleWeaponsData);
-    fetch('./js/builder/weapons.json')
+        fetch('./js/builder/weapons.json')
         .then(response => response.json())
         .then(data => {
             parseWeaponsData(JSON.stringify(data));
@@ -20,18 +18,13 @@ function applyWeaponCategoryStyle() {
         const optgroups = select.querySelectorAll('optgroup');
         optgroups.forEach(optgroup => {
             if (optgroup.label.startsWith('Light Weapons - Daggers')) {
-                optgroup.style.color = '#ffd700'; // 红色，您可以更改为您想要的颜色
-            } else {
-                optgroup.style.color = '#ffd700'; // 其他类别保持金色
-            }
+                optgroup.style.color = '#ffd700';             } else {
+                optgroup.style.color = '#ffd700';             }
             optgroup.style.fontWeight = 'bold';
             
-            // 重置 option 元素的样式
-            const options = optgroup.querySelectorAll('option');
+                        const options = optgroup.querySelectorAll('option');
             options.forEach(option => {
-                option.style.color = '#F9F6EE'; // 清除颜色样式
-                option.style.fontWeight = ''; // 清除字体粗细样式
-                console.log("option.style.color = ''")
+                option.style.color = '#F9F6EE';                 option.style.fontWeight = '';                 console.log("option.style.color = ''")
             });
         });
     });
@@ -118,8 +111,7 @@ function calculateDamage(weapon, attributeLevel, proficiency, stars, starType, a
     let penetration = parseFloat(weapon.penetration) || 0;
     let weight = parseFloat(weapon.weight);
 
-    // 应用星级效果
-    if (starType === 'damage') {
+        if (starType === 'damage') {
         baseDamage *= (1 + 0.02 * stars);
     } else if (starType === 'penetration') {
         penetration += Math.min(5 * stars, 14);
@@ -127,18 +119,14 @@ function calculateDamage(weapon, attributeLevel, proficiency, stars, starType, a
         weight *= (1 + 0.04 * stars);
     }
 
-    // 计算缩放伤害
-    const scalingMatch = weapon.scaling.match(/(\w+):\s*(\d+(\.\d+)?)/);
+        const scalingMatch = weapon.scaling.match(/(\w+):\s*(\d+(\.\d+)?)/);
     const scalingAttribute = scalingMatch ? scalingMatch[1] : '';
     const scalingValue = scalingMatch ? parseFloat(scalingMatch[2]) : 0;
     const scaledDamage = 0.00075 * (baseDamage * scalingValue * attributeLevel * (1 + (proficiency * 0.065))) + baseDamage;
 
-    // 应用穿透
-    penetration = Math.min(penetration + additionalPenetration, 50);  // 上限 50%
-    const effectiveDamage = scaledDamage * (1 + penetration / 100);
+        penetration = Math.min(penetration + additionalPenetration, 50);      const effectiveDamage = scaledDamage * (1 + penetration / 100);
 
-    // 计算流血伤害
-    const bleedDamage = effectiveDamage * 0.3 * (bleedChance / 100);
+        const bleedDamage = effectiveDamage * 0.3 * (bleedChance / 100);
     const totalDamage = effectiveDamage + bleedDamage;
     const dps = totalDamage * parseFloat(weapon.swing_speed) * 2;
 
@@ -281,7 +269,6 @@ function addWeaponEventListeners() {
     });
 }
 
-// 示例武器数据
 const exampleWeaponsData = `
 {
     "Light Weapons": {
@@ -358,7 +345,6 @@ const exampleWeaponsData = `
     }
 }`;
 
-// ... (之前的代码保持不变)
 
 function updateChart(result1, result2) {
     const ctx = document.getElementById('damageChart').getContext('2d');
@@ -454,10 +440,10 @@ function addWeaponEventListeners() {
             }
             displayResult(result1, result2);
             updateChart(result1, result2);
-            // 滚动到图表
+             
             const chartElement = document.getElementById('damageChart');
             if (chartElement) {
-                // 给一个短暂的延迟，确保图表已经渲染
+                 
                 setTimeout(() => {
                     chartElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 100);
@@ -468,7 +454,6 @@ function addWeaponEventListeners() {
 
 
 
-// 在文档加载完成后初始化武器标签页
 document.addEventListener('DOMContentLoaded', function() {
     initializeWeaponsTab();
 });

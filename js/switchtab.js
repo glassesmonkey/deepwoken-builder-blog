@@ -29,8 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 初始化时显示Stats标签
+    
     switchTab('stats');
 });
 
-// 这里可以添加其他已有的JavaScript逻辑

@@ -4,8 +4,7 @@ function initializeTalentsTab() {
   const talentCategories = document.querySelectorAll('.talent-category');
   const talentItems = document.querySelectorAll('.talent-list li');
 
-  // Add click event for category expansion
-  talentCategories.forEach(button => {
+    talentCategories.forEach(button => {
     button.addEventListener('click', () => {
       const ul = button.nextElementSibling;
       ul.classList.toggle('hidden');
@@ -14,13 +13,11 @@ function initializeTalentsTab() {
     });
   });
 
-  // Add click event for talent selection
-  talentItems.forEach(item => {
+    talentItems.forEach(item => {
     item.addEventListener('click', () => toggleTalent(item));
   });
 
-  // Initialize selected talents section
-  updateSelectedTalents();
+    updateSelectedTalents();
 }
 
 function toggleTalent(talentElement) {
@@ -74,5 +71,4 @@ function updateSelectedTalents() {
     selectedTalentsDiv.innerHTML = innerHTML;
   }
 
-// Initialize the talents tab when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initializeTalentsTab);
