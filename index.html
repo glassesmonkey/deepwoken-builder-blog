@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Deepwoken Builder: Create and optimize your Deepwoken character builds with our interactive tool. Plan your skills, attributes, and strategy risk-free!">
+    <meta name="description"
+        content="Deepwoken Builder: Create and optimize your Deepwoken character builds with our interactive tool. Plan your skills, attributes, and strategy risk-free!">
     <title>Deepwoken Builder - Stats</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -99,11 +100,11 @@
                     <!-- Basic Info -->
                     <div class="col-span-1 md:col-span-2 bg-gray-800 p-4 rounded-lg">
                         <h3 class="text-lg font-bold mb-2 text-yellow-400">Basic Info</h3>
-                        <input type="text" placeholder="Build Name"
+                        <input type="text" id="build-name" placeholder="Build Name"
                             class="w-full p-2 mb-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
-                        <input type="text" placeholder="Build Description"
+                        <input type="text" id="build-description" placeholder="Build Description"
                             class="w-full p-2 mb-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
-                        <input type="text" placeholder="Author"
+                        <input type="text" id="build-author" placeholder="Author"
                             class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
                     </div>
                 </div>
@@ -267,24 +268,17 @@
                         <h3 class="text-lg font-bold mb-2 text-yellow-400">Attunement Stats</h3>
                         <div class="grid grid-cols-2 gap-2">
                             <div class="text-sm text-gray-400">Flamecharm</div>
-                            <input type="number"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Frostdraw</div><input type="number"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Thundercall</div><input type="number"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Galebreathe</div><input type="number"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Shadowcast</div><input type="number"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Ironsing</div><input type="number"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
+                            <input type="number" id="flamecharm-input" class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0" max="100">
+                            <div class="text-sm text-gray-400">Frostdraw</div>
+                            <input type="number" id="frostdraw-input" class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0" max="100">
+                            <div class="text-sm text-gray-400">Thundercall</div>
+                            <input type="number" id="thundercall-input" class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0" max="100">
+                            <div class="text-sm text-gray-400">Galebreath</div>
+                            <input type="number" id="galebreath-input" class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0" max="100">
+                            <div class="text-sm text-gray-400">Shadowcast</div>
+                            <input type="number" id="shadowcast-input" class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0" max="100">
+                            <div class="text-sm text-gray-400">Ironsing</div>
+                            <input type="number" id="ironsing-input" class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0" max="100">
                         </div>
                     </div>
                 </div>
@@ -316,26 +310,65 @@
                         <div class="grid grid-cols-2 gap-2">
                             <div>
                                 <label class="block mb-1 text-sm text-gray-400">Boon 1</label>
-                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                <select id="boon1-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
                                     <option>None</option>
+                                    <option>Autodidact</option>
+                                    <option>Gourmet</option>
+                                    <option>Maverick</option>
+                                    <option>Packmule</option>
+                                    <option>Scrapper</option>
+                                    <option>Steadfast</option>
+                                    <option>Survivalist</option>
+                                    <option>Sly</option>
                                 </select>
                             </div>
                             <div>
                                 <label class="block mb-1 text-sm text-gray-400">Boon 2</label>
-                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                <select id="boon2-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
                                     <option>None</option>
+                                    <option>Autodidact</option>
+                                    <option>Gourmet</option>
+                                    <option>Maverick</option>
+                                    <option>Packmule</option>
+                                    <option>Scrapper</option>
+                                    <option>Steadfast</option>
+                                    <option>Survivalist</option>
+                                    <option>Sly</option>
+
                                 </select>
                             </div>
                             <div>
                                 <label class="block mb-1 text-sm text-gray-400">Flaw 1</label>
-                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                <select id="flaw1-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
                                     <option>None</option>
+                                    <option>Deficient</option>
+                                    <option>Fugitive</option>
+                                    <option>Vegetarian</option>
+                                    <option>Glutton</option>
+                                    <option>Manic</option>
+                                    <option>Haemophilia</option>
+                                    <option>Squeamish</option>
+                                    <option>Obvious</option>
+                                    <option>Simple</option>
+                                    <option>Blind</option>
+
                                 </select>
                             </div>
                             <div>
                                 <label class="block mb-1 text-sm text-gray-400">Flaw 2</label>
-                                <select class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                <select id="flaw2-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
                                     <option>None</option>
+                                    <option>Deficient</option>
+                                    <option>Fugitive</option>
+                                    <option>Vegetarian</option>
+                                    <option>Glutton</option>
+                                    <option>Manic</option>
+                                    <option>Haemophilia</option>
+                                    <option>Squeamish</option>
+                                    <option>Obvious</option>
+                                    <option>Simple</option>
+                                    <option>Blind</option>
+
                                 </select>
                             </div>
                         </div>
@@ -358,7 +391,8 @@
                         <option>Local builds</option>
                     </select>
                     <div class="grid grid-cols-2 gap-2">
-                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                        <button
+                            class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
                             Export build as link
                         </button>
                         <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
@@ -372,6 +406,10 @@
         <!-- talents-tab -->
         <div id="talents-tab" class="tab-content hidden">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-dark-parchment text-ink">
+                <div class="col-span-1 md:col-span-2 mb-4">
+                    <input type="text" id="talent-search" placeholder="Search talents..."
+                        class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
+                </div>
                 <div class="col-span-1 overflow-y-auto h-[calc(100vh-200px)]" id="available-talents">
                     <div class="mb-4">
                         <button
@@ -391,7 +429,140 @@
                                 data-category="Common" data-talent="Kick Off">Kick Off</li>
                             <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
                                 data-category="Common" data-talent="Steady Footing">Steady Footing</li>
-                            <!-- Add more Common talents here -->
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Exposed Durability">Exposed Durability</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Gale Trap">Gale Trap</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Aeronade">Aeronade</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Vacuum Punch">Vacuum Punch</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Suffocating Impact">Suffocating Impact</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Gale Coil">Gale Coil</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Apothecary">Apothecary</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Chain Reaction">Chain Reaction</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Chemist's Bag">Chemist's Bag</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Scaredy Cat">Scaredy Cat</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Endurance Runner">Endurance Runner</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Approaching Singularity">Approaching Singularity
+                            </li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Fisher's Lure">Fisher's Lure</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Hook, Line, and Sinker">Hook, Line, and Sinker</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Proficient Baiting">Proficient Baiting</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Grand Feast">Grand Feast</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Sunken Predator">Sunken Predator</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Master Craftsman">Master Craftsman</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Deep Wound">Deep Wound</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Lowstride">Lowstride</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Lights Out">Lights Out</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Unseen Threat">Unseen Threat</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Triathlete">Triathlete</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Pitcher">Pitcher</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Authority Intimidation">Authority Intimidation</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Battle Tendency">Battle Tendency</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Braced Collapse">Braced Collapse</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Moving Fortress">Moving Fortress</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Perseverance">Perseverance</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Bruiser's Mixup">Bruiser's Mixup</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Trained Fist">Trained Fist</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Brazen Blow">Brazen Blow</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Impairing Blow">Impairing Blow</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Swift Rebound">Swift Rebound</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Chaotic Charm">Chaotic Charm</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Charismatic Cast">Charismatic Cast</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Lasting Charisma">Lasting Charisma</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Tough Love">Tough Love</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Christmas Miracle">Christmas Miracle</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Freezing Wight">Freezing Wight</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Harsh Response">Harsh Response</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Heavy Hitter">Heavy Hitter</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Give and Take">Give and Take</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Off Your Game">Off Your Game</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Cornered Fool">Cornered Fool</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Charged Return">Charged Return</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Ether Absorption">Ether Absorption</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Ether Blade">Ether Blade</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Ether Conduit">Ether Conduit</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Magical Resolve">Magical Resolve</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Mantra Permanence">Mantra Permanence</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Nullifying Clarity">Nullifying Clarity</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Meteor Impact">Meteor Impact</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Phoenix Impact">Phoenix Impact</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Dancing Steps">Dancing Steps</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Flamewalker">Flamewalker</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Hell's Partisan">Hell's Partisan</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Cauterized Wounds">Cauterized Wounds</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Azure Flames">Azure Flames</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Produce Spark">Produce Spark</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Unyielding Inferno">Unyielding Inferno</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Wildfire">Wildfire</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Temperature Shock">Temperature Shock</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Brain Rattler">Brain Rattler</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Dispatch">Dispatch</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Hammerfall">Hammer
+                                <!-- Add more Common talents here -->
                         </ul>
                     </div>
 
@@ -407,6 +578,7 @@
                             </svg>
                         </button>
                         <ul class="talent-list bg-gray-800 rounded-b-lg p-2">
+
                             <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
                                 data-category="Rare" data-talent="An Ironsinger's Instinct">An Ironsinger's Instinct
                             </li>
@@ -414,7 +586,87 @@
                                 data-category="Rare" data-talent="Phantom Edge">Phantom Edge</li>
                             <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
                                 data-category="Rare" data-talent="Everchanging Aegis">Everchanging Aegis</li>
-                            <!-- Add more Rare talents here -->
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Overflowing Dam">Overflowing Dam</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Perfect Flash">Perfect Flash</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Neural Overload">Neural Overload</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Wyvern's Claw">Wyvern's Claw</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Aerogliding">Aerogliding</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Stifled Jump">Stifled Jump</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Placebo Effect">Placebo Effect</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Potion Quaffer">Potion Quaffer</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Wild Alchemy">Wild Alchemy</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Conditioned Runner">Conditioned Runner</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Carnivore">Carnivore</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Blackhole">Blackhole</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Energy Siphon">Energy Siphon</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Deepwoken">Deepwoken</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Spell Shout">Spell Shout</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="The Sound from Below">The Sound from Below</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Doomsday Engine">Doomsday Engine</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Frozen Web">Frozen Web</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Concussion">Concussion</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Concussive Force">Concussive Force</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Duelist's Dance">Duelist's Dance</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Precise Swing">Precise Swing</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Spine Cutter">Spine Cutter</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Steady Nerves">Steady Nerves</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Strong Hold">Strong Hold</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Strong Stern">Strong Stern</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Tap Dancer">Tap Dancer</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Concussive Flash">Concussive Flash</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Elemental Rebound">Elemental Rebound</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Eureka">Eureka</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Frozen Pin-Cushion">Frozen Pin-Cushion</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Saint Jay">Saint Jay</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Unyielding Frost">Unyielding Frost</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Alloyblood">Alloyblood</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Grand Skewer">Grand Skewer</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Decisive Winds">Decisive Winds</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Rush of Ancients">Rush of Ancients</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Stratos Step">Stratos Step</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Jetstream pursuit">Jetstream pursuit</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Acceleration Points">Acceleration Points</li>
+
                         </ul>
                     </div>
 
@@ -436,7 +688,12 @@
                                 data-category="Advanced" data-talent="Reinforced Armor">Reinforced Armor</li>
                             <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
                                 data-category="Advanced" data-talent="Ether Overdrive">Ether Overdrive</li>
-                            <!-- Add more Advanced talents here -->
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Unyielding Frost">Unyielding Frost</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Neuroplasticity">Neuroplasticity</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Innate">Innate</li>
                         </ul>
                     </div>
 
@@ -458,7 +715,8 @@
                                 data-category="Oath" data-talent="Protagonist Syndrome">Protagonist Syndrome</li>
                             <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
                                 data-category="Oath" data-talent="Luminous Flash">Luminous Flash</li>
-                            <!-- Add more Oath talents here -->
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Oath" data-talent="Luminous Flash">Absolute Radiance</li>
                         </ul>
                     </div>
                 </div>
@@ -469,9 +727,9 @@
                         <div class="talent-category">
                             <div class="flex justify-between items-center mb-2">
                                 <span class="text-lg font-semibold text-gray-300">Common</span>
-                                <span class="text-lg font-bold text-blue-400">0</span>
+                                <span class="text-lg font-bold text-blue-400 count">0</span>
                             </div>
-                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <ul class="list-disc list-inside text-gray-400 space-y-1 common">
                                 <!-- Selected Common talents will be inserted here -->
                             </ul>
                         </div>
@@ -481,7 +739,7 @@
                                 <span class="text-lg font-semibold text-gray-300">Rare</span>
                                 <span class="text-lg font-bold text-purple-400">0</span>
                             </div>
-                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <ul class="list-disc list-inside text-gray-400 space-y-1 race">
                                 <!-- Selected Rare talents will be inserted here -->
                             </ul>
                         </div>
@@ -491,7 +749,7 @@
                                 <span class="text-lg font-semibold text-gray-300">Advanced</span>
                                 <span class="text-lg font-bold text-green-400">0</span>
                             </div>
-                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <ul class="list-disc list-inside text-gray-400 space-y-1 advanced">
                                 <!-- Selected Advanced talents will be inserted here -->
                             </ul>
                         </div>
@@ -501,7 +759,7 @@
                                 <span class="text-lg font-semibold text-gray-300">Oath</span>
                                 <span class="text-lg font-bold text-yellow-400">0</span>
                             </div>
-                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <ul class="list-disc list-inside text-gray-400 space-y-1 oath">
                                 <!-- Selected Oath talents will be inserted here -->
                             </ul>
                         </div>
@@ -514,7 +772,8 @@
                     <option>Local builds</option>
                 </select>
                 <div class="grid grid-cols-2 gap-2">
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    <button
+                        class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
                         Export build as link
                     </button>
                     <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
@@ -609,7 +868,8 @@
                     <option>Local builds</option>
                 </select>
                 <div class="grid grid-cols-2 gap-2">
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    <button
+                        class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
                         Export build as link
                     </button>
                     <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
@@ -700,7 +960,8 @@
                     <option>Local builds</option>
                 </select>
                 <div class="grid grid-cols-2 gap-2">
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    <button
+                        class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
                         Export build as link
                     </button>
                     <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
@@ -710,161 +971,221 @@
             </div>
         </div>
         <!-- "summary-tab" -->
-<!-- "summary-tab" -->
-<div id="summary-tab" class="tab-content hidden">
-    <div class="grid grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
-        <div class="col-span-1">
-            <h2 class="text-2xl font-bold mb-4 text-yellow-400">Character Summary</h2>
-        </div>
-        
-        <!-- User Summary Input -->
-        <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
-            <h3 class="text-lg font-bold mb-2 text-yellow-400">Your Character Summary</h3>
-            <p class="text-sm text-gray-400 mb-2">Use this space to describe your character build, strategy, or any other notes you want to remember:</p>
-            <textarea id="user-summary" class="w-full h-64 p-2 bg-gray-700 text-white border border-gray-600 rounded-lg resize-y" placeholder="Enter your character summary here..."></textarea>
-        </div>
+        <!-- "summary-tab" -->
+        <div id="summary-tab" class="tab-content hidden">
+            <div class="grid grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                <div class="col-span-1">
+                    <h2 class="text-2xl font-bold mb-4 text-yellow-400">Character Summary</h2>
+                </div>
+
+                <!-- User Summary Input -->
+                <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                    <h3 class="text-lg font-bold mb-2 text-yellow-400">Your Character Summary</h3>
+                    <p class="text-sm text-gray-400 mb-2">Use this space to describe your character build, strategy, or
+                        any other notes you want to remember:</p>
+                    <textarea id="user-summary"
+                        class="w-full h-64 p-2 bg-gray-700 text-white border border-gray-600 rounded-lg resize-y"
+                        placeholder="Enter your character summary here..."></textarea>
+                </div>
 
 
 
-        <!-- Save and Export Options -->
-        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
-            <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
-                <option>Local builds</option>
-            </select>
-            <div class="grid grid-cols-2 gap-2">
-                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
-                    Export build as link
-                </button>
-                <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
-                    Save loaded build
-                </button>
+                <!-- Save and Export Options -->
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                    <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+                        <option>Local builds</option>
+                    </select>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button
+                            class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                            Export build as link
+                        </button>
+                        <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
+                            Save loaded build
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
     </div>
 
 
     </div>
 
     <!-- Add this section just before the closing </body> tag -->
-<div class="blog-preview bg-ink text-gray-300 py-8">
-    <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-yellow-400 mb-6">Deepwoken Builder FAQ</h2>
-        <article class="bg-gray-800 rounded-lg p-6 shadow-lg">
-            <h3 class="text-2xl font-bold text-white mb-4">How to Use Deepwoken Builder: A Beginner's Guide</h3>
-            <p class="text-gray-400 mb-4">Hey there, Deepwoken fans! 👋 Ready to level up your game? Let's dive into the world of Deepwoken Builder and see how this nifty tool can help you crush it in the game.</p>
-            <h4 class="text-xl font-semibold text-yellow-400 mb-2">What's the Deal with Deepwoken Builder?</h4>
-            <p class="text-gray-400 mb-4">Deepwoken Builder is like your secret weapon for creating killer characters in Deepwoken. It's a fan-made tool that lets you play around with different builds without risking your neck in the actual game. Pretty sweet, right?</p>
-            <h4 class="text-xl font-semibold text-yellow-400 mb-2">Getting Started: Easy as Pie</h4>
-            <ol class="list-decimal list-inside text-gray-400 mb-4">
-                <li>Fire up your browser and search for "Deepwoken Builder"</li>
-                <li>Click on the official link (make sure it's legit!)</li>
-                <li>Boom! You're in. Now you can start tinkering with your dream character</li>
-            </ol>
-            <h4 class="text-xl font-semibold text-yellow-400 mb-2">The Good Stuff: What Can You Do?</h4>
-            <ol class="list-decimal list-inside text-gray-400 mb-4">
-                <li>Mix and match different attributes</li>
-                <li>Mess around with skills and see what clicks</li>
-                <li>Plan your character's path without breaking a sweat</li>
-            </ol>
-            <h4 class="text-xl font-semibold text-yellow-400 mb-2">Pro Tips for Newbies</h4>
-            <ol class="list-decimal list-inside text-gray-400 mb-4">
-                <li>Don't go crazy with one stat. Balance is key, folks!</li>
-                <li>Try out weird combos. You might stumble on something awesome</li>
-                <li>Remember, practice makes perfect. Keep at it!</li>
-            </ol>
-            <p class="text-gray-400 mb-4">So, what are you waiting for? Jump in and start building! With Deepwoken Builder, you'll be creating epic characters faster than you can say "power level." Have fun, and may the best build win! 🏆</p>
-            <div class="flex justify-between items-center mt-6">
-                <a href="#" class="text-blue-400 hover:text-blue-300 transition duration-300">Read More</a>
-                <a href="https://deepwoken.fandom.com/wiki/Deepwoken_Wiki" target="_blank" class="text-green-400 hover:text-green-300 transition duration-300">Official Deepwoken Game Page</a>
-            </div>
-        </article>
-        <article class="bg-gray-800 rounded-lg p-6 shadow-lg">
-            <h3 class="text-2xl font-bold text-white mb-4">Deepwoken Builder: Your Ultimate Guide to Dominating Talents 🏆</h3>
-            
-            <p class="text-gray-400 mb-4">Yo, Deepwoken builder fam! 👋 Ready to create a character so OP with your Deepwoken builder that it'll make the devs cry? 😈 This Deepwoken builder guide is your ticket to becoming a true Deepwoken builder legend. 🌟</p>
-            
-            <h4 class="text-xl font-semibold text-yellow-400 mb-2">What's the Deal with Deepwoken Builder? 🤔</h4>
-            <p class="text-gray-400 mb-4">Listen up, noobs! 👀 The Deepwoken builder is your secret weapon for crafting god-tier characters. Every time you level up in your Deepwoken builder, you'll pick Talents that'll have you stomping newbies and bosses alike. 💪</p>
-            
-            <h4 class="text-xl font-semibold text-yellow-400 mb-2">Deepwoken Builder Talent Trinity: Common, Rare, and "Holy Crap!" Advanced 🔥</h4>
-            <ol class="list-decimal list-inside text-gray-400 mb-4">
-                <li><strong>Common Talents</strong>: Don't sleep on these in your Deepwoken builder, fam. 😴 They're the bread and butter of any solid Deepwoken builder setup. 🥊</li>
-                <li><strong>Rare Talents</strong>: This is where your Deepwoken builder gets spicy. 🌶️ We're talking game-changing abilities that'll make your Deepwoken builder character unstoppable. 🤤</li>
-                <li><strong>Advanced Talents</strong>: Holy mother of Deepwoken builder! 🤯 These bad boys will have your Deepwoken builder character cackling like a supervillain. 😎</li>
-            </ol>
-            
-            <h4 class="text-xl font-semibold text-yellow-400 mb-2">Pro Tips for Deepwoken Builder Masters (AKA How to Git Gud) 🧠</h4>
-            <ul class="list-disc list-inside text-gray-400 mb-4">
-                <li>Use your Deepwoken builder to mix and match Talents like you're making the world's deadliest cocktail 🍹</li>
-                <li>Level your Deepwoken builder attributes with the big brain energy of a 5Head 🧠</li>
-                <li>In your Deepwoken builder, Common Talents can be clutch AF - don't be a talent snob 🎭</li>
-                <li>If your Deepwoken builder Talent choices suck, hit that "Fold" button faster than you can say "RNG plz" 🃏</li>
-            </ul>
-            
-            <h4 class="text-xl font-semibold text-yellow-400 mb-2">Deepwoken Builder TL;DR 📚</h4>
-            <p class="text-gray-400 mb-4">Mastering the Deepwoken builder is like becoming the Einstein of virtual ass-kicking. 🧑‍🔬 Play around with different combos in your Deepwoken builder until you find a setup that's more broken than EA's servers. 💻</p>
-            
-            <p class="text-gray-400 mb-4">Ready to ascend to godhood with your Deepwoken builder? 🙌 Fire up our Deepwoken builder tool and create a character so awesome, it'll make RNGesus himself weep tears of joy! 😭</p>
-            
-            <p class="text-gray-400 mb-4">Now go forth and may the Deepwoken builder be ever in your favor, you beautiful Deepwoken degenerates! 🚀</p>
-            
-            <div class="flex justify-between items-center mt-6">
-                <a href="#" class="text-blue-400 hover:text-blue-300 transition duration-300">More Deepwoken Builder Tips</a>
-                <a href="https://deepwoken.fandom.com/wiki/Talents" target="_blank" class="text-green-400 hover:text-green-300 transition duration-300">Official Deepwoken Wiki</a>
-            </div>
-        </article>
-        <article class="bg-gray-800 rounded-lg p-6 shadow-lg">
-            <h1 class="text-3xl font-bold text-white mb-4">Deepwoken Builder: Master the Weapon System with Epic DPS Charts 📊🗡️</h1>
-            
-            <p class="text-gray-400 mb-4">Yo, Deepwoken fam! 👋 Ready to build a character that'll make other players rage quit? Then listen up, 'cause we're about to deep dive into the weapon system and show you how our Deepwoken builder can turn you into a DPS god. This guide is your cheat code to becoming a Deepwoken builder legend. 🌟</p>
-            
-            <h2 class="text-2xl font-semibold text-yellow-400 mb-2">What's the Deal with Weapons in Deepwoken? 🤔</h2>
-            <p class="text-gray-400 mb-4">Alright, noobs, pay attention. 👀 Weapons in Deepwoken are like the secret sauce that takes your character from zero to hero. Every time you level up in your Deepwoken builder, you'll get to pick new weapons that'll have you owning newbies and bosses alike. 💪</p>
-            
-            <h2 class="text-2xl font-semibold text-yellow-400 mb-2">The Weapon Trinity: Light, Medium, and Heavy 🔥</h2>
-            <ol class="list-decimal list-inside text-gray-400 mb-4">
-                <li class="mb-2"><strong class="text-white">Light Weapons</strong>: Fast AF boi. Perfect for those "I'm gonna poke you to death" builds. Daggers, fists, and guns fall into this category.</li>
-                <li class="mb-2"><strong class="text-white">Medium Weapons</strong>: The jack of all trades. Not too slow, not too fast, just right for the indecisive Deepwoken builder. Swords, spears, and clubs are your go-to here.</li>
-                <li class="mb-2"><strong class="text-white">Heavy Weapons</strong>: Slow but hit like a truck. If you want to one-shot everything (including your FPS), go for greataxes, greatswords, or greathammers.</li>
-            </ol>
-            
-            <h2 class="text-2xl font-semibold text-yellow-400 mb-2">Exclusive Feature: DPS Comparison Charts 📈</h2>
-            <p class="text-gray-400 mb-4">Now, here's where our Deepwoken builder gets extra spicy. We've got this sick feature that lets you compare the DPS of two weapons side by side. It's like weapon stats on steroids! 💉💪</p>
-            
-            <p class="text-gray-400 mb-4">Here's why this feature is gonna blow your mind:</p>
-            <ul class="list-disc list-inside text-gray-400 mb-4">
-                <li class="mb-2">See exactly how your weapon choices stack up against each other</li>
-                <li class="mb-2">Spot those hidden gem weapons that everyone else is sleeping on</li>
-                <li class="mb-2">Optimize your build like a pro, even if you suck at math</li>
-                <li class="mb-2">Settle those "my weapon is better than yours" arguments once and for all</li>
-            </ul>
-            
-            <p class="text-gray-400 mb-4">Just pick any two weapons in our Deepwoken builder, hit that compare button, and boom! You've got a sexy chart showing you the cold, hard DPS facts. It's like having a mini-Deepwoken scientist in your pocket. 🥼🔬</p>
-            
-            <h2 class="text-2xl font-semibold text-yellow-400 mb-2">Pro Tips for Deepwoken Builders (AKA How to Git Gud) 🧠</h2>
-            <ul class="list-disc list-inside text-gray-400 mb-4">
-                <li class="mb-2">Use our DPS comparison charts to mix and match weapon types like you're making the world's deadliest cocktail 🍹</li>
-                <li class="mb-2">Pay attention to scaling - it's not the size that matters, it's how you use it 😉</li>
-                <li class="mb-2">Don't sleep on those sweet, sweet enchantments. They can turn a meh weapon into an OP beast</li>
-                <li class="mb-2">If your weapon choices suck, hit that Deepwoken builder reset button faster than you can say "RNG plz"</li>
-            </ul>
-            
-            <h2 class="text-2xl font-semibold text-yellow-400 mb-2">TL;DR</h2>
-            <p class="text-gray-400 mb-4">Mastering weapons in Deepwoken is like becoming the Einstein of virtual ass-kicking. With our Deepwoken builder's exclusive DPS comparison charts, you'll be theory-crafting like a pro in no time.</p>
-            
-            <p class="text-gray-400 mb-4">Ready to become the weapon master? Fire up our Deepwoken builder tool, use those sexy DPS charts, and create a loadout so awesome, it'll make RNGesus himself weep tears of joy! 😭</p>
-            
-            <p class="text-gray-400 mb-4">Now go forth and may the weapons (and charts) be ever in your favor, you beautiful Deepwoken degenerates! 🚀</p>
-            
-            <div class="flex justify-between items-center mt-6">
-                <a href="#" class="text-blue-400 hover:text-blue-300 transition duration-300">More Deepwoken Builder Tips</a>
-                <a href="https://deepwoken.fandom.com/wiki/Weapons" target="_blank" class="text-green-400 hover:text-green-300 transition duration-300">Official Deepwoken Wiki</a>
-            </div>
-        </article>
+    <div class="blog-preview bg-ink text-gray-300 py-8">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-yellow-400 mb-6">Deepwoken Builder FAQ</h2>
+            <article class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h3 class="text-2xl font-bold text-white mb-4">How to Use Deepwoken Builder: A Beginner's Guide</h3>
+                <p class="text-gray-400 mb-4">Hey there, Deepwoken fans! 👋 Ready to level up your game? Let's dive into
+                    the world of Deepwoken Builder and see how this nifty tool can help you crush it in the game.</p>
+                <h4 class="text-xl font-semibold text-yellow-400 mb-2">What's the Deal with Deepwoken Builder?</h4>
+                <p class="text-gray-400 mb-4">Deepwoken Builder is like your secret weapon for creating killer
+                    characters in Deepwoken. It's a fan-made tool that lets you play around with different builds
+                    without risking your neck in the actual game. Pretty sweet, right?</p>
+                <h4 class="text-xl font-semibold text-yellow-400 mb-2">Getting Started: Easy as Pie</h4>
+                <ol class="list-decimal list-inside text-gray-400 mb-4">
+                    <li>Fire up your browser and search for "Deepwoken Builder"</li>
+                    <li>Click on the official link (make sure it's legit!)</li>
+                    <li>Boom! You're in. Now you can start tinkering with your dream character</li>
+                </ol>
+                <h4 class="text-xl font-semibold text-yellow-400 mb-2">The Good Stuff: What Can You Do?</h4>
+                <ol class="list-decimal list-inside text-gray-400 mb-4">
+                    <li>Mix and match different attributes</li>
+                    <li>Mess around with skills and see what clicks</li>
+                    <li>Plan your character's path without breaking a sweat</li>
+                </ol>
+                <h4 class="text-xl font-semibold text-yellow-400 mb-2">Pro Tips for Newbies</h4>
+                <ol class="list-decimal list-inside text-gray-400 mb-4">
+                    <li>Don't go crazy with one stat. Balance is key, folks!</li>
+                    <li>Try out weird combos. You might stumble on something awesome</li>
+                    <li>Remember, practice makes perfect. Keep at it!</li>
+                </ol>
+                <p class="text-gray-400 mb-4">So, what are you waiting for? Jump in and start building! With Deepwoken
+                    Builder, you'll be creating epic characters faster than you can say "power level." Have fun, and may
+                    the best build win! 🏆</p>
+                <div class="flex justify-between items-center mt-6">
+                    <a href="#" class="text-blue-400 hover:text-blue-300 transition duration-300">Read More</a>
+                    <a href="https://deepwoken.fandom.com/wiki/Deepwoken_Wiki" target="_blank"
+                        class="text-green-400 hover:text-green-300 transition duration-300">Official Deepwoken Game
+                        Page</a>
+                </div>
+            </article>
+            <article class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h3 class="text-2xl font-bold text-white mb-4">Deepwoken Builder: Your Ultimate Guide to Dominating
+                    Talents 🏆</h3>
+
+                <p class="text-gray-400 mb-4">Yo, Deepwoken builder fam! 👋 Ready to create a character so OP with your
+                    Deepwoken builder that it'll make the devs cry? 😈 This Deepwoken builder guide is your ticket to
+                    becoming a true Deepwoken builder legend. 🌟</p>
+
+                <h4 class="text-xl font-semibold text-yellow-400 mb-2">What's the Deal with Deepwoken Builder? 🤔</h4>
+                <p class="text-gray-400 mb-4">Listen up, noobs! 👀 The Deepwoken builder is your secret weapon for
+                    crafting god-tier characters. Every time you level up in your Deepwoken builder, you'll pick Talents
+                    that'll have you stomping newbies and bosses alike. 💪</p>
+
+                <h4 class="text-xl font-semibold text-yellow-400 mb-2">Deepwoken Builder Talent Trinity: Common, Rare,
+                    and "Holy Crap!" Advanced 🔥</h4>
+                <ol class="list-decimal list-inside text-gray-400 mb-4">
+                    <li><strong>Common Talents</strong>: Don't sleep on these in your Deepwoken builder, fam. 😴 They're
+                        the bread and butter of any solid Deepwoken builder setup. 🥊</li>
+                    <li><strong>Rare Talents</strong>: This is where your Deepwoken builder gets spicy. 🌶️ We're
+                        talking game-changing abilities that'll make your Deepwoken builder character unstoppable. 🤤
+                    </li>
+                    <li><strong>Advanced Talents</strong>: Holy mother of Deepwoken builder! 🤯 These bad boys will have
+                        your Deepwoken builder character cackling like a supervillain. 😎</li>
+                </ol>
+
+                <h4 class="text-xl font-semibold text-yellow-400 mb-2">Pro Tips for Deepwoken Builder Masters (AKA How
+                    to Git Gud) 🧠</h4>
+                <ul class="list-disc list-inside text-gray-400 mb-4">
+                    <li>Use your Deepwoken builder to mix and match Talents like you're making the world's deadliest
+                        cocktail 🍹</li>
+                    <li>Level your Deepwoken builder attributes with the big brain energy of a 5Head 🧠</li>
+                    <li>In your Deepwoken builder, Common Talents can be clutch AF - don't be a talent snob 🎭</li>
+                    <li>If your Deepwoken builder Talent choices suck, hit that "Fold" button faster than you can say
+                        "RNG plz" 🃏</li>
+                </ul>
+
+                <h4 class="text-xl font-semibold text-yellow-400 mb-2">Deepwoken Builder TL;DR 📚</h4>
+                <p class="text-gray-400 mb-4">Mastering the Deepwoken builder is like becoming the Einstein of virtual
+                    ass-kicking. 🧑‍🔬 Play around with different combos in your Deepwoken builder until you find a
+                    setup that's more broken than EA's servers. 💻</p>
+
+                <p class="text-gray-400 mb-4">Ready to ascend to godhood with your Deepwoken builder? 🙌 Fire up our
+                    Deepwoken builder tool and create a character so awesome, it'll make RNGesus himself weep tears of
+                    joy! 😭</p>
+
+                <p class="text-gray-400 mb-4">Now go forth and may the Deepwoken builder be ever in your favor, you
+                    beautiful Deepwoken degenerates! 🚀</p>
+
+                <div class="flex justify-between items-center mt-6">
+                    <a href="#" class="text-blue-400 hover:text-blue-300 transition duration-300">More Deepwoken Builder
+                        Tips</a>
+                    <a href="https://deepwoken.fandom.com/wiki/Talents" target="_blank"
+                        class="text-green-400 hover:text-green-300 transition duration-300">Official Deepwoken Wiki</a>
+                </div>
+            </article>
+            <article class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h1 class="text-3xl font-bold text-white mb-4">Deepwoken Builder: Master the Weapon System with Epic DPS
+                    Charts 📊🗡️</h1>
+
+                <p class="text-gray-400 mb-4">Yo, Deepwoken fam! 👋 Ready to build a character that'll make other
+                    players rage quit? Then listen up, 'cause we're about to deep dive into the weapon system and show
+                    you how our Deepwoken builder can turn you into a DPS god. This guide is your cheat code to becoming
+                    a Deepwoken builder legend. 🌟</p>
+
+                <h2 class="text-2xl font-semibold text-yellow-400 mb-2">What's the Deal with Weapons in Deepwoken? 🤔
+                </h2>
+                <p class="text-gray-400 mb-4">Alright, noobs, pay attention. 👀 Weapons in Deepwoken are like the secret
+                    sauce that takes your character from zero to hero. Every time you level up in your Deepwoken
+                    builder, you'll get to pick new weapons that'll have you owning newbies and bosses alike. 💪</p>
+
+                <h2 class="text-2xl font-semibold text-yellow-400 mb-2">The Weapon Trinity: Light, Medium, and Heavy 🔥
+                </h2>
+                <ol class="list-decimal list-inside text-gray-400 mb-4">
+                    <li class="mb-2"><strong class="text-white">Light Weapons</strong>: Fast AF boi. Perfect for those
+                        "I'm gonna poke you to death" builds. Daggers, fists, and guns fall into this category.</li>
+                    <li class="mb-2"><strong class="text-white">Medium Weapons</strong>: The jack of all trades. Not too
+                        slow, not too fast, just right for the indecisive Deepwoken builder. Swords, spears, and clubs
+                        are your go-to here.</li>
+                    <li class="mb-2"><strong class="text-white">Heavy Weapons</strong>: Slow but hit like a truck. If
+                        you want to one-shot everything (including your FPS), go for greataxes, greatswords, or
+                        greathammers.</li>
+                </ol>
+
+                <h2 class="text-2xl font-semibold text-yellow-400 mb-2">Exclusive Feature: DPS Comparison Charts 📈</h2>
+                <p class="text-gray-400 mb-4">Now, here's where our Deepwoken builder gets extra spicy. We've got this
+                    sick feature that lets you compare the DPS of two weapons side by side. It's like weapon stats on
+                    steroids! 💉💪</p>
+
+                <p class="text-gray-400 mb-4">Here's why this feature is gonna blow your mind:</p>
+                <ul class="list-disc list-inside text-gray-400 mb-4">
+                    <li class="mb-2">See exactly how your weapon choices stack up against each other</li>
+                    <li class="mb-2">Spot those hidden gem weapons that everyone else is sleeping on</li>
+                    <li class="mb-2">Optimize your build like a pro, even if you suck at math</li>
+                    <li class="mb-2">Settle those "my weapon is better than yours" arguments once and for all</li>
+                </ul>
+
+                <p class="text-gray-400 mb-4">Just pick any two weapons in our Deepwoken builder, hit that compare
+                    button, and boom! You've got a sexy chart showing you the cold, hard DPS facts. It's like having a
+                    mini-Deepwoken scientist in your pocket. 🥼🔬</p>
+
+                <h2 class="text-2xl font-semibold text-yellow-400 mb-2">Pro Tips for Deepwoken Builders (AKA How to Git
+                    Gud) 🧠</h2>
+                <ul class="list-disc list-inside text-gray-400 mb-4">
+                    <li class="mb-2">Use our DPS comparison charts to mix and match weapon types like you're making the
+                        world's deadliest cocktail 🍹</li>
+                    <li class="mb-2">Pay attention to scaling - it's not the size that matters, it's how you use it 😉
+                    </li>
+                    <li class="mb-2">Don't sleep on those sweet, sweet enchantments. They can turn a meh weapon into an
+                        OP beast</li>
+                    <li class="mb-2">If your weapon choices suck, hit that Deepwoken builder reset button faster than
+                        you can say "RNG plz"</li>
+                </ul>
+
+                <h2 class="text-2xl font-semibold text-yellow-400 mb-2">TL;DR</h2>
+                <p class="text-gray-400 mb-4">Mastering weapons in Deepwoken is like becoming the Einstein of virtual
+                    ass-kicking. With our Deepwoken builder's exclusive DPS comparison charts, you'll be theory-crafting
+                    like a pro in no time.</p>
+
+                <p class="text-gray-400 mb-4">Ready to become the weapon master? Fire up our Deepwoken builder tool, use
+                    those sexy DPS charts, and create a loadout so awesome, it'll make RNGesus himself weep tears of
+                    joy! 😭</p>
+
+                <p class="text-gray-400 mb-4">Now go forth and may the weapons (and charts) be ever in your favor, you
+                    beautiful Deepwoken degenerates! 🚀</p>
+
+                <div class="flex justify-between items-center mt-6">
+                    <a href="#" class="text-blue-400 hover:text-blue-300 transition duration-300">More Deepwoken Builder
+                        Tips</a>
+                    <a href="https://deepwoken.fandom.com/wiki/Weapons" target="_blank"
+                        class="text-green-400 hover:text-green-300 transition duration-300">Official Deepwoken Wiki</a>
+                </div>
+            </article>
+        </div>
     </div>
-</div>
     <style>
         .tab-button.active {
             border-bottom-color: #2c2c2c;
@@ -892,6 +1213,8 @@
     <script src="./js/builder/mantras.js"></script>
     <script src="./js/builder/weapons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+    <script src="./js/utils/exportURL.js"></script>
 </body>
 
 </html>

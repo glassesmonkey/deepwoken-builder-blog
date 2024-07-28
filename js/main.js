@@ -19,7 +19,7 @@ let currentRace = 'Etrean';
 let investmentPoints = 325;
 let pointsSpent = 5;
 let power = 0;
-let nextPower = 25;
+let nextPower = 30;
 let totalInvestedPoints = 0;
 
 const statInputs = document.querySelectorAll('.stat-input:not([data-exclude-from-calculation])');
@@ -36,9 +36,9 @@ function handleSpecialTraitChange(event) {
     const input = event.target;
     let newValue = parseInt(input.value) || 0;
 
-        newValue = Math.min(Math.max(newValue, 0), 6);
+    newValue = Math.min(Math.max(newValue, 0), 6);
 
-        let totalSpecialTraits = 0;
+    let totalSpecialTraits = 0;
     specialTraits.forEach(trait => {
         const traitInput = document.getElementById(`${trait}-input`);
         if (traitInput === input) {
@@ -48,14 +48,15 @@ function handleSpecialTraitChange(event) {
         }
     });
 
-        if (totalSpecialTraits > 12) {
+    if (totalSpecialTraits > 12) {
         newValue -= totalSpecialTraits - 12;
-        newValue = Math.max(newValue, 0);     }
+        newValue = Math.max(newValue, 0);
+    }
 
-        input.value = newValue;
+    input.value = newValue;
     input.dataset.oldValue = newValue;
 
-        if (newValue !== parseInt(event.target.value)) {
+    if (newValue !== parseInt(event.target.value)) {
         alert(`The total of special traits cannot exceed 12. Adjusted ${input.id.replace('-input', '')} to ${newValue}.`);
     }
 }
@@ -75,20 +76,20 @@ function updatePower(change) {
     totalInvestedPoints += change;
 
     if (change > 0) {
-                nextPower -= change;
+        nextPower -= change;
         while (nextPower <= 0) {
             nextPower += 15;
             power += 1;
         }
     } else if (change < 0) {
-                nextPower += Math.abs(change);
+        nextPower += Math.abs(change);
         while (nextPower > 15 && totalInvestedPoints >= 25) {
             nextPower -= 15;
             power -= 1;
         }
     }
 
-        if (totalInvestedPoints < 25) {
+    if (totalInvestedPoints < 25) {
         power = 0;
     } else {
         power = Math.ceil((totalInvestedPoints - 25) / 15);
@@ -101,30 +102,31 @@ function updatePower(change) {
 function handleInputChange(event) {
     const input = event.target;
     if (specialTraits.includes(input.id.replace('-input', ''))) {
-        return;     }
+        return;
+    }
     let newValue = parseInt(input.value) || 0;
     const oldValue = parseInt(input.dataset.oldValue) || 0;
-    
-        if (newValue > 100) {
+
+    if (newValue > 100) {
         newValue = 100;
         input.value = 100;
     }
 
     const difference = newValue - oldValue;
 
-        if (investmentPoints - difference < 0) {
-                input.value = oldValue;
+    if (investmentPoints - difference < 0) {
+        input.value = oldValue;
         return;
     }
 
-        investmentPoints -= difference;
+    investmentPoints -= difference;
     pointsSpent += difference;
 
-        updatePower(difference);
+    updatePower(difference);
 
-        input.dataset.oldValue = newValue;
+    input.dataset.oldValue = newValue;
 
-        updateDisplay();
+    updateDisplay();
 }
 
 function handleRaceChange() {
@@ -133,15 +135,23 @@ function handleRaceChange() {
     const newRaceBonusTotal = calculateRaceBonusTotal(newRace);
     const bonusDifference = newRaceBonusTotal - oldRaceBonusTotal;
 
-        totalInvestedPoints += bonusDifference;
+    // 更新 pointsSpent
+    if (currentRace === 'Lightborn' && newRace !== 'Lightborn') {
+        pointsSpent -= 5;
+    } else if (currentRace !== 'Lightborn' && newRace === 'Lightborn') {
+        pointsSpent += 5;
+    }
+
+    totalInvestedPoints += bonusDifference;
     updatePower(bonusDifference);
 
-        statInputs.forEach(input => {
+    statInputs.forEach(input => {
         const stat = input.id.replace('-input', '');
         const oldBonus = raceBonus[currentRace][stat.charAt(0).toUpperCase() + stat.slice(1)] || 0;
         const newBonus = raceBonus[newRace][stat.charAt(0).toUpperCase() + stat.slice(1)] || 0;
         const baseValue = parseInt(input.dataset.oldValue) - oldBonus;
-        const newValue = Math.min(baseValue, 100) + newBonus;          input.value = newValue;
+        const newValue = Math.min(baseValue, 100) + newBonus;
+        input.value = newValue;
         input.dataset.oldValue = newValue;
     });
 
@@ -150,11 +160,17 @@ function handleRaceChange() {
 }
 
 function initialize() {
-        const initialRaceBonusTotal = calculateRaceBonusTotal(currentRace);
+    // 获取初始种族
+    const initialRace = raceSelect.value;
+    
+    // 设置初始 pointsSpent 值
+    pointsSpent = initialRace === 'Lightborn' ? 10 : 5;
+    
+    const initialRaceBonusTotal = calculateRaceBonusTotal(currentRace);
     totalInvestedPoints += initialRaceBonusTotal;
     updatePower(initialRaceBonusTotal);
 
-        statInputs.forEach(input => {
+    statInputs.forEach(input => {
         const stat = input.id.replace('-input', '');
         const initialBonus = raceBonus[currentRace][stat.charAt(0).toUpperCase() + stat.slice(1)] || 0;
         input.value = initialBonus;
@@ -166,15 +182,16 @@ function initialize() {
         const input = document.getElementById(`${trait}-input`);
         input.value = 0;
         input.dataset.oldValue = 0;
-        input.addEventListener('input', handleSpecialTraitChange);     });
+        input.addEventListener('input', handleSpecialTraitChange);
+    });
 
-        raceSelect.addEventListener('change', handleRaceChange);
+    raceSelect.addEventListener('change', handleRaceChange);
 
-        updateDisplay();
+    updateDisplay();
 }
 
 document.querySelectorAll('.stat-input').forEach(input => {
-    input.addEventListener('input', function() {
+    input.addEventListener('input', function () {
         if (this.value < 0) {
             this.value = 0;
         }
