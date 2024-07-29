@@ -79,9 +79,13 @@ function loadBuildFromUrl() {
     if (encodedBuild) {
         try {
             const buildConfig = decodeBuild(encodedBuild);
-            applyBuildConfiguration(buildConfig);
-            window.selectedTalents = buildConfig.talents;
-            updateSelectedTalents();
+            initializeWeaponsTab().then(() => {
+                applyBuildConfiguration(buildConfig);
+                window.selectedTalents = buildConfig.talents;
+                updateSelectedTalents();
+            }).catch(error => {
+                console.error('Failed to initialize weapons tab:', error);
+            });
         } catch (error) {
             console.error('Failed to load build from URL:', error);
             alert('Unable to load build configuration. The link may be invalid or corrupted.');
@@ -257,24 +261,17 @@ function getMantrasTabConfiguration() {
 
 // Get weapons tab configuration
 function getWeaponsTabConfiguration() {
+    const weapon1 = JSON.parse(document.getElementById('weapon1').value || 'null');
+    const weapon2 = JSON.parse(document.getElementById('weapon2').value || 'null');
     return {
-        weapon1: {
-            name: document.getElementById('weapon1').value,
-            stars: parseInt(document.getElementById('stars').value) || 0,
-            starType: document.getElementById('starType').value
-        },
-        weapon2: {
-            name: document.getElementById('weapon2').value,
-            stars: parseInt(document.getElementById('stars').value) || 0,
-            starType: document.getElementById('starType').value
-        },
+        weapon1: weapon1 ? weapon1.name : null,
+        weapon2: weapon2 ? weapon2.name : null,
+        stars: parseInt(document.getElementById('stars').value) || 0,
+        starType: document.getElementById('starType').value,
         attributeLevel: parseInt(document.getElementById('attributeLevel').value) || 0,
         proficiency: parseInt(document.getElementById('proficiency').value) || 0,
         additionalPenetration: parseInt(document.getElementById('additionalPenetration').value) || 0,
-        bleedChance: parseInt(document.getElementById('bleedChance').value) || 0,
-        lightWep: parseInt(document.getElementById('light-wep-input').value) || 0,
-        mediumWep: parseInt(document.getElementById('medium-wep-input').value) || 0,
-        heavyWep: parseInt(document.getElementById('heavy-wep-input').value) || 0
+        bleedChance: parseInt(document.getElementById('bleedChance').value) || 0
     };
 }
 
@@ -337,17 +334,35 @@ function applyMantrasTabConfiguration(mantrasConfig) {
 
 // Apply weapons tab configuration
 function applyWeaponsTabConfiguration(weaponsConfig) {
-    document.getElementById('weapon1').value = weaponsConfig.weapon1.name;
-    document.getElementById('weapon2').value = weaponsConfig.weapon2.name;
-    document.getElementById('stars').value = weaponsConfig.weapon1.stars;
-    document.getElementById('starType').value = weaponsConfig.weapon1.starType;
+    function findWeaponByName(name) {
+        for (const category in weapons) {
+            for (const subcategory in weapons[category]) {
+                const weapon = weapons[category][subcategory].find(w => w.name === name);
+                if (weapon) return weapon;
+            }
+        }
+        return null;
+    }
+
+    if (weaponsConfig.weapon1) {
+        const weapon1 = findWeaponByName(weaponsConfig.weapon1);
+        if (weapon1) document.getElementById('weapon1').value = JSON.stringify(weapon1);
+    }
+    if (weaponsConfig.weapon2) {
+        const weapon2 = findWeaponByName(weaponsConfig.weapon2);
+        if (weapon2) document.getElementById('weapon2').value = JSON.stringify(weapon2);
+    }
+    document.getElementById('stars').value = weaponsConfig.stars;
+    document.getElementById('starType').value = weaponsConfig.starType;
     document.getElementById('attributeLevel').value = weaponsConfig.attributeLevel;
     document.getElementById('proficiency').value = weaponsConfig.proficiency;
     document.getElementById('additionalPenetration').value = weaponsConfig.additionalPenetration;
     document.getElementById('bleedChance').value = weaponsConfig.bleedChance;
-    document.getElementById('light-wep-input').value = weaponsConfig.lightWep;
-    document.getElementById('medium-wep-input').value = weaponsConfig.mediumWep;
-    document.getElementById('heavy-wep-input').value = weaponsConfig.heavyWep;
+
+    // 触发更新事件
+    document.getElementById('weapon1').dispatchEvent(new Event('change'));
+    document.getElementById('weapon2').dispatchEvent(new Event('change'));
+    updateWeaponDetails();
 }
 
 // Apply summary tab configuration
@@ -356,10 +371,9 @@ function applySummaryTabConfiguration(summaryConfig) {
 }
 
 // Initialize
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     loadBuildFromUrl();
     document.querySelectorAll('.exportBuildLink').forEach(button => {
         button.addEventListener('click', exportBuildAsLink);
     });
-    console.log("exportBuildAsLink listeners added");
 });

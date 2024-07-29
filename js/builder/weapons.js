@@ -1,15 +1,33 @@
 let weapons = {};
 
-function initializeWeaponsTab() {
-        fetch('./js/builder/weapons.json')
-        .then(response => response.json())
-        .then(data => {
-            parseWeaponsData(JSON.stringify(data));
-            addWeaponEventListeners();
-            applyWeaponCategoryStyle()
-        })
-        .catch(error => console.error('Error loading weapons data:', error));
+function updateWeaponSelection(weaponId, weaponData) {
+    const select = document.getElementById(weaponId);
+    if (select && weaponData) {
+        for (let i = 0; i < select.options.length; i++) {
+            const option = select.options[i];
+            if (option.value && JSON.parse(option.value).name === weaponData.name) {
+                select.selectedIndex = i;
+                break;
+            }
+        }
+    }
+}
 
+function initializeWeaponsTab() {
+    return new Promise((resolve, reject) => {
+        fetch('./js/builder/weapons.json')
+            .then(response => response.json())
+            .then(data => {
+                parseWeaponsData(JSON.stringify(data));
+                addWeaponEventListeners();
+                applyWeaponCategoryStyle();
+                resolve();
+            })
+            .catch(error => {
+                console.error('Error loading weapons data:', error);
+                reject(error);
+            });
+    });
 }
 
 function applyWeaponCategoryStyle() {
@@ -24,7 +42,9 @@ function applyWeaponCategoryStyle() {
             
                         const options = optgroup.querySelectorAll('option');
             options.forEach(option => {
-                option.style.color = '#F9F6EE';                 option.style.fontWeight = '';                 console.log("option.style.color = ''")
+                option.style.color = '#F9F6EE';                 
+                option.style.fontWeight = '';                 
+                
             });
         });
     });
@@ -456,4 +476,5 @@ function addWeaponEventListeners() {
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeWeaponsTab();
+    loadBuildFromUrl();
 });

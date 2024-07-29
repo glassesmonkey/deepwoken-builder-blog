@@ -1,5 +1,6 @@
 const selectedTalents = {};
 window.selectedTalents = window.selectedTalents || {};
+
 function initializeTalentsTab() {
     window.selectedTalents = window.selectedTalents || {};
     const talentCategories = document.querySelectorAll('#available-talents > .mb-4 > .talent-category');
@@ -50,11 +51,11 @@ function toggleTalent(talentElement) {
         talentElement.classList.add('text-gray-500');
         talentElement.classList.remove('text-gray-300', 'hover:text-white');
     }
-    console.log('Category:', category);
-    console.log('Talent:', talent);
-    console.log('Current selectedTalents:', window.selectedTalents);
+    // console.log('Category:', category);
+    // console.log('Talent:', talent);
+    // console.log('Current selectedTalents:', window.selectedTalents);
     updateSelectedTalents();
-    console.log('updateSelectedTalents called');
+    // console.log('updateSelectedTalents called');
 }
 
 window.toggleTalent = toggleTalent;
@@ -86,7 +87,7 @@ function updateSelectedTalents() {
     });
   
     innerHTML += '</div>';
-    console.log('New innerHTML:', innerHTML);
+    //console.log('New innerHTML:', innerHTML);
     selectedTalentsDiv.innerHTML = innerHTML;
 }
 
