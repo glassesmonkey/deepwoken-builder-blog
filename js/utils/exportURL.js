@@ -77,16 +77,15 @@ function loadBuildFromUrl() {
     const encodedBuild = urlParams.get('build');
   
     if (encodedBuild) {
-      try {
-        const buildConfig = decodeBuild(encodedBuild);
-        applyBuildConfiguration(buildConfig);
-        // 更新 selectedTalents 对象
-        window.selectedTalents = buildConfig.talents;
-        window.updateSelectedTalents();
-      } catch (error) {
-        console.error('Failed to load build from URL:', error);
-        alert('Unable to load build configuration. The link may be invalid or corrupted.');
-      }
+        try {
+            const buildConfig = decodeBuild(encodedBuild);
+            applyBuildConfiguration(buildConfig);
+            window.selectedTalents = buildConfig.talents;
+            updateSelectedTalents();
+        } catch (error) {
+            console.error('Failed to load build from URL:', error);
+            alert('Unable to load build configuration. The link may be invalid or corrupted.');
+        }
     }
 }
 
@@ -243,12 +242,7 @@ function applyBuildConfiguration(buildConfig) {
 
 
 function getTalentsTabConfiguration() {
-    const config = { common: [], rare: [], advanced: [], oath: [] };
-    ['common', 'rare', 'advanced', 'oath'].forEach(category => {
-        const elements = document.querySelectorAll(`#talents-tab .${category}-talents li.text-gray-500`);
-        config[category] = Array.from(elements).map(el => el.textContent.trim());
-    });
-    return config;
+    return JSON.parse(JSON.stringify(window.selectedTalents));
 }
 
 function getMantrasTabConfiguration() {
@@ -293,26 +287,23 @@ function getSummaryTabConfiguration() {
 
 // Apply talents tab configuration
 function applyTalentsTabConfiguration(talentsConfig) {
+    window.selectedTalents = JSON.parse(JSON.stringify(talentsConfig));
+    
     Object.keys(talentsConfig).forEach(category => {
-        const talentElements = document.querySelectorAll(`#available-talents .${category.toLowerCase()}-talents li`);
+        const talentElements = document.querySelectorAll(`#available-talents .talent-list li[data-category="${category}"]`);
         talentElements.forEach(el => {
             const talent = el.textContent.trim();
             if (talentsConfig[category].includes(talent)) {
                 el.classList.add('text-gray-500');
                 el.classList.remove('text-gray-300', 'hover:text-white');
-                if (!window.selectedTalents[category]) {
-                    window.selectedTalents[category] = [];
-                }
-                if (!window.selectedTalents[category].includes(talent)) {
-                    window.selectedTalents[category].push(talent);
-                }
             } else {
                 el.classList.remove('text-gray-500');
                 el.classList.add('text-gray-300', 'hover:text-white');
             }
         });
     });
-    window.updateSelectedTalents();
+    
+    updateSelectedTalents();
 }
 
 

@@ -419,277 +419,182 @@
         <div id="talents-tab" class="tab-content hidden">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-dark-parchment text-ink">
                 <div class="col-span-1 md:col-span-2 mb-4">
-                          <input type="text" id="talent-search" placeholder="Search talents..."     
-                           class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
+                    <input type="text" id="talent-search" placeholder="Search talents..."
+                        class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
                 </div>
 
-                <div id="available-talents" class="col-span-1 overflow-y-auto h-[calc(100vh-200px)] bg-gray-800 p-4 rounded-lg">
+                <div id="available-talents"
+                    class="col-span-1 overflow-y-auto h-[calc(100vh-200px)] bg-gray-800 p-4 rounded-lg">
                     <div class="mb-4">
-                        <button class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-blue-400 hover:text-white" data-category="Common">
+                        <button
+                            class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-blue-400 hover:text-white"
+                            data-category="Common">
                             Common
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down">
-                              <polyline points="6 9 12 15 18 9"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="chevron-down">
+                                <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
-                          </button>
+                        </button>
                         <ul class="talent-list hidden">
-
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Time To Go">Time To Go</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Kick Off">Kick Off</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Steady Footing">Steady Footing
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Exposed Durability">Exposed
-                                Durability</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Gale Trap">Gale Trap</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Aeronade">Aeronade</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Vacuum Punch">Vacuum Punch</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Suffocating Impact">Suffocating
-                                Impact</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Gale Coil">Gale Coil</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Apothecary">Apothecary</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Chain Reaction">Chain Reaction
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Chemist's Bag">Chemist's Bag
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Scaredy Cat">Scaredy Cat</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Endurance Runner">Endurance
-                                Runner</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Approaching Singularity">
-                                Approaching Singularity
-    </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Fisher's Lure">Fisher's Lure
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Hook, Line, and Sinker">Hook,
-                                Line, and Sinker</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Proficient Baiting">Proficient
-                                Baiting</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Grand Feast">Grand Feast</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Sunken Predator">Sunken Predator
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Master Craftsman">Master
-                                Craftsman</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Deep Wound">Deep Wound</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Lowstride">Lowstride</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Lights Out">Lights Out</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Unseen Threat">Unseen Threat
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Triathlete">Triathlete</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Pitcher">Pitcher</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Authority Intimidation">
-                                Authority Intimidation</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Battle Tendency">Battle Tendency
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Braced Collapse">Braced Collapse
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Moving Fortress">Moving Fortress
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Perseverance">Perseverance</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Bruiser's Mixup">Bruiser's Mixup
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Trained Fist">Trained Fist</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Brazen Blow">Brazen Blow</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Impairing Blow">Impairing Blow
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Swift Rebound">Swift Rebound
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Chaotic Charm">Chaotic Charm
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Charismatic Cast">Charismatic
-                                Cast</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Lasting Charisma">Lasting
-                                Charisma</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Tough Love">Tough Love</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Christmas Miracle">Christmas
-                                Miracle</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Freezing Wight">Freezing Wight
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Harsh Response">Harsh Response
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Heavy Hitter">Heavy Hitter</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Give and Take">Give and Take
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Off Your Game">Off Your Game
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Cornered Fool">Cornered Fool
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Charged Return">Charged Return
-                            </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Ether Absorption">Ether
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Common" data-talent="Time To Go">Time To Go</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Kick Off">Kick Off</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Steady Footing">Steady Footing</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Exposed Durability">Exposed Durability</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Gale Trap">Gale Trap</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Aeronade">Aeronade</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Vacuum Punch">Vacuum Punch</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Suffocating Impact">Suffocating Impact</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Gale Coil">Gale Coil</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Apothecary">Apothecary</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Chain Reaction">Chain Reaction</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Chemist's Bag">Chemist's Bag</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Scaredy Cat">Scaredy Cat</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Endurance Runner">Endurance Runner</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Approaching Singularity">Approaching Singularity</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Fisher's Lure">Fisher's Lure</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Hook, Line, and Sinker">Hook,Line, and Sinker</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Proficient Baiting">Proficient Baiting</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Grand Feast">Grand Feast</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Sunken Predator">Sunken Predator</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Master Craftsman">Master Craftsman</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Deep Wound">Deep Wound</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Lowstride">Lowstride</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Lights Out">Lights Out</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Unseen Threat">Unseen Threat</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Triathlete">Triathlete</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Pitcher">Pitcher</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Authority Intimidation">Authority Intimidation</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Battle Tendency">Battle Tendency</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Braced Collapse">Braced Collapse/li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Moving Fortress">Moving Fortress</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Perseverance">Perseverance</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Bruiser's Mixup">Bruiser's Mixup</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Trained Fist">Trained Fist</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Brazen Blow">Brazen Blow</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Impairing Blow">Impairing Blow</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Swift Rebound">Swift Rebound</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Chaotic Charm">Chaotic Charm</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Charismatic Cast">Charismatic Cast</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Lasting Charisma">Lasting Charisma</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Tough Love">Tough Love</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Christmas Miracle">Christmas iracle</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Freezing Wight">Freezing Wight</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Harsh Response">Harsh Response</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Heavy Hitter">Heavy Hitter</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Give and Take">Give and Take</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Off Your Game">Off Your Game</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Cornered Fool">Cornered Fool</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Charged Return">Charged Return</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Ether Absorption">Ether
                                 Absorption</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Ether Blade">Ether Blade</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Ether Conduit">Ether Conduit
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Ether Blade">Ether Blade</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Ether Conduit">Ether Conduit
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Magical Resolve">Magical Resolve
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Magical Resolve">Magical Resolve
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Mantra Permanence">Mantra
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Mantra Permanence">Mantra
                                 Permanence</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Nullifying Clarity">Nullifying
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Nullifying Clarity">Nullifying
                                 Clarity</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Meteor Impact">Meteor Impact
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Meteor Impact">Meteor Impact
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Phoenix Impact">Phoenix Impact
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Phoenix Impact">Phoenix Impact
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Dancing Steps">Dancing Steps
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Dancing Steps">Dancing Steps
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Flamewalker">Flamewalker</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Hell's Partisan">Hell's Partisan
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Flamewalker">Flamewalker</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Hell's Partisan">Hell's Partisan
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Cauterized Wounds">Cauterized
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Cauterized Wounds">Cauterized
                                 Wounds</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Azure Flames">Azure Flames</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Produce Spark">Produce Spark
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Azure Flames">Azure Flames</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Produce Spark">Produce Spark
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Unyielding Inferno">Unyielding
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Unyielding Inferno">Unyielding
                                 Inferno</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Wildfire">Wildfire</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Temperature Shock">Temperature
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Wildfire">Wildfire</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Temperature Shock">Temperature
                                 Shock</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Brain Rattler">Brain Rattler
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Brain Rattler">Brain Rattler
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Dispatch">Dispatch</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Common" data-talent="Hammerfall">Hammer
-      <!-- Add more Common talents here -->
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Dispatch">Dispatch</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Hammerfall">Hammer
+                                <!-- Add more Common talents here -->
                         </ul>
                     </div>
 
                     <div class="mb-4">
-                        <button class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-purple-400"
+                        <button
+                            class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-purple-400"
                             data-category="Rare">
                             Rare
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -700,159 +605,118 @@ data-category="Common" data-talent="Hammerfall">Hammer
                         </button>
                         <ul class="talent-list hidden">
 
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="An Ironsinger's Instinct">An
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="An Ironsinger's Instinct">An
                                 Ironsinger's Instinct
-    </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Phantom Edge">Phantom Edge</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Everchanging Aegis">Everchanging
+                            </li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Phantom Edge">Phantom Edge</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Everchanging Aegis">Everchanging
                                 Aegis</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Overflowing Dam">Overflowing Dam
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Overflowing Dam">Overflowing Dam
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Perfect Flash">Perfect Flash</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Neural Overload">Neural Overload
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Perfect Flash">Perfect Flash</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Neural Overload">Neural Overload
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Wyvern's Claw">Wyvern's Claw</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Aerogliding">Aerogliding</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Stifled Jump">Stifled Jump</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Placebo Effect">Placebo Effect
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Wyvern's Claw">Wyvern's Claw</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Aerogliding">Aerogliding</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Stifled Jump">Stifled Jump</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Placebo Effect">Placebo Effect
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Potion Quaffer">Potion Quaffer
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Potion Quaffer">Potion Quaffer
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Wild Alchemy">Wild Alchemy</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Conditioned Runner">Conditioned
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Wild Alchemy">Wild Alchemy</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Conditioned Runner">Conditioned
                                 Runner</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Carnivore">Carnivore</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Blackhole">Blackhole</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Energy Siphon">Energy Siphon</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Deepwoken">Deepwoken</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Spell Shout">Spell Shout</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="The Sound from Below">The Sound
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Carnivore">Carnivore</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Blackhole">Blackhole</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Energy Siphon">Energy Siphon</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Deepwoken">Deepwoken</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Spell Shout">Spell Shout</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="The Sound from Below">The Sound
                                 from Below</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Doomsday Engine">Doomsday Engine
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Doomsday Engine">Doomsday Engine
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Frozen Web">Frozen Web</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Concussion">Concussion</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Concussive Force">Concussive Force
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Frozen Web">Frozen Web</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Concussion">Concussion</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Concussive Force">Concussive Force
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Duelist's Dance">Duelist's Dance
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Duelist's Dance">Duelist's Dance
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Precise Swing">Precise Swing</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Spine Cutter">Spine Cutter</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Steady Nerves">Steady Nerves</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Strong Hold">Strong Hold</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Strong Stern">Strong Stern</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Tap Dancer">Tap Dancer</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Concussive Flash">Concussive Flash
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Precise Swing">Precise Swing</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Spine Cutter">Spine Cutter</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Steady Nerves">Steady Nerves</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Strong Hold">Strong Hold</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Strong Stern">Strong Stern</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Tap Dancer">Tap Dancer</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Concussive Flash">Concussive Flash
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Elemental Rebound">Elemental
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Elemental Rebound">Elemental
                                 Rebound</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Eureka">Eureka</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Frozen Pin-Cushion">Frozen
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Eureka">Eureka</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Frozen Pin-Cushion">Frozen
                                 Pin-Cushion</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Saint Jay">Saint Jay</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Unyielding Frost">Unyielding Frost
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Saint Jay">Saint Jay</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Unyielding Frost">Unyielding Frost
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Alloyblood">Alloyblood</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Grand Skewer">Grand Skewer</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Decisive Winds">Decisive Winds
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Alloyblood">Alloyblood</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Grand Skewer">Grand Skewer</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Decisive Winds">Decisive Winds
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Rush of Ancients">Rush of Ancients
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Rush of Ancients">Rush of Ancients
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Stratos Step">Stratos Step</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Jetstream pursuit">Jetstream
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Stratos Step">Stratos Step</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Jetstream pursuit">Jetstream
                                 pursuit</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Rare" data-talent="Acceleration Points">Acceleration
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Rare" data-talent="Acceleration Points">Acceleration
                                 Points</li>
                         </ul>
                     </div>
 
                     <div class="mb-4">
-                        <button class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-green-400"
+                        <button
+                            class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-green-400"
                             data-category="Advanced">
                             Advanced
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -863,32 +727,27 @@ data-category="Rare" data-talent="Acceleration Points">Acceleration
                         </button>
                         <ul class="talent-list hidden">
 
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Advanced" data-talent="Ghost">Ghost</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Advanced" data-talent="Reinforced Armor">Reinforced
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Ghost">Ghost</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Reinforced Armor">Reinforced
                                 Armor</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Advanced" data-talent="Ether Overdrive">Ether
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Ether Overdrive">Ether
                                 Overdrive</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Advanced" data-talent="Unyielding Frost">Unyielding
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Unyielding Frost">Unyielding
                                 Frost</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Advanced" data-talent="Neuroplasticity">
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Neuroplasticity">
                                 Neuroplasticity</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Advanced" data-talent="Innate">Innate</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Advanced" data-talent="Innate">Innate</li>
                         </ul>
                     </div>
                     <div class="mb-4">
-                        <button class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-yellow-400"
+                        <button
+                            class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-yellow-400"
                             data-category="Oath">
                             Oath
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -898,18 +757,16 @@ data-category="Advanced" data-talent="Innate">Innate</li>
                             </svg>
                         </button>
                         <ul class="talent-list hidden">
-<li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  data-category="Oath" data-talent="All-Seeing Eye">All-Seeing Eye</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Oath" data-talent="Protagonist Syndrome">Protagonist
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Oath" data-talent="All-Seeing Eye">All-Seeing Eye</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Oath" data-talent="Protagonist Syndrome">Protagonist
                                 Syndrome</li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Oath" data-talent="Luminous Flash">Luminous Flash
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Oath" data-talent="Luminous Flash">Luminous Flash
                             </li>
-<li
-                                class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"  
-data-category="Oath" data-talent="Absolute Radiance">Absolute Radiance
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Oath" data-talent="Absolute Radiance">Absolute Radiance
                             </li>
                         </ul>
                     </div>
@@ -949,20 +806,22 @@ data-category="Oath" data-talent="Absolute Radiance">Absolute Radiance
                     </div>
                 </div>
             </div>
-            
-<div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
-<select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
-<option>Local builds</option>
-</select>
-<div class="grid grid-cols-2 gap-2">
-<button class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
-Export build as link
-</button>
-<button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
-Save loaded build
-</button>
-</div>
- </div></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+                    <option>Local builds</option>
+                </select>
+                <div class="grid grid-cols-2 gap-2">
+                    <button
+                        class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                        Export build as link
+                    </button>
+                    <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
+                        Save loaded build
+                    </button>
+                </div>
+            </div>
+        </div>
 
 
         <!-- mantras-tab -->
