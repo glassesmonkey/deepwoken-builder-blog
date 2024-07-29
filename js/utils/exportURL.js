@@ -289,64 +289,31 @@ function getSummaryTabConfiguration() {
     return document.querySelector('#summary-tab textarea').value;
 }
 //copy from talents.js
-function updateSelectedTalents() {
-    const selectedTalentsDiv = document.getElementById('selected-talents');
-    const categories = ['Common', 'Rare', 'Advanced', 'Oath'];
-    const colors = ['blue', 'purple', 'green', 'yellow'];
-    
-    let innerHTML = `
-      <h3 class="text-2xl font-bold mb-4 text-white border-b border-gray-600 pb-2">Selected Talents</h3>
-      <div class="space-y-4">
-    `;
-  
-    categories.forEach((category, index) => {
-      const talents = selectedTalents[category] || [];
-      innerHTML += `
-        <div class="talent-category">
-          <div class="flex justify-between items-center mb-2">
-            <span class="text-lg font-semibold text-gray-300">${category}</span>
-            <span class="text-lg font-bold text-${colors[index]}-400">${talents.length}</span>
-          </div>
-          <ul class="list-disc list-inside text-gray-400 space-y-1">
-            ${talents.map(talent => `<li>${talent}</li>`).join('')}
-          </ul>
-        </div>
-      `;
-    });
-  
-    innerHTML += '</div>';
-    selectedTalentsDiv.innerHTML = innerHTML;
-  }
+
 
 // Apply talents tab configuration
 function applyTalentsTabConfiguration(talentsConfig) {
     Object.keys(talentsConfig).forEach(category => {
-      const talentElements = document.querySelectorAll(`#talents-tab .${category.toLowerCase()}-talents li`);
-      talentElements.forEach(el => {
-        const talent = el.textContent.trim();
-        if (talentsConfig[category].includes(talent)) {
-          el.classList.add('text-gray-500');
-          el.classList.remove('text-gray-300', 'hover:text-white');
-          if (!window.selectedTalents[category]) {
-            window.selectedTalents[category] = [];
-          }
-          if (!window.selectedTalents[category].includes(talent)) {
-            window.selectedTalents[category].push(talent);
-          }
-        } else {
-          el.classList.remove('text-gray-500');
-          el.classList.add('text-gray-300', 'hover:text-white');
-          if (window.selectedTalents[category]) {
-            const index = window.selectedTalents[category].indexOf(talent);
-            if (index > -1) {
-              window.selectedTalents[category].splice(index, 1);
+        const talentElements = document.querySelectorAll(`#available-talents .${category.toLowerCase()}-talents li`);
+        talentElements.forEach(el => {
+            const talent = el.textContent.trim();
+            if (talentsConfig[category].includes(talent)) {
+                el.classList.add('text-gray-500');
+                el.classList.remove('text-gray-300', 'hover:text-white');
+                if (!window.selectedTalents[category]) {
+                    window.selectedTalents[category] = [];
+                }
+                if (!window.selectedTalents[category].includes(talent)) {
+                    window.selectedTalents[category].push(talent);
+                }
+            } else {
+                el.classList.remove('text-gray-500');
+                el.classList.add('text-gray-300', 'hover:text-white');
             }
-          }
-        }
-      });
+        });
     });
     window.updateSelectedTalents();
-  }
+}
 
 
 function applyMantrasTabConfiguration(mantrasConfig) {

@@ -1,45 +1,60 @@
 const selectedTalents = {};
 window.selectedTalents = window.selectedTalents || {};
 function initializeTalentsTab() {
-  const talentCategories = document.querySelectorAll('.talent-category');
-  const talentItems = document.querySelectorAll('.talent-list li');
+    window.selectedTalents = window.selectedTalents || {};
+    const talentCategories = document.querySelectorAll('#available-talents > .mb-4 > .talent-category');
+    const talentItems = document.querySelectorAll('#available-talents .talent-list li');
 
     talentCategories.forEach(button => {
-    button.addEventListener('click', () => {
-      const ul = button.nextElementSibling;
-      ul.classList.toggle('hidden');
-      const chevron = button.querySelector('svg');
-      chevron.classList.toggle('rotate-180');
+        button.addEventListener('click', () => {
+            const ul = button.nextElementSibling;
+            ul.classList.toggle('hidden');
+            const chevron = button.querySelector('svg');
+            chevron.classList.toggle('rotate-180');
+        });
     });
-  });
 
     talentItems.forEach(item => {
-    item.addEventListener('click', () => toggleTalent(item));
-  });
+        item.addEventListener('click', () => toggleTalent(item));
+    });
 
     updateSelectedTalents();
 }
 
 function toggleTalent(talentElement) {
-    const category = talentElement.closest('.talent-category').dataset.category;
-    const talent = talentElement.textContent.trim();
-  
-    if (!window.selectedTalents[category]) {
-      window.selectedTalents[category] = [];
+    const categoryElement = talentElement.closest('.mb-4');
+    if (!categoryElement) {
+        console.error('Unable to find parent .mb-4 element');
+        return;
     }
-  
+    const categoryButton = categoryElement.querySelector('.talent-category');
+    if (!categoryButton) {
+        console.error('Unable to find .talent-category button');
+        return;
+    }
+    const category = categoryButton.dataset.category;
+    const talent = talentElement.textContent.trim();
+
+    if (!window.selectedTalents[category]) {
+        window.selectedTalents[category] = [];
+    }
+    
+
     const index = window.selectedTalents[category].indexOf(talent);
     if (index > -1) {
-      window.selectedTalents[category].splice(index, 1);
-      talentElement.classList.remove('text-gray-500');
-      talentElement.classList.add('text-gray-300', 'hover:text-white');
+        window.selectedTalents[category].splice(index, 1);
+        talentElement.classList.remove('text-gray-500');
+        talentElement.classList.add('text-gray-300', 'hover:text-white');
     } else {
-      window.selectedTalents[category].push(talent);
-      talentElement.classList.add('text-gray-500');
-      talentElement.classList.remove('text-gray-300', 'hover:text-white');
+        window.selectedTalents[category].push(talent);
+        talentElement.classList.add('text-gray-500');
+        talentElement.classList.remove('text-gray-300', 'hover:text-white');
     }
-  
+    console.log('Category:', category);
+    console.log('Talent:', talent);
+    console.log('Current selectedTalents:', window.selectedTalents);
     updateSelectedTalents();
+    console.log('updateSelectedTalents called');
 }
 
 window.toggleTalent = toggleTalent;
@@ -56,7 +71,7 @@ function updateSelectedTalents() {
     `;
   
     categories.forEach((category, index) => {
-      const talents = selectedTalents[category] || [];
+      const talents = window.selectedTalents[category] || [];
       innerHTML += `
         <div class="talent-category">
           <div class="flex justify-between items-center mb-2">
@@ -71,6 +86,7 @@ function updateSelectedTalents() {
     });
   
     innerHTML += '</div>';
+    console.log('New innerHTML:', innerHTML);
     selectedTalentsDiv.innerHTML = innerHTML;
 }
 
