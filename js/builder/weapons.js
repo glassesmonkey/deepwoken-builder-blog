@@ -471,7 +471,12 @@ function addWeaponEventListeners() {
         }
     });
 }
-
+window.triggerDamageCalculation = function() {
+    const calculateDamageButton = document.getElementById('calculateDamage');
+    if (calculateDamageButton) {
+        calculateDamageButton.click();
+    }
+}
 
 
 document.addEventListener('DOMContentLoaded', function() {

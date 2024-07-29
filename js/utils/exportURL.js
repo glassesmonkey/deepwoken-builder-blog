@@ -79,10 +79,13 @@ function loadBuildFromUrl() {
     if (encodedBuild) {
         try {
             const buildConfig = decodeBuild(encodedBuild);
+            
             initializeWeaponsTab().then(() => {
                 applyBuildConfiguration(buildConfig);
                 window.selectedTalents = buildConfig.talents;
                 updateSelectedTalents();
+                
+                triggerDamageCalculation();
             }).catch(error => {
                 console.error('Failed to initialize weapons tab:', error);
             });
@@ -363,6 +366,7 @@ function applyWeaponsTabConfiguration(weaponsConfig) {
     document.getElementById('weapon1').dispatchEvent(new Event('change'));
     document.getElementById('weapon2').dispatchEvent(new Event('change'));
     updateWeaponDetails();
+    triggerDamageCalculation();
 }
 
 // Apply summary tab configuration
