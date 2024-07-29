@@ -1,5 +1,5 @@
 const selectedTalents = {};
-
+window.selectedTalents = window.selectedTalents || {};
 function initializeTalentsTab() {
   const talentCategories = document.querySelectorAll('.talent-category');
   const talentItems = document.querySelectorAll('.talent-list li');
@@ -21,26 +21,29 @@ function initializeTalentsTab() {
 }
 
 function toggleTalent(talentElement) {
-  const category = talentElement.dataset.category;
-  const talent = talentElement.dataset.talent;
-
-  if (!selectedTalents[category]) {
-    selectedTalents[category] = [];
-  }
-
-  const index = selectedTalents[category].indexOf(talent);
-  if (index > -1) {
-    selectedTalents[category].splice(index, 1);
-    talentElement.classList.remove('text-gray-500');
-    talentElement.classList.add('text-gray-300', 'hover:text-white');
-  } else {
-    selectedTalents[category].push(talent);
-    talentElement.classList.add('text-gray-500');
-    talentElement.classList.remove('text-gray-300', 'hover:text-white');
-  }
-
-  updateSelectedTalents();
+    const category = talentElement.closest('.talent-category').dataset.category;
+    const talent = talentElement.textContent.trim();
+  
+    if (!window.selectedTalents[category]) {
+      window.selectedTalents[category] = [];
+    }
+  
+    const index = window.selectedTalents[category].indexOf(talent);
+    if (index > -1) {
+      window.selectedTalents[category].splice(index, 1);
+      talentElement.classList.remove('text-gray-500');
+      talentElement.classList.add('text-gray-300', 'hover:text-white');
+    } else {
+      window.selectedTalents[category].push(talent);
+      talentElement.classList.add('text-gray-500');
+      talentElement.classList.remove('text-gray-300', 'hover:text-white');
+    }
+  
+    updateSelectedTalents();
 }
+
+window.toggleTalent = toggleTalent;
+window.updateSelectedTalents = updateSelectedTalents;
 
 function updateSelectedTalents() {
     const selectedTalentsDiv = document.getElementById('selected-talents');
@@ -69,6 +72,8 @@ function updateSelectedTalents() {
   
     innerHTML += '</div>';
     selectedTalentsDiv.innerHTML = innerHTML;
-  }
+}
+
+
 
 document.addEventListener('DOMContentLoaded', initializeTalentsTab);

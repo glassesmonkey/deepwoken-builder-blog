@@ -1,4 +1,3 @@
-// Build data structure
 const buildStructure = {
     stats: {
         race: "",
@@ -56,7 +55,7 @@ function decodeBuild(encodedString) {
 // Export build as link
 function exportBuildAsLink() {
     const currentBuild = getCurrentBuildConfiguration();
-    currentBuild.talents = getTalentsTabConfiguration();
+    
     const encodedBuild = encodeBuild(currentBuild);
     const url = `${window.location.origin}${window.location.pathname}?build=${encodedBuild}`;
 
@@ -76,20 +75,18 @@ function exportBuildAsLink() {
 function loadBuildFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
     const encodedBuild = urlParams.get('build');
-
+  
     if (encodedBuild) {
-        try {
-            const buildConfig = decodeBuild(encodedBuild);
-            applyBuildConfiguration(buildConfig);
-            if (buildConfig.talents) {
-                window.generateTalentHTML(); // Generate talent HTML first
-                window.initializeTalentsTab(); // Then initialize the tab
-                applyTalentsTabConfiguration(buildConfig.talents);
-            }
-        } catch (error) {
-            console.error('Failed to load build from URL:', error);
-            alert('Unable to load build configuration. The link may be invalid or corrupted.');
-        }
+      try {
+        const buildConfig = decodeBuild(encodedBuild);
+        applyBuildConfiguration(buildConfig);
+        // 更新 selectedTalents 对象
+        window.selectedTalents = buildConfig.talents;
+        window.updateSelectedTalents();
+      } catch (error) {
+        console.error('Failed to load build from URL:', error);
+        alert('Unable to load build configuration. The link may be invalid or corrupted.');
+      }
     }
 }
 
@@ -97,6 +94,11 @@ function loadBuildFromUrl() {
 function getStatsTabConfiguration() {
     const config = {
         race: '',
+        bell: '',
+        outfit: '',
+        origin: '',
+        murmur: '',
+        oath: '',
         basicInfo: {},
         basicStats: {},
         weaponStats: {},
@@ -104,17 +106,26 @@ function getStatsTabConfiguration() {
         traits: {},
         boons: ['', ''],
         flaws: ['', '']
-    };
+      };
 
+  // Helper function to safely get select value
+  function safeGetSelectValue(id) {
+    const element = document.getElementById(id);
+    return element ? element.value : '';
+  }
     // Helper function to safely get input value
-    function safeGetInputValue(id) {
-        const element = document.getElementById(id);
-        return element ? (element.value || '0') : '0';
-    }
+function safeGetInputValue(id) {
+    const element = document.getElementById(id);
+    return element ? element.value : '';
+}
 
-    // Get race
-    config.race = safeGetInputValue('race-select');
-
+  // Get all select values
+  config.race = safeGetSelectValue('race-select');
+  config.bell = safeGetSelectValue('bell-select');
+  config.outfit = safeGetSelectValue('outfit-select');
+  config.origin = safeGetSelectValue('origin-select');
+  config.murmur = safeGetSelectValue('murmur-select');
+  config.oath = safeGetSelectValue('oath-select');
     // Get basic info
     config.basicInfo.buildName = safeGetInputValue('build-name');
     config.basicInfo.buildDescription = safeGetInputValue('build-description');
@@ -151,16 +162,31 @@ function getStatsTabConfiguration() {
 
 function applyStatsTabConfiguration(statsConfig) {
     // Helper function to safely set input value
-    function safeSetInputValue(id, value) {
+    function safeSetSelectValue(id, value) {
         const element = document.getElementById(id);
         if (element) {
-            element.value = value;
+          element.value = value;
         } else {
-            console.warn(`Element with id '${id}' not found`);
+          console.warn(`Element with id '${id}' not found`);
         }
     }
+        // Helper function to safely set input value
+    function safeSetInputValue(id, value) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.value = value;
+            } else {
+                console.warn(`Element with id '${id}' not found`);
+            }
+    }
 
-    safeSetInputValue('race-select', statsConfig.race);
+      // Set all select values
+  safeSetSelectValue('race-select', statsConfig.race);
+  safeSetSelectValue('bell-select', statsConfig.bell);
+  safeSetSelectValue('outfit-select', statsConfig.outfit);
+  safeSetSelectValue('origin-select', statsConfig.origin);
+  safeSetSelectValue('murmur-select', statsConfig.murmur);
+  safeSetSelectValue('oath-select', statsConfig.oath);
 
     // Set basic info
     safeSetInputValue('build-name', statsConfig.basicInfo.buildName);
@@ -219,7 +245,7 @@ function applyBuildConfiguration(buildConfig) {
 function getTalentsTabConfiguration() {
     const config = { common: [], rare: [], advanced: [], oath: [] };
     ['common', 'rare', 'advanced', 'oath'].forEach(category => {
-        const elements = document.querySelectorAll(`#talents-tab .${category} li.selected`);
+        const elements = document.querySelectorAll(`#talents-tab .${category}-talents li.text-gray-500`);
         config[category] = Array.from(elements).map(el => el.textContent.trim());
     });
     return config;
@@ -262,19 +288,65 @@ function getWeaponsTabConfiguration() {
 function getSummaryTabConfiguration() {
     return document.querySelector('#summary-tab textarea').value;
 }
-
+//copy from talents.js
+function updateSelectedTalents() {
+    const selectedTalentsDiv = document.getElementById('selected-talents');
+    const categories = ['Common', 'Rare', 'Advanced', 'Oath'];
+    const colors = ['blue', 'purple', 'green', 'yellow'];
+    
+    let innerHTML = `
+      <h3 class="text-2xl font-bold mb-4 text-white border-b border-gray-600 pb-2">Selected Talents</h3>
+      <div class="space-y-4">
+    `;
+  
+    categories.forEach((category, index) => {
+      const talents = selectedTalents[category] || [];
+      innerHTML += `
+        <div class="talent-category">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-lg font-semibold text-gray-300">${category}</span>
+            <span class="text-lg font-bold text-${colors[index]}-400">${talents.length}</span>
+          </div>
+          <ul class="list-disc list-inside text-gray-400 space-y-1">
+            ${talents.map(talent => `<li>${talent}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    });
+  
+    innerHTML += '</div>';
+    selectedTalentsDiv.innerHTML = innerHTML;
+  }
 
 // Apply talents tab configuration
 function applyTalentsTabConfiguration(talentsConfig) {
     Object.keys(talentsConfig).forEach(category => {
-        talentsConfig[category].forEach(talent => {
-            const talentElement = document.querySelector(`#talents-tab li[data-category="${category}"][data-talent="${talent}"]`);
-            if (talentElement) {
-                window.toggleTalent(talentElement);
+      const talentElements = document.querySelectorAll(`#talents-tab .${category.toLowerCase()}-talents li`);
+      talentElements.forEach(el => {
+        const talent = el.textContent.trim();
+        if (talentsConfig[category].includes(talent)) {
+          el.classList.add('text-gray-500');
+          el.classList.remove('text-gray-300', 'hover:text-white');
+          if (!window.selectedTalents[category]) {
+            window.selectedTalents[category] = [];
+          }
+          if (!window.selectedTalents[category].includes(talent)) {
+            window.selectedTalents[category].push(talent);
+          }
+        } else {
+          el.classList.remove('text-gray-500');
+          el.classList.add('text-gray-300', 'hover:text-white');
+          if (window.selectedTalents[category]) {
+            const index = window.selectedTalents[category].indexOf(talent);
+            if (index > -1) {
+              window.selectedTalents[category].splice(index, 1);
             }
-        });
+          }
+        }
+      });
     });
-}
+    window.updateSelectedTalents();
+  }
 
 
 function applyMantrasTabConfiguration(mantrasConfig) {
