@@ -53,6 +53,21 @@ function decodeBuild(encodedString) {
 }
 
 // Export build as link
+function showModal(title, content) {
+    const modal = document.getElementById('custom-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalContent = document.getElementById('modal-content');
+    const closeButton = document.getElementById('modal-close');
+
+    modalTitle.textContent = title;
+    modalContent.textContent = content;
+    modal.classList.remove('hidden');
+
+    closeButton.onclick = function() {
+        modal.classList.add('hidden');
+    };
+}
+
 function exportBuildAsLink() {
     const currentBuild = getCurrentBuildConfiguration();
     
@@ -61,42 +76,36 @@ function exportBuildAsLink() {
 
     window.history.pushState({}, '', url);
 
-    const message = 'Build link generated. You can copy the current URL to share your build.';
+    const title = 'Build Link Generated';
+    const message = 'You can copy the current URL to share your build.';
 
-    // 尝试使用 Clipboard API
     if (navigator.clipboard) {
         navigator.clipboard.writeText(url).then(() => {
-            alert(message + '\nLink copied to clipboard.');
+            showModal(title, message + ' Link copied to clipboard.');
         }).catch(() => {
-            // 如果 Clipboard API 失败，使用备选方法
-            fallbackCopy(url, message);
+            fallbackCopy(url, title, message);
         });
     } else {
-        // 如果不支持 Clipboard API，直接使用备选方法
-        fallbackCopy(url, message);
+        fallbackCopy(url, title, message);
     }
 }
 
-function fallbackCopy(text, message) {
-    // 创建一个临时的文本区域
+function fallbackCopy(text, title, message) {
     const textArea = document.createElement("textarea");
     textArea.value = text;
     document.body.appendChild(textArea);
 
     try {
-        // 选中文本并尝试复制
         textArea.select();
         const successful = document.execCommand('copy');
         if (successful) {
-            alert(message + '\nLink copied to clipboard.');
+            showModal(title, message + ' Link copied to clipboard.');
         } else {
             throw new Error('Copy failed');
         }
     } catch (err) {
-        // 如果复制失败，显示 URL 给用户
-        alert(message + '\nUnable to copy automatically. Please copy this URL manually:\n\n' + text);
+        showModal(title, message + ' Unable to copy automatically. Please copy this URL manually:\n\n' + text);
     } finally {
-        // 清理
         document.body.removeChild(textArea);
     }
 }
