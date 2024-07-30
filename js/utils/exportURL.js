@@ -10,6 +10,9 @@ const buildStructure = {
             strength: 0, fortitude: 0, agility: 0,
             intelligence: 0, willpower: 0, charisma: 0
         },
+        weaponStats: {
+
+        },
         attunementStats: {
             flamecharm: 0, frostdraw: 0, thundercall: 0,
             galebreath: 0, shadowcast: 0, ironsing: 0
@@ -63,14 +66,14 @@ function showModal(title, content) {
     modalContent.textContent = content;
     modal.classList.remove('hidden');
 
-    closeButton.onclick = function() {
+    closeButton.onclick = function () {
         modal.classList.add('hidden');
     };
 }
 
 function exportBuildAsLink() {
     const currentBuild = getCurrentBuildConfiguration();
-    
+
     const encodedBuild = encodeBuild(currentBuild);
     const url = `${window.location.origin}${window.location.pathname}?build=${encodedBuild}`;
 
@@ -113,16 +116,16 @@ function fallbackCopy(text, title, message) {
 function loadBuildFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
     const encodedBuild = urlParams.get('build');
-  
+
     if (encodedBuild) {
         try {
             const buildConfig = decodeBuild(encodedBuild);
-            
+
             initializeWeaponsTab().then(() => {
                 applyBuildConfiguration(buildConfig);
                 window.selectedTalents = buildConfig.talents;
                 updateSelectedTalents();
-                
+
                 triggerDamageCalculation();
             }).catch(error => {
                 console.error('Failed to initialize weapons tab:', error);
@@ -150,26 +153,26 @@ function getStatsTabConfiguration() {
         traits: {},
         boons: ['', ''],
         flaws: ['', '']
-      };
+    };
 
-  // Helper function to safely get select value
-  function safeGetSelectValue(id) {
-    const element = document.getElementById(id);
-    return element ? element.value : '';
-  }
+    // Helper function to safely get select value
+    function safeGetSelectValue(id) {
+        const element = document.getElementById(id);
+        return element ? element.value : '';
+    }
     // Helper function to safely get input value
-function safeGetInputValue(id) {
-    const element = document.getElementById(id);
-    return element ? element.value : '';
-}
+    function safeGetInputValue(id) {
+        const element = document.getElementById(id);
+        return element ? element.value : '';
+    }
 
-  // Get all select values
-  config.race = safeGetSelectValue('race-select');
-  config.bell = safeGetSelectValue('bell-select');
-  config.outfit = safeGetSelectValue('outfit-select');
-  config.origin = safeGetSelectValue('origin-select');
-  config.murmur = safeGetSelectValue('murmur-select');
-  config.oath = safeGetSelectValue('oath-select');
+    // Get all select values
+    config.race = safeGetSelectValue('race-select');
+    config.bell = safeGetSelectValue('bell-select');
+    config.outfit = safeGetSelectValue('outfit-select');
+    config.origin = safeGetSelectValue('origin-select');
+    config.murmur = safeGetSelectValue('murmur-select');
+    config.oath = safeGetSelectValue('oath-select');
     // Get basic info
     config.basicInfo.buildName = safeGetInputValue('build-name');
     config.basicInfo.buildDescription = safeGetInputValue('build-description');
@@ -182,7 +185,7 @@ function safeGetInputValue(id) {
 
     // Get weapon stats
     ['light', 'medium', 'heavy'].forEach(type => {
-        config.weaponStats[`${type}Wep`] = parseInt(safeGetInputValue(`${type}-wep-input`)) || 0;
+        config.weaponStats[`${type}-wep`] = parseInt(safeGetInputValue(`${type}-wep-input`)) || 0;
     });
 
     // Get attunement stats
@@ -209,28 +212,28 @@ function applyStatsTabConfiguration(statsConfig) {
     function safeSetSelectValue(id, value) {
         const element = document.getElementById(id);
         if (element) {
-          element.value = value;
+            element.value = value;
         } else {
-          console.warn(`Element with id '${id}' not found`);
+            console.warn(`Element with id '${id}' not found`);
         }
     }
-        // Helper function to safely set input value
+    // Helper function to safely set input value
     function safeSetInputValue(id, value) {
-            const element = document.getElementById(id);
-            if (element) {
-                element.value = value;
-            } else {
-                console.warn(`Element with id '${id}' not found`);
-            }
+        const element = document.getElementById(id);
+        if (element) {
+            element.value = value;
+        } else {
+            console.warn(`Element with id '${id}' not found`);
+        }
     }
 
-      // Set all select values
-  safeSetSelectValue('race-select', statsConfig.race);
-  safeSetSelectValue('bell-select', statsConfig.bell);
-  safeSetSelectValue('outfit-select', statsConfig.outfit);
-  safeSetSelectValue('origin-select', statsConfig.origin);
-  safeSetSelectValue('murmur-select', statsConfig.murmur);
-  safeSetSelectValue('oath-select', statsConfig.oath);
+    // Set all select values
+    safeSetSelectValue('race-select', statsConfig.race);
+    safeSetSelectValue('bell-select', statsConfig.bell);
+    safeSetSelectValue('outfit-select', statsConfig.outfit);
+    safeSetSelectValue('origin-select', statsConfig.origin);
+    safeSetSelectValue('murmur-select', statsConfig.murmur);
+    safeSetSelectValue('oath-select', statsConfig.oath);
 
     // Set basic info
     safeSetInputValue('build-name', statsConfig.basicInfo.buildName);
@@ -326,7 +329,7 @@ function getSummaryTabConfiguration() {
 // Apply talents tab configuration
 function applyTalentsTabConfiguration(talentsConfig) {
     window.selectedTalents = JSON.parse(JSON.stringify(talentsConfig));
-    
+
     Object.keys(talentsConfig).forEach(category => {
         const talentElements = document.querySelectorAll(`#available-talents .talent-list li[data-category="${category}"]`);
         talentElements.forEach(el => {
@@ -340,7 +343,7 @@ function applyTalentsTabConfiguration(talentsConfig) {
             }
         });
     });
-    
+
     updateSelectedTalents();
 }
 
@@ -356,7 +359,7 @@ function applyMantrasTabConfiguration(mantrasConfig) {
     for (const [category, selector] of Object.entries(mantraCategories)) {
         const containerElement = document.querySelector(`${selector} ul`);
         const countElement = document.getElementById(`${category}-count`);
-        
+
         if (containerElement) {
             containerElement.innerHTML = '';
             mantrasConfig[category].forEach(mantra => {
@@ -413,7 +416,7 @@ function applySummaryTabConfiguration(summaryConfig) {
 }
 
 // Initialize
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     loadBuildFromUrl();
     document.querySelectorAll('.exportBuildLink').forEach(button => {
         button.addEventListener('click', exportBuildAsLink);

@@ -151,7 +151,7 @@ async function exportImage() {
         }
 
         const finalCanvas = createFinalCanvas(images);
-        addWatermark(finalCanvas);
+        await addWatermark(finalCanvas);
         downloadImage(finalCanvas);
     } catch (error) {
         console.error('Error exporting image:', error);
@@ -330,13 +330,55 @@ function createFinalCanvas(images) {
     return finalCanvas;
 }
 
-// 添加水印
-function addWatermark(canvas) {
+async function addWatermark(canvas) {
     const ctx = canvas.getContext('2d');
-    ctx.font = '20px Arial';
-    ctx.fillStyle = 'rgba(128, 128, 128, 0.5)';
-    ctx.fillText('deepwokenbuilder.com', 10, 30);
-    ctx.fillText('deepwokenbuilder.com', canvas.width - 200, canvas.height - 10);
+    const watermarkPath = "assets/images/DeepwokenBuilder-yellow.png";
+
+    try {
+        console.log('Loading watermark image from:', watermarkPath);
+        const watermarkImage = await loadWatermarkImage(watermarkPath);
+        console.log('Watermark image loaded successfully');
+
+        // 计算水印大小（例如，画布宽度的20%）
+        const watermarkWidth = canvas.width * 0.2;
+        const watermarkHeight = (watermarkImage.height / watermarkImage.width) * watermarkWidth;
+
+        console.log('Drawing watermark, canvas dimensions:', canvas.width, canvas.height);
+        console.log('Watermark dimensions:', watermarkWidth, watermarkHeight);
+
+        // 在左上角添加水印
+        ctx.globalAlpha = 0.5; // 设置透明度
+        ctx.drawImage(watermarkImage, 10, 10, watermarkWidth, watermarkHeight);
+
+        // 在右下角添加水印
+        ctx.drawImage(watermarkImage, canvas.width - watermarkWidth - 10, 
+                      canvas.height - watermarkHeight - 10, watermarkWidth, watermarkHeight);
+
+        ctx.globalAlpha = 1.0; // 重置透明度
+        console.log('Watermark added successfully');
+    } catch (error) {
+        console.error('Error adding watermark:', error);
+        // 如果加载图片失败，使用文本水印作为后备方案
+        ctx.font = '20px Arial';
+        ctx.fillStyle = 'rgba(128, 128, 128, 0.5)';
+        ctx.fillText('deepwokenbuilder.com', 10, 30);
+        ctx.fillText('deepwokenbuilder.com', canvas.width - 200, canvas.height - 10);
+    }
+
+}
+
+// 3. 修改 loadWatermarkImage 函数以处理跨域问题
+function loadWatermarkImage(imagePath) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = (e) => {
+            console.error('Error loading watermark image:', e);
+            reject(new Error('Failed to load watermark image'));
+        };
+        img.crossOrigin = 'anonymous';  // 添加这行来处理可能的跨域问题
+        img.src = imagePath;
+    });
 }
 
 // 下载图片

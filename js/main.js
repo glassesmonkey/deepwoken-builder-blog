@@ -188,6 +188,17 @@ function initialize() {
     raceSelect.addEventListener('change', handleRaceChange);
 
     updateDisplay();
+    initializeNavigation();
+}
+function initializeNavigation() {
+    const mobileMenuButton = document.getElementById('deepwoken-mobile-menu-button');
+    const mobileMenu = document.getElementById('deepwoken-mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
 }
 
 document.querySelectorAll('.stat-input').forEach(input => {

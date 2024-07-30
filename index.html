@@ -54,10 +54,85 @@
             color: #ffd700;
             font-weight: bold;
         }
+
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.deepwoken-pixel-font {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+}
+
+.deepwoken-pixel-art {
+  image-rendering: pixelated;
+}
+
+.deepwoken-navbar .deepwoken-nav-item {
+  color: #d1d5db;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.1rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.deepwoken-navbar .deepwoken-nav-item:hover, 
+.deepwoken-navbar .deepwoken-nav-item.active {
+  color: #fbbf24;
+  border-color: #fbbf24;
+  background-color: rgba(251, 191, 36, 0.1);
+}
+
+/* Pixel art button effect */
+.deepwoken-navbar .deepwoken-nav-item::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: -3px;
+  bottom: -3px;
+  background-color: #2c2c2c;
+  z-index: -1;
+}
+
+@media (max-width: 640px) {
+  .deepwoken-navbar .deepwoken-nav-item {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+}
     </style>
 </head>
 
 <body class="p-4">
+    <nav class="deepwoken-navbar bg-gray-900 border-b-2 border-yellow-600 px-4 py-2">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+          <div class="flex items-center">
+            <img class="h-10 w-auto mr-4 deepwoken-pixel-art" src="assets/images/DeepwokenBuilder-yellow.png" alt="Deepwoken Builder">
+            <span class="text-yellow-500 font-bold text-xl deepwoken-pixel-font hidden sm:inline">Deepwoken Builder</span>
+          </div>
+          <div class="hidden sm:flex space-x-1">
+            <a href="index.html" class="deepwoken-nav-item active">Builder Tool</a>
+            <a href="coming-soon.html" class="deepwoken-nav-item">Top Builds</a>
+            <a href="coming-soon.html" class="deepwoken-nav-item">Builder Guides</a>
+            <a href="coming-soon.html" class="deepwoken-nav-item">About</a>
+          </div>
+          <div class="sm:hidden">
+            <button id="deepwoken-mobile-menu-button" class="text-yellow-500 hover:text-yellow-400 focus:outline-none">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="square" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div id="deepwoken-mobile-menu" class="hidden sm:hidden mt-2">
+          <a href="index.html" class="block deepwoken-nav-item active">Builder Tool</a>
+          <a href="coming-soon.html" class="block deepwoken-nav-item">Top Builds</a>
+          <a href="coming-soon.html" class="block deepwoken-nav-item">Builder Guides</a>
+          <a href="coming-soon.html" class="block deepwoken-nav-item">About</a>
+        </div>
+      </nav>
     <header class="flex items-center justify-center mb-6">
         <img src="/assets/icons/logo.webp" alt="Deepwoken Builder Logo" class="w-12 h-12 mr-4">
         <h1 class="text-3xl font-bold text-yellow-400">Deepwoken Builder</h1>
@@ -437,7 +512,8 @@
                             </svg>
                         </button>
                         <ul class="talent-list hidden">
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white" data-category="Common" data-talent="Time To Go">Time To Go</li>
+                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                data-category="Common" data-talent="Time To Go">Time To Go</li>
                             <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
                                 data-category="Common" data-talent="Kick Off">Kick Off</li>
                             <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
@@ -465,7 +541,8 @@
                             <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
                                 data-category="Common" data-talent="Endurance Runner">Endurance Runner</li>
                             <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Approaching Singularity">Approaching Singularity</li>
+                                data-category="Common" data-talent="Approaching Singularity">Approaching Singularity
+                            </li>
                             <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
                                 data-category="Common" data-talent="Fisher's Lure">Fisher's Lure</li>
                             <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
@@ -1033,29 +1110,31 @@
 
             </div>
         </div>
-                        <!-- Save and Export Options -->
-                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
-                            <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
-                                <option>Local builds</option>
-                            </select>
-                            <div class="grid grid-cols-2 gap-2">
-                                <button
-                                    class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
-                                    Export build as link
-                                </button>
-                                <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
-                                    Save loaded build
-                                </button>
-                                <button id="exportImage" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">Export as Image</button>
-                            </div>
-                        </div>
+        <!-- Save and Export Options -->
+        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+            <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+                <option>Local builds--Featured comming soon!</option>
+            </select>
+            <div class="grid grid-cols-2 gap-2">
+                <button
+                    class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    Export build as link
+                </button>
+                <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    Save loaded build
+                </button>
+                <button id="exportImage"
+                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">Export as
+                    Image</button>
+            </div>
+        </div>
     </div>
 
 
 
     </div>
 
-    <!-- Add this section just before the closing </body> tag -->
+
     <div class="blog-preview bg-ink text-gray-300 py-8">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-yellow-400 mb-6">Deepwoken Builder FAQ</h2>
@@ -1238,7 +1317,8 @@
                     <p class="text-sm text-gray-500" id="modal-content"></p>
                 </div>
                 <div class="items-center px-4 py-3">
-                    <button id="modal-close" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <button id="modal-close"
+                        class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
                         OK
                     </button>
                 </div>
