@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
             button.classList.add('hover:bg-parchment');
         });
 
-        const selectedTab = document.getElementById(tabId + '-tab');
+        //const selectedTab = document.getElementById(tabId + '-tab');
+        const selectedTab = document.getElementById(tabId);
         const selectedButton = document.querySelector(`[data-tab="${tabId}"]`);
 
         if (selectedTab) selectedTab.classList.remove('hidden');
@@ -30,6 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     
-    switchTab('stats');
+    switchTab('stats-tab');
 });
 

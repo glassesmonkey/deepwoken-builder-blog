@@ -198,4 +198,12 @@ document.querySelectorAll('.stat-input').forEach(input => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', initialize);
+// document.addEventListener('DOMContentLoaded', initialize);
+document.addEventListener('DOMContentLoaded', () => {
+    // if (typeof window.initExportImage === 'function') {
+    //     window.initExportImage();
+    // } else {
+    //     console.error('initExportImage function not found');
+    // }
+    initialize();
+});

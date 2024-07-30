@@ -66,27 +66,27 @@
         <div class="tabs flex bg-dark-parchment rounded-t-lg overflow-x-auto">
             <button
                 class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
-                data-tab="stats">
+                data-tab="stats-tab">
                 Stats
             </button>
             <button
                 class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
-                data-tab="talents">
+                data-tab="talents-tab">
                 Talents
             </button>
             <button
                 class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
-                data-tab="mantras">
+                data-tab="mantras-tab">
                 Mantras
             </button>
             <button
                 class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
-                data-tab="weapons">
+                data-tab="weapons-tab">
                 Weapons
             </button>
             <button
                 class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
-                data-tab="summary">
+                data-tab="summary-tab">
                 Summary
             </button>
         </div>
@@ -1044,6 +1044,7 @@
                         <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
                             Save loaded build
                         </button>
+                        <button id="exportImage" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">Export as Image</button>
                     </div>
                 </div>
             </div>
@@ -1243,7 +1244,7 @@
             </div>
         </div>
     </div>
-    
+
     <style>
         .tab-button.active {
             border-bottom-color: #2c2c2c;
@@ -1265,6 +1266,9 @@
         });
     </script>
 
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="./js/utils/exportImage.js"></script>
     <script src="js/main.js"></script>
     <script src="./js/builder/talents.js"></script>
     <script src="./js/switchtab.js"></script>
