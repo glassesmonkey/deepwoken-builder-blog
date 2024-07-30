@@ -8,6 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Export button not found');
     }
 });
+function fixInputsAndSelects(element) {
+    const inputs = element.querySelectorAll('input, select');
+    inputs.forEach(input => {
+        input.style.height = 'auto';
+        input.style.minHeight = '60px';
+        input.style.lineHeight = '60px';
+        input.style.padding = '0 8px';
+        input.style.boxSizing = 'border-box';
+    });
+}
 
 // 主要的导出图片函数
 async function exportImage() {
@@ -19,7 +29,7 @@ async function exportImage() {
     try {
         for (const tabId of tabs) {
             await activateTab(tabId);
-            await new Promise(resolve => setTimeout(resolve, 500)); // 等待渲染完成
+            await new Promise(resolve => setTimeout(resolve, 1000)); // 增加等待时间
 
             const tab = document.getElementById(tabId);
             if (!tab) {
@@ -37,14 +47,23 @@ async function exportImage() {
             document.body.appendChild(containerDiv);
 
             // 应用内联样式
-            applyInlineStyles(containerDiv);
+            await applyInlineStyles(containerDiv);
+
+            // 确保所有字体已加载
+            await document.fonts.ready;
 
             const canvas = await html2canvas(containerDiv, {
                 logging: false,
                 useCORS: true,
-                scale: 2, // 提高图片质量
+                scale: 1, // 降低缩放比例
                 width: tab.offsetWidth,
-                height: containerDiv.offsetHeight
+                height: containerDiv.scrollHeight, // 使用scrollHeight
+                onclone: (clonedDoc) => {
+                    const clonedElement = clonedDoc.getElementById(tabId);
+                    if (clonedElement) {
+                        fixInputsAndSelects(clonedElement);
+                    }
+                }
             });
             images.push(canvas);
 
@@ -64,12 +83,11 @@ async function exportImage() {
 }
 
 // 应用内联样式
-function applyInlineStyles(element) {
+async function applyInlineStyles(element) {
     const elements = element.getElementsByTagName('*');
     for (let i = 0; i < elements.length; i++) {
         const el = elements[i];
         const style = window.getComputedStyle(el);
-        console.log('Element:', el.tagName, 'Class:', el.className, 'Computed style:', style.cssText);
         el.style.cssText = style.cssText;
 
         // 特别处理grid布局
@@ -77,6 +95,12 @@ function applyInlineStyles(element) {
             el.style.display = 'grid';
             el.style.gridTemplateColumns = style.gridTemplateColumns;
             el.style.gridGap = style.gridGap;
+        }
+
+        // 确保input和select元素有足够的高度
+        if (el.tagName === 'INPUT' || el.tagName === 'SELECT') {
+            el.style.height = 'auto';
+            el.style.minHeight = '30px'; // 设置一个最小高度
         }
     }
 }
