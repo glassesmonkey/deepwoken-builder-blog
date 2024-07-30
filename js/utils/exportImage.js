@@ -8,18 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Export button not found');
     }
 });
-function fixInputsAndSelects(element) {
-    const inputs = element.querySelectorAll('input, select');
-    inputs.forEach(input => {
-        input.style.height = 'auto';
-        input.style.minHeight = '60px';
-        input.style.lineHeight = '60px';
-        input.style.padding = '0 8px';
-        input.style.boxSizing = 'border-box';
-    });
-}
 
-// 主要的导出图片函数
 async function exportImage() {
     const tabs = ['stats-tab', 'talents-tab', 'mantras-tab', 'weapons-tab', 'summary-tab'];
     const images = [];
@@ -52,12 +41,15 @@ async function exportImage() {
             // 确保所有字体已加载
             await document.fonts.ready;
 
+            // 替换select元素为自定义渲染
+            replaceSelectsWithCustomRender(containerDiv);
+
             const canvas = await html2canvas(containerDiv, {
                 logging: false,
                 useCORS: true,
-                scale: 1, // 降低缩放比例
+                scale: 2, // 提高缩放比例以获得更好的文本渲染
                 width: tab.offsetWidth,
-                height: containerDiv.scrollHeight, // 使用scrollHeight
+                height: containerDiv.scrollHeight,
                 onclone: (clonedDoc) => {
                     const clonedElement = clonedDoc.getElementById(tabId);
                     if (clonedElement) {
@@ -100,10 +92,44 @@ async function applyInlineStyles(element) {
         // 确保input和select元素有足够的高度
         if (el.tagName === 'INPUT' || el.tagName === 'SELECT') {
             el.style.height = 'auto';
-            el.style.minHeight = '30px'; // 设置一个最小高度
+            el.style.minHeight = '30px';
         }
     }
 }
+
+// 修复input和select元素
+function fixInputsAndSelects(element) {
+    const inputs = element.querySelectorAll('input, select');
+    inputs.forEach(input => {
+        input.style.height = 'auto';
+        input.style.minHeight = '30px';
+        input.style.lineHeight = '30px';
+        input.style.padding = '0 8px';
+        input.style.boxSizing = 'border-box';
+    });
+}
+
+// 替换select元素为自定义渲染
+function replaceSelectsWithCustomRender(container) {
+    const selects = container.querySelectorAll('select');
+    selects.forEach(select => {
+        const customSelect = document.createElement('div');
+        customSelect.style.cssText = window.getComputedStyle(select).cssText;
+        customSelect.style.overflow = 'hidden';
+        customSelect.style.minHeight = '30px';
+        customSelect.style.padding = '5px';
+        customSelect.style.boxSizing = 'border-box';
+        customSelect.style.border = '1px solid #ccc';
+        customSelect.style.borderRadius = '4px';
+        customSelect.style.backgroundColor = '#1F2937';
+
+        const selectedOption = select.options[select.selectedIndex];
+        customSelect.textContent = selectedOption ? selectedOption.textContent : '';
+
+        select.parentNode.replaceChild(customSelect, select);
+    });
+}
+
 
 // 激活特定的tab并等待内容加载
 async function activateTab(tabId) {
