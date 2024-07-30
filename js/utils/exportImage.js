@@ -30,7 +30,7 @@ async function exportImage() {
             containerDiv.style.position = 'absolute';
             containerDiv.style.left = '-9999px';
             containerDiv.style.top = '0';
-            containerDiv.style.width = tab.offsetWidth + 'px';
+            containerDiv.style.width = '1000px'; // 固定宽度，确保桌面布局
             containerDiv.style.height = 'auto';
             containerDiv.appendChild(tab.cloneNode(true));
             document.body.appendChild(containerDiv);
@@ -38,24 +38,34 @@ async function exportImage() {
             // 应用内联样式
             await applyInlineStyles(containerDiv);
 
+            if (tabId === 'weapons-tab') {
+                // 触发伤害计算以确保图表被渲染
+                window.triggerDamageCalculation();
+                await new Promise(resolve => setTimeout(resolve, 1000)); // 等待图表渲染
+                
+                // 手动调整weapons tab的布局
+                const weaponsTab = containerDiv.querySelector('#weapons-tab');
+                if (weaponsTab) {
+                    const elements = weaponsTab.children;
+                    for (let i = 0; i < elements.length; i++) {
+                        elements[i].style.width = '100%';
+                        elements[i].style.marginBottom = '20px';
+                    }
+                }
+
+                // 特别处理图表
+                await handleChart(containerDiv);
+            }
+
             // 确保所有字体已加载
             await document.fonts.ready;
-
-            // 替换select元素为自定义渲染
-            replaceSelectsWithCustomRender(containerDiv);
 
             const canvas = await html2canvas(containerDiv, {
                 logging: false,
                 useCORS: true,
-                scale: 2, // 提高缩放比例以获得更好的文本渲染
-                width: tab.offsetWidth,
-                height: containerDiv.scrollHeight,
-                onclone: (clonedDoc) => {
-                    const clonedElement = clonedDoc.getElementById(tabId);
-                    if (clonedElement) {
-                        fixInputsAndSelects(clonedElement);
-                    }
-                }
+                scale: 2,
+                width: 1000,
+                height: containerDiv.scrollHeight ,
             });
             images.push(canvas);
 
@@ -74,6 +84,78 @@ async function exportImage() {
     }
 }
 
+async function handleChart(containerDiv) {
+    const originalCanvas = document.getElementById('damageChart');
+    const clonedCanvasContainer = containerDiv.querySelector('#damageChart').parentNode;
+
+    if (originalCanvas && clonedCanvasContainer) {
+        const originalChart = Chart.getChart(originalCanvas);
+        
+        if (originalChart) {
+            // 调整图表配置
+            originalChart.options.scales.x.ticks.font = {
+                family: 'Arial, sans-serif',
+                size: 12,  // 减小字体大小
+                weight: 'bold'
+            };
+            originalChart.options.scales.x.ticks.color = 'white';
+            
+            // 增加底部边距以为标签留出空间
+            originalChart.options.layout.padding.bottom = 30;
+            
+            // 更新图表
+            originalChart.update();
+            
+            // 等待渲染完成
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // 将原始图表转换为图像
+            const chartImage = new Image();
+            chartImage.src = originalCanvas.toDataURL();
+            
+            await new Promise((resolve, reject) => {
+                chartImage.onload = resolve;
+                chartImage.onerror = reject;
+            });
+
+            // 创建图表容器
+            const chartContainer = document.createElement('div');
+            chartContainer.style.position = 'relative';
+            chartContainer.style.width = '100%';
+            chartContainer.style.paddingBottom = '50px';  // 增加底部padding
+            chartContainer.appendChild(chartImage);
+
+            // 添加x轴标签
+            const labels = originalChart.data.labels;
+            const labelsContainer = document.createElement('div');
+            labelsContainer.style.display = 'flex';
+            labelsContainer.style.justifyContent = 'space-between';
+            labelsContainer.style.width = '100%';
+            labelsContainer.style.position = 'absolute';
+            labelsContainer.style.bottom = '0';
+            labelsContainer.style.left = '0';
+            labelsContainer.style.padding = '0 10px';  // 添加左右padding
+
+            labels.forEach(label => {
+                const labelElement = document.createElement('span');
+                labelElement.textContent = label;
+                labelElement.style.color = 'white';
+                labelElement.style.fontSize = '10px';  // 进一步减小字体大小
+                labelElement.style.textAlign = 'center';
+                labelElement.style.width = `${100 / labels.length}%`;
+                labelsContainer.appendChild(labelElement);
+            });
+
+            chartContainer.appendChild(labelsContainer);
+
+            // 替换克隆的canvas
+            clonedCanvasContainer.innerHTML = '';
+            clonedCanvasContainer.appendChild(chartContainer);
+        }
+    }
+}
+
+
 // 应用内联样式
 async function applyInlineStyles(element) {
     const elements = element.getElementsByTagName('*');
@@ -89,10 +171,10 @@ async function applyInlineStyles(element) {
             el.style.gridGap = style.gridGap;
         }
 
-        // 确保input和select元素有足够的高度
-        if (el.tagName === 'INPUT' || el.tagName === 'SELECT') {
-            el.style.height = 'auto';
-            el.style.minHeight = '30px';
+        // 确保canvas元素有正确的尺寸
+        if (el.tagName.toLowerCase() === 'canvas') {
+            el.style.width = style.width;
+            el.style.height = style.height;
         }
     }
 }
