@@ -8,69 +8,146 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Export button not found');
     }
 });
+// 修复input和select元素
+function fixInputsAndSelects(element) {
+    const inputs = element.querySelectorAll('input, select');
+    inputs.forEach(input => {
+        input.style.height = 'auto';
+        input.style.minHeight = '30px';
+        input.style.lineHeight = '30px';
+        input.style.padding = '0 8px';
+        input.style.boxSizing = 'border-box';
+    });
+}
+
+
+
+function createOverlay() {
+    const overlay = document.createElement('div');
+    overlay.id = 'export-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    overlay.style.backdropFilter = 'blur(5px)';
+    overlay.style.display = 'flex';
+    overlay.style.justifyContent = 'center';
+    overlay.style.alignItems = 'center';
+    overlay.style.zIndex = '9999';
+
+    const progressContainer = document.createElement('div');
+    progressContainer.style.width = '300px';
+    progressContainer.style.backgroundColor = '#fff';
+    progressContainer.style.borderRadius = '10px';
+    progressContainer.style.padding = '20px';
+    progressContainer.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+
+    const progressText = document.createElement('div');
+    progressText.id = 'progress-text';
+    progressText.textContent = 'Exporting image: 0%';
+    progressText.style.marginBottom = '10px';
+    progressText.style.textAlign = 'center';
+    progressText.style.color = '#333';
+
+    const progressBar = document.createElement('div');
+    progressBar.style.width = '100%';
+    progressBar.style.backgroundColor = '#e0e0e0';
+    progressBar.style.borderRadius = '5px';
+    progressBar.style.overflow = 'hidden';
+
+    const progressBarInner = document.createElement('div');
+    progressBarInner.id = 'progress-bar-inner';
+    progressBarInner.style.width = '0%';
+    progressBarInner.style.height = '20px';
+    progressBarInner.style.backgroundColor = '#4CAF50';
+    progressBarInner.style.transition = 'width 0.3s ease-in-out';
+
+    progressBar.appendChild(progressBarInner);
+    progressContainer.appendChild(progressText);
+    progressContainer.appendChild(progressBar);
+    overlay.appendChild(progressContainer);
+
+    return overlay;
+}
+
+function updateProgress(progress) {
+    const progressText = document.getElementById('progress-text');
+    const progressBarInner = document.getElementById('progress-bar-inner');
+    if (progressText && progressBarInner) {
+        progressText.textContent = `Exporting image: ${Math.round(progress)}%`;
+        progressBarInner.style.width = `${progress}%`;
+    }
+}
+function downloadImage(canvas) {
+    updateProgress(100);
+    setTimeout(() => {
+        const dataURL = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = 'deepwoken_build.png';
+        link.href = dataURL;
+        link.click();
+    }, 500);
+}
 
 async function exportImage() {
     const tabs = ['stats-tab', 'talents-tab', 'mantras-tab', 'weapons-tab', 'summary-tab'];
     const images = [];
 
-    showLoadingIndicator();
+    const overlay = createOverlay();
+    document.body.appendChild(overlay);
 
     try {
-        for (const tabId of tabs) {
+        for (let i = 0; i < tabs.length; i++) {
+            const tabId = tabs[i];
             await activateTab(tabId);
-            await new Promise(resolve => setTimeout(resolve, 1000)); // 增加等待时间
+            await new Promise(resolve => setTimeout(resolve, 1000));
 
             const tab = document.getElementById(tabId);
             if (!tab) {
                 throw new Error(`Tab content not found: ${tabId}`);
             }
 
-            // 创建一个新的div来包含tab内容的克隆
             const containerDiv = document.createElement('div');
             containerDiv.style.position = 'absolute';
             containerDiv.style.left = '-9999px';
             containerDiv.style.top = '0';
-            containerDiv.style.width = '1000px'; // 固定宽度，确保桌面布局
+            containerDiv.style.width = '1000px';
             containerDiv.style.height = 'auto';
             containerDiv.appendChild(tab.cloneNode(true));
             document.body.appendChild(containerDiv);
 
-            // 应用内联样式
             await applyInlineStyles(containerDiv);
 
             if (tabId === 'weapons-tab') {
-                // 触发伤害计算以确保图表被渲染
                 window.triggerDamageCalculation();
-                await new Promise(resolve => setTimeout(resolve, 1000)); // 等待图表渲染
-                
-                // 手动调整weapons tab的布局
-                const weaponsTab = containerDiv.querySelector('#weapons-tab');
-                if (weaponsTab) {
-                    const elements = weaponsTab.children;
-                    for (let i = 0; i < elements.length; i++) {
-                        elements[i].style.width = '100%';
-                        elements[i].style.marginBottom = '20px';
-                    }
-                }
-
-                // 特别处理图表
+                await new Promise(resolve => setTimeout(resolve, 1000));
                 await handleChart(containerDiv);
             }
 
-            // 确保所有字体已加载
             await document.fonts.ready;
-
+            replaceSelectsWithCustomRender(containerDiv);
             const canvas = await html2canvas(containerDiv, {
                 logging: false,
                 useCORS: true,
                 scale: 2,
                 width: 1000,
-                height: containerDiv.scrollHeight ,
+                height: containerDiv.scrollHeight,
+                backgroundColor: null,
+				onclone: (clonedDoc) => {
+                    const clonedElement = clonedDoc.getElementById(tabId);
+                    if (clonedElement) {
+                        fixInputsAndSelects(clonedElement);
+                    }
+                }
             });
             images.push(canvas);
 
-            // 移除临时div
             document.body.removeChild(containerDiv);
+
+            // 更新进度
+            updateProgress((i + 1) / tabs.length * 100);
         }
 
         const finalCanvas = createFinalCanvas(images);
@@ -80,7 +157,7 @@ async function exportImage() {
         console.error('Error exporting image:', error);
         showErrorMessage('Failed to export image. Please try again.');
     } finally {
-        hideLoadingIndicator();
+        document.body.removeChild(overlay);
     }
 }
 
@@ -170,6 +247,11 @@ async function applyInlineStyles(element) {
             el.style.gridTemplateColumns = style.gridTemplateColumns;
             el.style.gridGap = style.gridGap;
         }
+		 // 确保input和select元素有足够的高度
+        if (el.tagName === 'INPUT' || el.tagName === 'SELECT') {
+            el.style.height = 'auto';
+            el.style.minHeight = '30px';
+        }
 
         // 确保canvas元素有正确的尺寸
         if (el.tagName.toLowerCase() === 'canvas') {
@@ -177,18 +259,6 @@ async function applyInlineStyles(element) {
             el.style.height = style.height;
         }
     }
-}
-
-// 修复input和select元素
-function fixInputsAndSelects(element) {
-    const inputs = element.querySelectorAll('input, select');
-    inputs.forEach(input => {
-        input.style.height = 'auto';
-        input.style.minHeight = '30px';
-        input.style.lineHeight = '30px';
-        input.style.padding = '0 8px';
-        input.style.boxSizing = 'border-box';
-    });
 }
 
 // 替换select元素为自定义渲染
