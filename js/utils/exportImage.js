@@ -26,12 +26,30 @@ async function exportImage() {
                 throw new Error(`Tab content not found: ${tabId}`);
             }
 
-            const canvas = await html2canvas(tab, {
+            // 创建一个新的div来包含tab内容的克隆
+            const containerDiv = document.createElement('div');
+            containerDiv.style.position = 'absolute';
+            containerDiv.style.left = '-9999px';
+            containerDiv.style.top = '0';
+            containerDiv.style.width = tab.offsetWidth + 'px';
+            containerDiv.style.height = 'auto';
+            containerDiv.appendChild(tab.cloneNode(true));
+            document.body.appendChild(containerDiv);
+
+            // 应用内联样式
+            applyInlineStyles(containerDiv);
+
+            const canvas = await html2canvas(containerDiv, {
                 logging: false,
                 useCORS: true,
-                scale: 2 // 提高图片质量
+                scale: 2, // 提高图片质量
+                width: tab.offsetWidth,
+                height: containerDiv.offsetHeight
             });
             images.push(canvas);
+
+            // 移除临时div
+            document.body.removeChild(containerDiv);
         }
 
         const finalCanvas = createFinalCanvas(images);
@@ -42,6 +60,24 @@ async function exportImage() {
         showErrorMessage('Failed to export image. Please try again.');
     } finally {
         hideLoadingIndicator();
+    }
+}
+
+// 应用内联样式
+function applyInlineStyles(element) {
+    const elements = element.getElementsByTagName('*');
+    for (let i = 0; i < elements.length; i++) {
+        const el = elements[i];
+        const style = window.getComputedStyle(el);
+        console.log('Element:', el.tagName, 'Class:', el.className, 'Computed style:', style.cssText);
+        el.style.cssText = style.cssText;
+
+        // 特别处理grid布局
+        if (style.display === 'grid') {
+            el.style.display = 'grid';
+            el.style.gridTemplateColumns = style.gridTemplateColumns;
+            el.style.gridGap = style.gridGap;
+        }
     }
 }
 
