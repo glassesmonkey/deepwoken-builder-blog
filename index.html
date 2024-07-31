@@ -57,82 +57,123 @@
 
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-.deepwoken-pixel-font {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 0.8rem;
-}
+        .deepwoken-pixel-font {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+        }
 
-.deepwoken-pixel-art {
-  image-rendering: pixelated;
-}
+        .deepwoken-pixel-art {
+            image-rendering: pixelated;
+        }
 
-.deepwoken-navbar .deepwoken-nav-item {
-  color: #d1d5db;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 1.1rem;
-  padding: 0.5rem 0.75rem;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-}
+        .deepwoken-navbar .deepwoken-nav-item {
+            color: #d1d5db;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.1rem;
+            padding: 0.5rem 0.75rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
 
-.deepwoken-navbar .deepwoken-nav-item:hover, 
-.deepwoken-navbar .deepwoken-nav-item.active {
-  color: #fbbf24;
-  border-color: #fbbf24;
-  background-color: rgba(251, 191, 36, 0.1);
-}
+        .deepwoken-navbar .deepwoken-nav-item:hover,
+        .deepwoken-navbar .deepwoken-nav-item.active {
+            color: #fbbf24;
+            border-color: #fbbf24;
+            background-color: rgba(251, 191, 36, 0.1);
+        }
 
-/* Pixel art button effect */
-.deepwoken-navbar .deepwoken-nav-item::after {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  right: -3px;
-  bottom: -3px;
-  background-color: #2c2c2c;
-  z-index: -1;
-}
+        /* Pixel art button effect */
+        .deepwoken-navbar .deepwoken-nav-item::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            right: -3px;
+            bottom: -3px;
+            background-color: #2c2c2c;
+            z-index: -1;
+        }
 
-@media (max-width: 640px) {
-  .deepwoken-navbar .deepwoken-nav-item {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
-}
+        @media (max-width: 640px) {
+            .deepwoken-navbar .deepwoken-nav-item {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        .tooltip {
+            position: fixed;
+            background-color: rgba(26, 32, 44, 0.9);
+            color: #fff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            z-index: 50;
+            max-width: 400px;
+            /* 增加最大宽度 */
+            min-width: 300px;
+            /* 设置最小宽度 */
+            max-height: 80vh;
+            /* 设置最大高度为视口高度的80% */
+            overflow-y: auto;
+            /* 仍然保留滚动条，以防内容过长 */
+            display: none;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .tooltip strong {
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        .tooltip p {
+            margin-bottom: 0.5rem;
+        }
+
+        .tooltip h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: #fbbf24;
+        }
     </style>
 </head>
 
 <body class="p-4">
     <nav class="deepwoken-navbar bg-gray-900 border-b-2 border-yellow-600 px-4 py-2">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-          <div class="flex items-center">
-            <img class="h-10 w-auto mr-4 deepwoken-pixel-art" src="assets/images/DeepwokenBuilder-yellow.png" alt="Deepwoken Builder">
-            <span class="text-yellow-500 font-bold text-xl deepwoken-pixel-font hidden sm:inline">Deepwoken Builder</span>
-          </div>
-          <div class="hidden sm:flex space-x-1">
-            <a href="index.html" class="deepwoken-nav-item active">Builder Tool</a>
-            <a href="coming-soon.html" class="deepwoken-nav-item">Top Builds</a>
-            <a href="coming-soon.html" class="deepwoken-nav-item">Builder Guides</a>
-            <a href="coming-soon.html" class="deepwoken-nav-item">About</a>
-          </div>
-          <div class="sm:hidden">
-            <button id="deepwoken-mobile-menu-button" class="text-yellow-500 hover:text-yellow-400 focus:outline-none">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="square" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-              </svg>
-            </button>
-          </div>
+            <div class="flex items-center">
+                <img class="h-10 w-auto mr-4 deepwoken-pixel-art" src="assets/images/DeepwokenBuilder-yellow.png"
+                    alt="Deepwoken Builder">
+                <span class="text-yellow-500 font-bold text-xl deepwoken-pixel-font hidden sm:inline">Deepwoken
+                    Builder</span>
+            </div>
+            <div class="hidden sm:flex space-x-1">
+                <a href="index.html" class="deepwoken-nav-item active">Builder Tool</a>
+                <a href="coming-soon.html" class="deepwoken-nav-item">Top Builds</a>
+                <a href="coming-soon.html" class="deepwoken-nav-item">Builder Guides</a>
+                <a href="coming-soon.html" class="deepwoken-nav-item">About</a>
+            </div>
+            <div class="sm:hidden">
+                <button id="deepwoken-mobile-menu-button"
+                    class="text-yellow-500 hover:text-yellow-400 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="square" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
         </div>
         <div id="deepwoken-mobile-menu" class="hidden sm:hidden mt-2">
-          <a href="index.html" class="block deepwoken-nav-item active">Builder Tool</a>
-          <a href="coming-soon.html" class="block deepwoken-nav-item">Top Builds</a>
-          <a href="coming-soon.html" class="block deepwoken-nav-item">Builder Guides</a>
-          <a href="coming-soon.html" class="block deepwoken-nav-item">About</a>
+            <a href="index.html" class="block deepwoken-nav-item active">Builder Tool</a>
+            <a href="coming-soon.html" class="block deepwoken-nav-item">Top Builds</a>
+            <a href="coming-soon.html" class="block deepwoken-nav-item">Builder Guides</a>
+            <a href="coming-soon.html" class="block deepwoken-nav-item">About</a>
         </div>
-      </nav>
+    </nav>
     <header class="flex items-center justify-center mb-6">
         <img src="/assets/icons/logo.webp" alt="Deepwoken Builder Logo" class="w-12 h-12 mr-4">
         <h1 class="text-3xl font-bold text-yellow-400">Deepwoken Builder</h1>
@@ -907,37 +948,8 @@
                 <!-- Left column (Obtainable Mantras) -->
                 <div class="col-span-1 bg-gray-800 rounded-lg p-4">
                     <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtainable Mantras</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="text-lg font-bold mb-2 text-yellow-400">Combat</div>
-                            <ul class="space-y-1" id="obtainable-combat">
-                                <li class="cursor-pointer hover:text-green-400">Pumpkin Pitch</li>
-                                <li class="cursor-pointer hover:text-green-400">Brachial Spear</li>
-                                <li class="cursor-pointer hover:text-green-400">Dread Breath</li>
-                                <li class="cursor-pointer hover:text-green-400">Mecha Gatling</li>
-                                <li class="cursor-pointer hover:text-green-400">Coral Spear</li>
-                                <li class="cursor-pointer hover:text-green-400">Whirling Blade</li>
-                                <li class="cursor-pointer hover:text-green-400">Abyssal Ridge</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="text-lg font-bold mb-2 text-blue-400">Mobility</div>
-                            <ul class="space-y-1" id="obtainable-mobility">
-                                <li class="cursor-pointer hover:text-green-400">Beast Burrow</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="text-lg font-bold mb-2 text-green-400">Support</div>
-                            <ul class="space-y-1" id="obtainable-support">
-                                <li class="cursor-pointer hover:text-green-400">Enforcer Pull</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="text-lg font-bold mb-2 text-purple-400">Wisp</div>
-                            <ul class="space-y-1" id="obtainable-wisp">
-                                <!-- Add Wisp mantras here if any -->
-                            </ul>
-                        </div>
+                    <div class="space-y-4" id="obtainable-mantras">
+                        <!-- Mantras will be dynamically inserted here -->
                     </div>
                 </div>
 
@@ -946,55 +958,11 @@
                     <div class="bg-gray-800 rounded-lg p-4 mb-4">
                         <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtained Mantras</h3>
                         <div id="obtained-mantras-container" class="space-y-4">
-                            <div id="obtained-combat">
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-lg font-bold text-yellow-400">Combat</span>
-                                    <span class="text-sm text-red-400"><span id="combat-count">0</span>/3</span>
-                                </div>
-                                <ul class="space-y-1"></ul>
-                            </div>
-                            <div id="obtained-wildcard">
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-lg font-bold text-purple-400">Wildcard</span>
-                                    <span class="text-sm text-red-400"><span id="wildcard-count">0</span>/3</span>
-                                </div>
-                                <ul class="space-y-1"></ul>
-                            </div>
-                            <div id="obtained-mobility">
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-lg font-bold text-blue-400">Mobility</span>
-                                    <span class="text-sm text-red-400"><span id="mobility-count">0</span>/1</span>
-                                </div>
-                                <ul class="space-y-1"></ul>
-                            </div>
-                            <div id="obtained-support">
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-lg font-bold text-green-400">Support</span>
-                                    <span class="text-sm text-red-400"><span id="support-count">0</span>/1</span>
-                                </div>
-                                <ul class="space-y-1"></ul>
-                            </div>
+                            <!-- Obtained mantras will be dynamically inserted here -->
                         </div>
-                    </div>
-                    <div class="bg-gray-800 rounded-lg p-4">
-                        <p class="text-sm text-yellow-400">Hold click on a mantra to view it's modifications.</p>
                     </div>
                 </div>
             </div>
-            <!-- <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
-                <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
-                    <option>Local builds</option>
-                </select>
-                <div class="grid grid-cols-2 gap-2">
-                    <button
-                        class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
-                        Export build as link
-                    </button>
-                    <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
-                        Save loaded build
-                    </button>
-                </div>
-            </div> -->
         </div>
         <!-- weapons-tab -->
         <div id="weapons-tab" class="tab-content hidden">
