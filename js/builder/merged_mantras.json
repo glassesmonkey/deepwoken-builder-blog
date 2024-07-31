@@ -1,0 +1,662 @@
+{
+  "Combat": [
+    {
+      "name": "Fire Blade (☆☆☆)",
+      "description": "Slicing blades of flame.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": 50,
+      "cooldown": "10 Second Cooldown",
+      "effect": "User forcefully slams down their blade coated in flames. Deals moderate damage. Inflicts Burn. Deals high posture damage. User can walk while casting, giving some sort of mobility. User is slowed while casting. Breaks certain tiles. Compatible with Duration and Intensity Buffs.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Flame Repulsion (☆☆☆)",
+      "description": "An exertion of flames.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "After a wind-up of 0.5 seconds, user releases a burning AoE blast. Reduces incoming damage by 75% in addition to reflecting it back. Unable to move during wind-up. Deals moderate damage. Knocks enemies back. User takes reduced damage and has hyper-armor near the end of the cast. Taking damage while using it reflects the damage back to the attacker.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Burning Servants (☆☆☆)",
+      "description": "Summon a legion of flaming spearmen that lunge inwards.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User summons six blazing warriors armored with Halberds in a circle and attacking one after the other in quick succession at the position of the caster. Before all striking one final time at the center and dissapearing in flames. Deals moderate damage. Inflicts Burn. Deals exactly 20 posture damage.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Fire Gun (☆☆☆)",
+      "description": "A bullet of flames shot through each hand.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": "No Cooldown",
+      "effect": "Caster draws out and propels bullets of flames from their hands towards the cursor's location. Deals light damage. Inflicts Burn. Breaks certain tiles. Fire bullets can light campfire pits. Can propel the caster backward if it is cast while jumping/walking backward or in water. Clicking again while firing will fire additional bullets, at the cost of more ether.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Flame Grab (☆☆☆)",
+      "description": "Jet forwards with flames and slam anyone you catch in your clutches.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User lunges forward for a grab that slams and burns incoming opponents into the ground. Inflicts light damage. Inflicts Burn.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Flame Blind (☆☆☆)",
+      "description": "Shoot a projectile that explodes after a short delay and blinds those looking at it.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User snaps their fingers, summoning an orb of flames that implodes and blinds opponents temporarily. Blinds nearby targets for 1.5 seconds. Rare Flamecharm mantra. Buffed by the Concussive Flash Talent, causing all blinded enemies to be dazed. Can be upgraded with Aeon Logstones to make the blind last longer.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Fire Palm (★☆☆)",
+      "description": "A blast of flame.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User releases a burst of flame from the palm in front of them. Cone shaped hitbox. Deals moderate damage. Inflicts Burn. Can be upgraded with the Wildfire Talent.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Fire Eruption (★☆☆)",
+      "description": "A pyroclastic eruption.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User slams weapon into the ground below that causes 2 consecutive explosions. Deals moderate-high damage. The second explosion ragdolls enemies. NPCs have trouble blocking the second explosion. The second explosion deals an extremely high amount of posture damage. Inflicts Burn. Medium-Heavy endlag.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Fire Forge (★☆☆)",
+      "description": "Toss a nimble dagger.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User throws 3 quick burning daggers. Deal light damage. Does not inflict Burn. Improved by Talent 'Hell's Partisan,' allowing it to inflict Burn. Breaks certain tiles.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Relentless Flames (★★☆)",
+      "description": "Bear down on your foes with repeated fiery slashes.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User releases a flurry of seven slashes. Only slashes once when an enemy isn't hit. Inflicts burn. You can cancel while using m2.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Flame Sentinel (★★☆)",
+      "description": "Conjure a turret of flames.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User creates an orb that will shoot out fireballs to nearby targets.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Rising Flame (★★☆)",
+      "description": "A rising tornado of flames.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User spins and releases a fury of flames that sends both the user and opponent vertically into the air. Deals moderate-high damage. It has a base damage of 15. Improved by Talents 'Meteor Impact' and 'Phoenix Impact'. Does not send the user vertically into the air if no targets are hit.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Flare Volley (★★☆)",
+      "description": "Conjure up to 3 fireballs to vollery at your enemies.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User releases a small projectile fireball and sets enemy on fire if hit. Deals high posture damage. This mantra can pass through walls.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Ash Slam (★★★)",
+      "description": "Strike the ground, turning it to ash.",
+      "requirements": "At least 20 Strength and 50 Flamecharm",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User imbues their fist with flames that explode on impact with the ground. Strikes twice in front of the user and creates an bursting explosion each time. Deals moderate damage. Inflicts Burn. Similar to Fire Eruption, but with more mobility and less endlag.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Flame Ballista (★★★)",
+      "description": "Conjure a flaming arrow and fire it at your target.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User gathers fire in their hands and twists it into an arrow head, unleashing a powerful projectile. Can be charged up to 6 times before the projectile is shot automatically on the 6th charge. Damage increases with each charge. Fires where cursor is aimed. Inflicts burn. Homes onto enemies.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Lightning Blade (☆☆☆)",
+      "description": "Arcing blades of electricity.",
+      "requirements": "Thundercall Attunement",
+      "etherCost": 50,
+      "cooldown": "10 Second Cooldown",
+      "effect": "Dash forward before performing two slashes, sending out 2 short-ranged arcs of lightning forward that pierce through target(s). Deals moderate damage. The arcs can completely phase through an enemy if you cast it too close to them, therefore mind the spacing.",
+      "attunement": "Thundercall",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Jolt Grab (☆☆☆)",
+      "description": "An electrified chokehold.",
+      "requirements": "Thundercall Attunement",
+      "etherCost": 60,
+      "cooldown": "10 Second Cooldown",
+      "effect": "Dash forwards with the character's left hand charged with lightning; if a target is hit, slam them into the ground before sending out a small AoE around the user. Deals moderate damage. Activates only when the cursor is locked onto a target.",
+      "attunement": "Thundercall",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Lightning Beam (☆☆☆)",
+      "description": "Fire a beam of lightning.",
+      "requirements": "Thundercall Attunement",
+      "etherCost": 50,
+      "cooldown": "10 Second Cooldown",
+      "effect": "Cast out a straight beam of lightning from where the character is facing. Can break objects.",
+      "attunement": "Thundercall",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Electro Carve (★☆☆)",
+      "description": "Produce a highly potent field of electromagnetism, shocking all inside.",
+      "requirements": "Thundercall Attunement",
+      "etherCost": 10,
+      "cooldown": "10 Second Cooldown",
+      "effect": "Conjure a shocking orb at the end of weapon, dealing rapid damage. Deals light damage; moderate if not parried. Projectile moves along where the character is facing. Shocks opponents inside of it while dealing damage.",
+      "attunement": "Thundercall",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Fleeting Sparks (★☆☆)",
+      "description": "Call forth motes of electricity that seek out your foes.",
+      "requirements": "Thundercall Attunement",
+      "etherCost": 60,
+      "cooldown": null,
+      "effect": "Perform a gesture, conjuring 3 orbs of lightning above and beside the user before sending them towards target(s). Deals moderate damage.",
+      "attunement": "Thundercall",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Ice Spikes (☆☆☆)",
+      "description": "Piercing spikes of ice.",
+      "requirements": "Frostdraw Attunement",
+      "etherCost": 40,
+      "cooldown": null,
+      "effect": "Conjure a spike of ice from the ground at the cursor's location. Deals moderate damage and sends target into the air. Does not inflict Chill.",
+      "attunement": "Frostdraw",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Ice Beam (☆☆☆)",
+      "description": "Fire a beam of ice.",
+      "requirements": "Frostdraw Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "Fire a penetrating beam of ice. Deals light damage. Inflicts 1 second chill per hit, can be increased to 5 seconds with one eternal logstone. Hits multiple times in a row. Knocks back target(s).",
+      "attunement": "Frostdraw",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Warden's Blades (☆☆☆)",
+      "description": "Revolving blades of ice.",
+      "requirements": "Frostdraw Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "Form 4 swords of ice around the user, which rapidly rotate for a few seconds before shooting off into the distance. Deals light damage. Every projectile applies 1 sec chill, can't be increased. Hits multiple times in a row.",
+      "attunement": "Frostdraw",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Frozen Servants (☆☆☆)",
+      "description": "A legion of frost.",
+      "requirements": "Frostdraw Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "Conjures a surrounding ring of 4 to 5 frozen servants that emits two blasts of frosty mist to the center. Deals Moderate damage if both blows hit. Inflicts 2 seconds chill per hit. Can't be increased. Leaves ice where the Mantra is casted.",
+      "attunement": "Frostdraw",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Ice Daggers (★☆☆)",
+      "description": "Form and toss daggers of ice at your aimed opponent.",
+      "requirements": "Frostdraw Attunement",
+      "etherCost": null,
+      "cooldown": "4 second cooldown if no target is within range",
+      "effect": "Form 3 daggers of ice before throwing them towards the nearest target. Deals moderate damage. Projectiles are homing. Does not inflict Chill.",
+      "attunement": "Frostdraw",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Wind Blade (☆☆☆)",
+      "description": "Slicing blades of wind.",
+      "requirements": "Galebreathe Attunement",
+      "etherCost": 40,
+      "cooldown": null,
+      "effect": "Launch a wind projectile at cursor's position. Deals light damage. Can be improved with the 'Tempest Wind' Talent.",
+      "attunement": "Galebreathe",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Air Force (☆☆☆)",
+      "description": "Shoots out an air blast.",
+      "requirements": "Galebreathe Attunement",
+      "etherCost": 20,
+      "cooldown": null,
+      "effect": "Conjure a strong blast of air from your hands in the direction of your mouse that staggers your target. Deals light-medium damage. Pushes people back and dazes them if they collide with something. Does not apply hitstun from the blast. Deals immense posture damage. Can break objects.",
+      "attunement": "Galebreathe",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Tornado Kick (☆☆☆)",
+      "description": "Slicing blades of wind.",
+      "requirements": "Galebreathe Attunement",
+      "etherCost": 50,
+      "cooldown": null,
+      "effect": "Perform a kick that sends out a surging projectile of wind, leap up and send out 3 more AoE projectiles if the mantra hits a registered target. Deals moderate-high damage (If both the initial and follow-up projectiles hit). Projectile is medium-ranged and explodes on impact. Initial hit doesn't apply hit stun but pushes people away.",
+      "attunement": "Galebreathe",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Dark Blade (☆☆☆)",
+      "description": "Slicing blades of dark energy.",
+      "requirements": "Shadowcast Attunement",
+      "etherCost": 20,
+      "cooldown": null,
+      "effect": "A dash forward that unsheathes your weapon and cuts three times with a shadow infused slice. Can be modified to add more. Blockable.",
+      "attunement": "Shadowcast",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Shadow Gun (☆☆☆)",
+      "description": "An awful blast of dark energy.",
+      "requirements": "Shadowcast Attunement",
+      "etherCost": 20,
+      "cooldown": null,
+      "effect": "You fire a melee-ranged shot at your mouse cursor. Can be modified to add more shots, or create explosive effects on hits. Blockable. Guardbreaks at Lvl 5.",
+      "attunement": "Shadowcast",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Clutching Shadow (☆☆☆)",
+      "description": "A shadowy hand.",
+      "requirements": "Shadowcast Attunement",
+      "etherCost": 50,
+      "cooldown": null,
+      "effect": "Targets one enemy within a radius around the caster (signified by a red glow around the targeted foe) and lifts them up into the air before slamming them down, dealing a decent amount of damage and refilling about the same amount of ether as the spell cost. The caster and target (?) have iframes during the choke animation. Blockable, multihits and deals little to no posture damage.",
+      "attunement": "Shadowcast",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Metal Eruption (☆☆☆)",
+      "description": "A flurry of metal spikes.",
+      "requirements": "Ironsing Attunement",
+      "etherCost": 40,
+      "cooldown": null,
+      "effect": "Stomp the ground, causing a flurry of metal spikes to erupt forward. By rotating your view, you can reangle the mantra to catch rolls. Deals high posture damage.",
+      "attunement": "Ironsing",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Needle Barrage (☆☆☆)",
+      "description": "A barrage of metal rods.",
+      "requirements": "Ironsing Attunement",
+      "etherCost": 40,
+      "cooldown": null,
+      "effect": "Jump into the air before throwing out 3 projectiles towards the location of the cursor. Applies Metal Rods on hit.",
+      "attunement": "Ironsing",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Metal Kick (★☆☆)",
+      "description": "A powerful kick laced with metal",
+      "requirements": "Ironsing Attunement",
+      "etherCost": 20,
+      "cooldown": null,
+      "effect": "Jump vertically into the air before slamming down with an axe-kick, dealing moderate damage and applying knockdown to any targets hit.",
+      "attunement": "Ironsing",
+      "isMonsterMantra": false
+    },
+    {
+      "Monster Mantras": [
+        {
+          "name": "Brachial Spear (★★☆)",
+          "description": "A javelin of jagged bone.",
+          "requirements": "Giant Femur",
+          "etherCost": null,
+          "cooldown": null,
+          "effect": "The user digs into the ground, pulling out a comically large bone, and throwing it for hefty damage. This move has a large startup and is based on the Bone Keeper's 'Bone Throw' ability. Grants hyperarmor during startup.",
+          "attunement": null,
+          "isMonsterMantra": true
+        },
+        {
+          "name": "Coral Spear (★★☆)",
+          "description": "...",
+          "requirements": "Megalodaunt Coral",
+          "etherCost": null,
+          "cooldown": null,
+          "effect": "The user grows coral on their back and sprays coral in every direction, based on the Megalodaunt's 'Thousand Needles' ability. This mantra can damage ship by 90 damage.",
+          "attunement": null,
+          "isMonsterMantra": true
+        },
+        {
+          "name": "Dread Breath (★★☆)",
+          "description": null,
+          "requirements": "Dread Serpent Tooth",
+          "etherCost": null,
+          "cooldown": null,
+          "effect": "The user shoots out a devastating beam of compressed ice, based on the Dread Serpent's 'Ice Beam.' This move stuns and procs ice, slowing enemies. Alternatively, it will proc crystal if the user has 'Glass Path: Crystallization'.",
+          "attunement": null,
+          "isMonsterMantra": true
+        },
+        {
+          "name": "Mecha Gatling (★★☆)",
+          "description": "...",
+          "requirements": "Broken Gatling Gun",
+          "etherCost": null,
+          "cooldown": null,
+          "effect": "Pull out a Gatling gun, mowing down the enemies in your way. The bullets of the Mecha Gatling does not stun, dealing minuscule damage with a short range of fire. This mantra is based on the Mechalodaunt's 'Bullet Fury' ability. Alternatively, it will proc eruptions if the user has 'Eruption Path: Lava Serpent'.",
+          "attunement": null,
+          "isMonsterMantra": true
+        },
+        {
+          "name": "Whirling Blade (★★☆)",
+          "description": "A chitinous scythe to cut through your foes in a whirl.",
+          "requirements": "Terrapod Shell",
+          "etherCost": null,
+          "cooldown": null,
+          "effect": "The user grows a Terrapod claw from their left arm and begins to spin forward after a short windup. Dealing moderate damage if hit by entire spin. Cancels if parried.",
+          "attunement": null,
+          "isMonsterMantra": true
+        },
+        {
+          "name": "Abyssal Ridge (★★☆)",
+          "description": "Send a cascading eruption towards your foes, forcing them to react.",
+          "requirements": "Nautilodaunt Beak",
+          "etherCost": null,
+          "cooldown": null,
+          "effect": "The caster stomps into the ground and sends out a eruption that can automatically targets the nearest opponent. This mantra is based on the Nautilodaunt's 'Grand Stomp' ability.",
+          "attunement": null,
+          "isMonsterMantra": true
+        }
+      ]
+    }
+  ],
+  "Mobility": [
+    {
+      "name": "Flame Leap (★★☆)",
+      "description": "Leap up leaving behind a burst of flames.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "User emits a blast under them that propels the caster and nearby opponents up in the air. Can lead to fall damage if landing on a spot that is lower in altitude compared to the spot the user casted this Mantra from.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Flame Assault (★★☆)",
+      "description": "Dash forward in a spiral of flames.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": 60,
+      "cooldown": null,
+      "effect": "User propels and spins in a 360 motion forward coated in flames leaving a trail behind; hitting anyone in their path. Deals light damage. Throws back the opponent and sets them on fire. Provides adequate mobility. Moves in a straight path.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Lightning Assault (★★☆)",
+      "description": "A rush of lightning.",
+      "requirements": "Thundercall Attunement",
+      "etherCost": 60,
+      "cooldown": "10 Second Cooldown",
+      "effect": "The character sheathes their weapon by their left waist before rushing forward lightspeed in lightning dashes while hitting target(s) as they pass. Deals moderate damage. Guaranteed to hit at least one target if you have your crosshair locked onto them.",
+      "attunement": "Thundercall",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Lightning Cloak (★★★)",
+      "description": "A cloak of lightning itself.",
+      "requirements": "Thundercall Attunement",
+      "etherCost": 20,
+      "cooldown": null,
+      "effect": "Enveloped in lightning, increase the user's agility, swing speed (+10%), and granting them lightning dashes (long dodges). A combative action, such as blocking parrying or attacking, must be used within 8 seconds or the mantra is deactivated and goes on cooldown. Lasts a duration of 6.5 – 60 seconds. Cannot last longer than 60 seconds.",
+      "attunement": "Thundercall",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Glacial Arc (★☆☆)",
+      "description": "An arc of ice.",
+      "requirements": "Frostdraw Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "Conjures a solid ice lance that towards the user's cursor. Deals heavy damage when it hits an opponent. Can be used to scale walls and terrain. Inflicts a 1 second chill (Can't be increased).",
+      "attunement": "Frostdraw",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Ice Skate (★★★)",
+      "description": "Skate freely on paths of ice.",
+      "requirements": "Frostdraw Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "Form a frozen path of ice as the user slides on at a high velocity. Knocked players cannot be held while this mantra is active. When below mantra level 5, gradually loses height similar to gliders. Height loss gain at level 5 is negligible, but still present.",
+      "attunement": "Frostdraw",
+      "isMonsterMantra": false
+    },
+	{
+      "name": "Wind Passage (★★★)",
+      "description": "A rush of wind",
+      "requirements": "Galebreathe Attunement",
+      "etherCost": 50,
+      "cooldown": null,
+      "effect": "Rush forward towards the direction you're facing in a blink of an eye, leaving much wind after cuts for the distance you travelled. Does heavy damage. Can be used to clip through walls while in The Second Layer.",
+      "attunement": "Galebreathe",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Encircle (★☆☆)",
+      "description": "Conjure shadows around your enemy before warp-striking to them.",
+      "requirements": "Shadowcast Attunement",
+      "etherCost": 90,
+      "cooldown": null,
+      "effect": "The user will summon shadows around their target and teleport to them after a short wait. Attacks done before teleporting will continue after the teleport. Will still teleport the user if parried/dodged.",
+      "attunement": "Shadowcast",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Shadow Assault (★★☆)",
+      "description": "A rush of darkness.",
+      "requirements": "Shadowcast Attunement",
+      "etherCost": 50,
+      "cooldown": null,
+      "effect": "Windup before turning into shadows and dashing forward, dealing very minor damage to anyone in your way while applying darkness. Blockable.",
+      "attunement": "Shadowcast",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Metal Rampart (☆☆☆)",
+      "description": "Summon a large metal pillar",
+      "requirements": "Ironsing Attunement",
+      "etherCost": 50,
+      "cooldown": null,
+      "effect": "Form a pillar from below, causing the character to ascend upwards as the pillar forms. The height of the pillar will depend on what is above the user.",
+      "attunement": "Ironsing",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Metal Ball (★★☆)",
+      "description": "Create a metal ball and rush forward.",
+      "requirements": "Ironsing Attunement",
+      "etherCost": 40,
+      "cooldown": null,
+      "effect": "Encased in a metal ball, rush forward while knocking down any targets in the way. Covers around 100 studs of distance. Applies Metal Rods on hit.",
+      "attunement": "Ironsing",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Beast Burrow (★★☆)",
+      "description": null,
+      "requirements": "Thresher Talon",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "Burrow into the ground, cued by the dig animation. Gives invincibility for the duration of the burrow. Click to cancel the skill and hit anybody above, knocking them upwards. Based on the Thresher's 'Dig'.",
+      "attunement": null,
+      "isMonsterMantra": true
+    }
+  ],
+  "Support": [
+    {
+      "name": "Flame Wisp (★★☆)",
+      "description": "A servant of flames.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "Caster summons a wisp of magma. Flame Wisp absorbs some of the damage from your burn tick damage and turns it into healing. Lava Serpent eruptions that hit enemies also have some of their damage converted into healing for you. Ignites nearby campfire pits if not busy healing you. Ritual casting.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Graceful Flame (★☆☆)",
+      "description": "Conjure an undying flame for the caster and their comrades to rest by.",
+      "requirements": "Flamecharm Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "Caster holds out their arm while concentrating their flame before conjuring an orb of fire used to imitate a campfire. Acts as a mobile campfire with restrictions. Lasts one minute without Duration Modifiers. Ritual casting.",
+      "attunement": "Flamecharm",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Thunder Wisp (★★☆)",
+      "description": "A servant of lightning.",
+      "requirements": "Thundercall Attunement",
+      "etherCost": 70,
+      "cooldown": null,
+      "effect": "Conjure a wisp of lightning that applies 'Sapping' to a target upon being flourished. 'Sapping' increases the target's mantra cooldown. When Sapping ends, the target is shocked.",
+      "attunement": "Thundercall",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Spark Swap (★★★)",
+      "description": "Swap places with a selected target.",
+      "requirements": "Thundercall Attunement",
+      "etherCost": 10,
+      "cooldown": null,
+      "effect": "After a short delay and indicator, instantly swap location with whatever target your cursor is on. Range scales with current health. This can be used on NPCs, players or monsters. Estimated 300 - 350 Stud range. Cannot be used while in water or airborne.",
+      "attunement": "Thundercall",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Frost Wisp (★★☆)",
+      "description": "A servant of ice.",
+      "requirements": "Frostdraw Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "Conjure a wisp that travels around the user that freezes the ground below; Shoots a small beam of ice whenever the user vents successfully. The 'Glacial Ice' Talent and leveling up the mantra increases the size of the ice floors it spawns.",
+      "attunement": "Frostdraw",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Iceberg (★★★)",
+      "description": "Enter a state of cryostasis.",
+      "requirements": "Frostdraw Attunement",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "Encases the user in a block of ice while releasing pulses of ice that Chill and pushes back any targets that get close, user heals in the first two pulses of a ring. Targets gain Autoparry for 1 hit while this is active. Heals up to 8%. Applies 1 second of chill per hit (Can't be increased).",
+      "attunement": "Frostdraw",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Gale Wisp (★★☆)",
+      "description": "A servant of wind.",
+      "requirements": "Galebreathe Attunement",
+      "etherCost": 60,
+      "cooldown": null,
+      "effect": "Spawns a spherical wisp of wind. Requires ritual casting. Grant 30% fall damage resist. Haunted Gale requires one less perfect cast to activate (3 to 2). Increases the Spectral meter bar for Haunted Path: Specter users by a small percent, the regen is greater than the decay.",
+      "attunement": "Galebreathe",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Shade Devour (★☆☆)",
+      "description": "Gorge on your own health for raw strength",
+      "requirements": "Shadowcast Attunement",
+      "etherCost": 55,
+      "cooldown": null,
+      "effect": "Causes a damaging shockwave that adds a +20% weapon damage buff to the user, consumes health upon use. Spine Cutter cannot be used while Shade Devour is active.",
+      "attunement": "Shadowcast",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Devouring Eye (★★☆)",
+      "description": "Summons a fragile eye that consumes the ether of those who try to cast Mantras within its gaze.",
+      "requirements": "Shadowcast Attunement",
+      "etherCost": 40,
+      "cooldown": null,
+      "effect": "Creates an Eye that steals the ether of anybody that casts a Mantra within its gaze",
+      "attunement": "Shadowcast",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Iron Skin (★☆☆)",
+      "description": "Coat your skin with metal to reduce harm.",
+      "requirements": "Ironsing Attunement",
+      "etherCost": 20,
+      "cooldown": null,
+      "effect": "Taking stance, the character's body is hardened like metal, negating 90% of the damage taken during the entirety of the mantra's duration. During usage, the user is unable to move nor act. Does not negate deferred, fire or fall damage.",
+      "attunement": "Ironsing",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Chain Pull (★☆☆)",
+      "description": "Manifest chains to brutally pull enemies towards you.",
+      "requirements": "Ironsing Attunement",
+      "etherCost": 50,
+      "cooldown": null,
+      "effect": "Conjure a chain of metal from the right hand that pulls in any targets from the cursor.",
+      "attunement": "Ironsing",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Metal Wisp (★★☆)",
+      "description": "A servant of metal",
+      "requirements": "Ironsing Attunement",
+      "etherCost": 70,
+      "cooldown": null,
+      "effect": "Conjure a metal wisp that regenerates armor durability. Applies Metal Rods. Requires a ritual cast. Consumes a small amount of Ether when repairing armor. Armor Regeneration is scaled with Ironsing.",
+      "attunement": "Ironsing",
+      "isMonsterMantra": false
+    },
+    {
+      "name": "Enforcer Pull (★★☆)",
+      "description": "A powerful gravitational pull.",
+      "requirements": "Enforcer Eye",
+      "etherCost": null,
+      "cooldown": null,
+      "effect": "Conjure strings of the Enforcer, auto-tracking onto enemies and pulling them in. Missing still takes ether and does not put this mantra on cooldown.",
+      "attunement": null,
+      "isMonsterMantra": true
+    }
+  ]
+}
