@@ -31,20 +31,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
         categories.forEach(category => {
             const categoryDiv = document.createElement('div');
+            categoryDiv.className = 'mb-4';
             categoryDiv.innerHTML = `
-          <div class="text-lg font-bold mb-2 text-yellow-400">${category}</div>
-          <ul class="space-y-1" id="obtainable-${category.toLowerCase()}">
-            ${data[category].map(mantra => `
-              <li class="cursor-pointer hover:text-green-400 ${getAttunementColor(mantra.attunement)}" 
-                  data-category="${category}" 
-                  data-name="${mantra.name}">
-                ${mantra.name}
-              </li>
-            `).join('')}
-          </ul>
-        `;
+                <button class="category-button" data-category="${category.toLowerCase()}">
+                  ${category}
+                  <span class="chevron">▼</span>
+                </button>
+                <div class="category-content" id="content-${category.toLowerCase()}">
+                  <ul class="space-y-1" id="obtainable-${category.toLowerCase()}">
+                    ${data[category].map(mantra => `
+                      <li class="cursor-pointer hover:text-green-400 ${getAttunementColor(mantra.attunement)}" 
+                          data-category="${category}" 
+                          data-name="${mantra.name}">
+                        ${mantra.name}
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              `;
             obtainableMantrasContainer.appendChild(categoryDiv);
         });
+
+        // 添加按钮点击事件
+        document.querySelectorAll('.category-button').forEach(button => {
+            button.addEventListener('click', toggleCategory);
+        });
+    }
+    function toggleCategory(event) {
+        const button = event.currentTarget;
+        const category = button.dataset.category;
+        const content = document.getElementById(`content-${category}`);
+        
+        button.classList.toggle('active');
+        content.classList.toggle('active');
+        
+        if (content.classList.contains('active')) {
+            content.style.display = 'block';
+            button.querySelector('.chevron').style.transform = 'rotate(180deg)';
+        } else {
+            content.style.display = 'none';
+            button.querySelector('.chevron').style.transform = 'rotate(0deg)';
+        }
     }
 
     function getAttunementColor(attunement) {
@@ -147,14 +174,24 @@ document.addEventListener('DOMContentLoaded', function () {
         const mantra = mantrasData[category].find(m => m.name === name);
 
         let targetCategory = category;
-        if (selectedMantras[category].length >= mantraLimits[category] && selectedMantras['Wildcard'].length < mantraLimits['Wildcard']) {
-            targetCategory = 'Wildcard';
+
+        // 检查当前类别是否已达到上限
+        if (selectedMantras[category].length >= mantraLimits[category]) {
+            // 如果达到上限，检查 Wildcard 是否有空位
+            if (selectedMantras['Wildcard'].length < mantraLimits['Wildcard']) {
+                targetCategory = 'Wildcard';
+            } else {
+                // 如果 Wildcard 也满了，那么继续添加到原类别
+                targetCategory = category;
+            }
         }
 
-        if (selectedMantras[targetCategory].length < mantraLimits[targetCategory]) {
-            addObtainedMantra(mantra, targetCategory);
-            disableMantra(event.target);
-        }
+        // 添加 mantra 到目标类别
+        addObtainedMantra(mantra, targetCategory);
+        disableMantra(event.target);
+
+        // 更新计数器
+        updateMantraCount(targetCategory);
     }
 
     function disableMantra(element) {
@@ -180,7 +217,6 @@ document.addEventListener('DOMContentLoaded', function () {
         categoryContainer.querySelector('ul').appendChild(mantraElement);
 
         selectedMantras[category].push(mantra);
-        updateMantraCount(category);
     }
 
     function deselectMantra(event) {
@@ -223,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (countElement) {
             const currentCount = selectedMantras[category].length;
             countElement.textContent = currentCount;
-            countElement.className = currentCount >= mantraLimits[category] ? 'text-red-400' : 'text-white';
+            countElement.className = currentCount > mantraLimits[category] ? 'text-red-400' : 'text-white';
         }
     }
 

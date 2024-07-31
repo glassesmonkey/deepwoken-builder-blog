@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
             button.classList.add('hover:bg-parchment');
         });
 
-        //const selectedTab = document.getElementById(tabId + '-tab');
         const selectedTab = document.getElementById(tabId);
         const selectedButton = document.querySelector(`[data-tab="${tabId}"]`);
 
@@ -21,6 +20,29 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedButton.classList.add('bg-parchment');
             selectedButton.classList.remove('hover:bg-parchment');
         }
+
+        // 只有在切换到非 mantras 标签时才重置 mantras 按钮
+        if (tabId !== 'mantras-tab') {
+            resetMantrasButtons();
+        }
+    }
+
+    function resetMantrasButtons() {
+        const mantrasButtons = document.querySelectorAll('.category-button');
+        const mantrasContents = document.querySelectorAll('.category-content');
+
+        mantrasButtons.forEach(button => {
+            button.classList.remove('active');
+            const chevron = button.querySelector('.chevron');
+            if (chevron) {
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        mantrasContents.forEach(content => {
+            content.classList.remove('active');
+            content.style.display = 'none';
+        });
     }
 
     tabButtons.forEach(button => {
@@ -30,7 +52,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    
     switchTab('stats-tab');
 });
-

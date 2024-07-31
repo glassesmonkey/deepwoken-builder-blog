@@ -139,6 +139,42 @@
             margin-bottom: 0.75rem;
             color: #fbbf24;
         }
+
+        .category-button {
+            background-color: #1a202c;
+            color: #fbbf24;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.3s;
+        }
+
+        .category-button:hover {
+            background-color: #2d3748;
+        }
+
+        .category-content {
+            display: none;
+            padding: 10px;
+            background-color: #2d3748;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        .chevron {
+            float: right;
+            transition: transform 0.3s;
+        }
+
+        .category-button.active .chevron {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 
