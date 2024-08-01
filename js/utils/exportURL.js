@@ -425,10 +425,12 @@ function applyMantrasTabConfiguration(mantrasConfig) {
         const ul = categoryContainer.querySelector('ul');
         mantras.forEach(mantra => {
             const li = document.createElement('li');
-            li.textContent = mantra.name || mantra; // 使用 mantra.name 如果存在，否则使用 mantra
-            li.className = 'cursor-pointer';
+            const mantraName = mantra.name || mantra;
+            li.textContent = mantraName;
+            const attunement = mantra.attunement || getAttunementFromName(mantraName);
+            li.className = `cursor-pointer ${getAttunementColor(attunement)}`;
             li.dataset.category = category;
-            li.dataset.name = mantra.name || mantra;
+            li.dataset.name = mantraName;
             ul.appendChild(li);
         });
 
@@ -454,6 +456,20 @@ function applyMantrasTabConfiguration(mantrasConfig) {
     });
 
     console.log("Mantras configuration applied successfully");
+}
+
+function getAttunementFromName(name) {
+    if (name.includes('Flame')) return 'Flamecharm';
+    if (name.includes('Thunder')) return 'Thundercall';
+    if (name.includes('Frost')) return 'Frostdraw';
+    if (name.includes('Gale')) return 'Galebreathe';
+    if (name.includes('Shadow')) return 'Shadowcast';
+    if (name.includes('Iron')) return 'Ironsing';
+    return null;
+}
+
+function getAttunementColor(attunement) {
+    return attunementColors[attunement] || attunementColors[null];
 }
 
 // Apply weapons tab configuration
