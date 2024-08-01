@@ -4,7 +4,7 @@ Welcome to the Deepwoken Builder project! This tool is designed to help users cr
 
 ## Demo
 
-Check out the live demo of the Deepwoken Builder [here](https://deepwokenbuilder.com).
+Check out the live demo of the [Deepwoken Builder](https://deepwokenbuilder.com).
 
 ## Installation
 
