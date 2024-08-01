@@ -12,7 +12,7 @@ To run this project locally, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/yourusername/deepwoken-builder.git](https://github.com/glassesmonkey/deepwoken-builder-blog.git)
+   git clone https://github.com/glassesmonkey/deepwoken-builder-blog.git
    cd deepwoken-builder
    ```
 
