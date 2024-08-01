@@ -1,3 +1,15 @@
+const mantraLimits = { Combat: 3, Mobility: 1, Support: 1, Wildcard: 1 };
+window.selectedMantras = { Combat: [], Mobility: [], Support: [], Wildcard: [] };
+
+const attunementColors = {
+    Flamecharm: 'text-red-500',
+    Thundercall: 'text-yellow-400',
+    Frostdraw: 'text-blue-400',
+    Galebreathe: 'text-green-400',
+    Shadowcast: 'text-purple-500',
+    Ironsing: 'text-gray-400',
+    null: 'text-white'
+};
 const buildStructure = {
     stats: {
         race: "",
@@ -72,8 +84,12 @@ function showModal(title, content) {
 }
 
 function exportBuildAsLink() {
+    console.log("exportBuildAsLink function called");
+    console.log("Before getCurrentBuildConfiguration, window.selectedMantras:", JSON.parse(JSON.stringify(window.selectedMantras)));
     const currentBuild = getCurrentBuildConfiguration();
-
+    console.log("After getCurrentBuildConfiguration");
+    console.log("Exporting build configuration:", currentBuild);
+    console.log("Mantras in exported configuration:", currentBuild.mantras);
     const encodedBuild = encodeBuild(currentBuild);
     const url = `${window.location.origin}${window.location.pathname}?build=${encodedBuild}`;
 
@@ -120,6 +136,7 @@ function loadBuildFromUrl() {
     if (encodedBuild) {
         try {
             const buildConfig = decodeBuild(encodedBuild);
+            console.log("Decoded build config:", buildConfig);
 
             initializeWeaponsTab().then(() => {
                 applyBuildConfiguration(buildConfig);
@@ -136,7 +153,18 @@ function loadBuildFromUrl() {
         }
     }
 }
+function updateMantrasUI() {
+    // 更新已获得的 mantras
+    for (const [category, mantras] of Object.entries(window.selectedMantras)) {
+        const countElement = document.getElementById(`${category.toLowerCase()}-count`);
+        if (countElement) {
+            countElement.textContent = mantras.length;
+        }
+    }
 
+    // 更新可选 mantras 的状态
+    updateObtainableMantras();
+}
 
 function getStatsTabConfiguration() {
     const config = {
@@ -285,8 +313,14 @@ function applyBuildConfiguration(buildConfig) {
     applyMantrasTabConfiguration(buildConfig.mantras);
     applyWeaponsTabConfiguration(buildConfig.weapons);
     applySummaryTabConfiguration(buildConfig.summary);
-}
 
+    // 重新设置 mantra 交互
+    if (typeof window.setupMantraInteractions === 'function') {
+        window.setupMantraInteractions();
+    } else {
+        console.error("setupMantraInteractions function not found");
+    }
+}
 
 
 function getTalentsTabConfiguration() {
@@ -294,15 +328,22 @@ function getTalentsTabConfiguration() {
 }
 
 function getMantrasTabConfiguration() {
-    const config = { combat: [], mobility: [], support: [], wisp: [] };
-    const categories = { combat: '#obtained-combat', mobility: '#obtained-mobility', support: '#obtained-support', wisp: '#obtained-wildcard' };
-    for (const [category, selector] of Object.entries(categories)) {
-        const elements = document.querySelectorAll(`${selector} li`);
-        config[category] = Array.from(elements).map(el => el.textContent.trim());
+    console.log("Getting mantras configuration");
+    console.log("Current window.selectedMantras:", JSON.parse(JSON.stringify(window.selectedMantras)));
+    
+    // 如果 window.selectedMantras 为空，尝试从 DOM 中获取数据
+    if (Object.values(window.selectedMantras).every(arr => arr.length === 0)) {
+        const obtainedMantras = { Combat: [], Mobility: [], Support: [], Wildcard: [] };
+        ['Combat', 'Mobility', 'Support', 'Wildcard'].forEach(category => {
+            const mantras = document.querySelectorAll(`#obtained-${category.toLowerCase()} li`);
+            obtainedMantras[category] = Array.from(mantras).map(el => el.textContent.trim());
+        });
+        console.log("Obtained mantras from DOM:", obtainedMantras);
+        return obtainedMantras;
     }
-    return config;
+    
+    return JSON.parse(JSON.stringify(window.selectedMantras));
 }
-
 // Get weapons tab configuration
 function getWeaponsTabConfiguration() {
     const weapon1 = JSON.parse(document.getElementById('weapon1').value || 'null');
@@ -349,31 +390,70 @@ function applyTalentsTabConfiguration(talentsConfig) {
 
 
 function applyMantrasTabConfiguration(mantrasConfig) {
-    const mantraCategories = {
-        combat: '#obtained-combat',
-        mobility: '#obtained-mobility',
-        support: '#obtained-support',
-        wisp: '#obtained-wildcard'
-    };
+    console.log("Applying mantras configuration:", mantrasConfig);
 
-    for (const [category, selector] of Object.entries(mantraCategories)) {
-        const containerElement = document.querySelector(`${selector} ul`);
-        const countElement = document.getElementById(`${category}-count`);
-
-        if (containerElement) {
-            containerElement.innerHTML = '';
-            mantrasConfig[category].forEach(mantra => {
-                const li = document.createElement('li');
-                li.textContent = mantra;
-                li.className = 'text-green-400 cursor-pointer';
-                containerElement.appendChild(li);
-            });
-        }
-
-        if (countElement) {
-            countElement.textContent = mantrasConfig[category].length;
-        }
+    if (!mantrasConfig || typeof mantrasConfig !== 'object') {
+        console.error("Invalid mantras configuration:", mantrasConfig);
+        return;
     }
+
+    // 清空所有已选择的 mantras
+    const obtainedMantrasContainer = document.getElementById('obtained-mantras-container');
+    if (!obtainedMantrasContainer) {
+        console.error("obtained-mantras-container not found");
+        return;
+    }
+    obtainedMantrasContainer.innerHTML = '';
+
+    // 应用导入的配置
+    for (const [category, mantras] of Object.entries(mantrasConfig)) {
+        if (!Array.isArray(mantras)) {
+            console.error(`Invalid mantras array for category ${category}:`, mantras);
+            continue;
+        }
+
+        const categoryContainer = document.createElement('div');
+        categoryContainer.id = `obtained-${category.toLowerCase()}`;
+        categoryContainer.innerHTML = `
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-lg font-bold text-yellow-400">${category}</span>
+                <span class="text-sm"><span id="${category.toLowerCase()}-count" class="text-white">${mantras.length}</span>/${mantraLimits[category]}</span>
+            </div>
+            <ul class="space-y-1"></ul>
+        `;
+
+        const ul = categoryContainer.querySelector('ul');
+        mantras.forEach(mantra => {
+            const li = document.createElement('li');
+            li.textContent = mantra.name || mantra; // 使用 mantra.name 如果存在，否则使用 mantra
+            li.className = 'cursor-pointer';
+            li.dataset.category = category;
+            li.dataset.name = mantra.name || mantra;
+            ul.appendChild(li);
+        });
+
+        obtainedMantrasContainer.appendChild(categoryContainer);
+    }
+
+    // 更新 selectedMantras 对象
+    window.selectedMantras = JSON.parse(JSON.stringify(mantrasConfig));
+
+    // 禁用已选择的 mantras
+    document.querySelectorAll('#obtainable-mantras li').forEach(el => {
+        const category = el.dataset.category;
+        const name = el.dataset.name;
+        if (mantrasConfig[category] && mantrasConfig[category].some(m => (m.name || m) === name)) {
+            el.classList.remove('hover:text-green-400');
+            el.classList.add('text-gray-500', 'opacity-50', 'cursor-not-allowed');
+            el.style.pointerEvents = 'none';
+        } else {
+            el.classList.remove('text-gray-500', 'opacity-50', 'cursor-not-allowed');
+            el.classList.add('hover:text-green-400');
+            el.style.pointerEvents = 'auto';
+        }
+    });
+
+    console.log("Mantras configuration applied successfully");
 }
 
 // Apply weapons tab configuration
@@ -418,7 +498,16 @@ function applySummaryTabConfiguration(summaryConfig) {
 // Initialize
 document.addEventListener('DOMContentLoaded', function () {
     loadBuildFromUrl();
-    document.querySelectorAll('.exportBuildLink').forEach(button => {
-        button.addEventListener('click', exportBuildAsLink);
-    });
+    window.selectedMantras = { Combat: [], Mobility: [], Support: [], Wildcard: [] };
+    
+    // 使用 setTimeout 来确保在 DOM 完全加载后绑定事件
+    setTimeout(() => {
+        console.log("Binding export button click event");
+        document.querySelectorAll('.exportBuildLink').forEach(button => {
+            button.addEventListener('click', function(event) {
+                console.log("Export button clicked");
+                exportBuildAsLink();
+            });
+        });
+    }, 0);
 });

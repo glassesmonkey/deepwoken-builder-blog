@@ -1,3 +1,4 @@
+let tooltip;
 document.addEventListener('DOMContentLoaded', function () {
     let mantrasData = {};
     const mantraLimits = { Combat: 3, Mobility: 1, Support: 1, Wildcard: 1 };
@@ -61,10 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const button = event.currentTarget;
         const category = button.dataset.category;
         const content = document.getElementById(`content-${category}`);
-        
+
         button.classList.toggle('active');
         content.classList.toggle('active');
-        
+
         if (content.classList.contains('active')) {
             content.style.display = 'block';
             button.querySelector('.chevron').style.transform = 'rotate(180deg)';
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return attunementColors[attunement] || attunementColors[null];
     }
 
-    function setupMantraInteractions() {
+    window.setupMantraInteractions = function () {
         const mantraItems = document.querySelectorAll('#obtainable-mantras li');
         tooltip = createTooltip();
 
@@ -192,6 +193,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 更新计数器
         updateMantraCount(targetCategory);
+        window.selectedMantras = JSON.parse(JSON.stringify(selectedMantras));
+        console.log("Updated window.selectedMantras after selection:", JSON.parse(JSON.stringify(window.selectedMantras)));
+        console.log("Updated selectedMantras after selection:", JSON.parse(JSON.stringify(selectedMantras)));
     }
 
     function disableMantra(element) {
@@ -239,6 +243,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 enableMantra(obtainableMantra);
             }
         }
+        window.selectedMantras = JSON.parse(JSON.stringify(selectedMantras));
+        console.log("Updated window.selectedMantras after deselection:", JSON.parse(JSON.stringify(window.selectedMantras)));
+        console.log("Updated selectedMantras after deselection:", JSON.parse(JSON.stringify(selectedMantras)));
     }
 
     function createCategoryContainer(category) {
@@ -302,6 +309,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function hideTooltip() {
         tooltip.style.display = 'none';
     }
+    function createTooltip() {
+        const tooltipElement = document.createElement('div');
+        tooltipElement.className = 'tooltip';
+        document.body.appendChild(tooltipElement);
+        return tooltipElement;
+    }
 
     function positionTooltip(event) {
         const tooltipWidth = 300;
@@ -324,11 +337,13 @@ document.addEventListener('DOMContentLoaded', function () {
         tooltip.style.left = `${left}px`;
         tooltip.style.top = `${top}px`;
     }
-
+    tooltip = createTooltip();
     // 添加鼠标移动事件监听器
     document.addEventListener('mousemove', function (event) {
         if (tooltip.style.display === 'block') {
             positionTooltip(event);
         }
     });
+    window.selectedMantras = selectedMantras;
+    console.log("Initial window.selectedMantras:", JSON.parse(JSON.stringify(window.selectedMantras)));
 });
