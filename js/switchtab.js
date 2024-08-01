@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedButton.classList.remove('hover:bg-parchment');
         }
 
-        // 只有在切换到非 mantras 标签时才重置 mantras 按钮
+
         if (tabId !== 'mantras-tab') {
             resetMantrasButtons();
         }

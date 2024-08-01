@@ -135,7 +135,7 @@ function handleRaceChange() {
     const newRaceBonusTotal = calculateRaceBonusTotal(newRace);
     const bonusDifference = newRaceBonusTotal - oldRaceBonusTotal;
 
-    // 更新 pointsSpent
+
     if (currentRace === 'Lightborn' && newRace !== 'Lightborn') {
         pointsSpent -= 5;
     } else if (currentRace !== 'Lightborn' && newRace === 'Lightborn') {
@@ -160,10 +160,7 @@ function handleRaceChange() {
 }
 
 function initialize() {
-    // 获取初始种族
     const initialRace = raceSelect.value;
-    
-    // 设置初始 pointsSpent 值
     pointsSpent = initialRace === 'Lightborn' ? 10 : 5;
     
     const initialRaceBonusTotal = calculateRaceBonusTotal(currentRace);

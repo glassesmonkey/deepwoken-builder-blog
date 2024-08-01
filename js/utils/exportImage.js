@@ -1,6 +1,6 @@
-// 确保DOM加载完成后再执行脚本
+
 document.addEventListener('DOMContentLoaded', function() {
-    // 为导出按钮添加事件监听器
+
     const exportButton = document.getElementById('exportImage');
     if (exportButton) {
         exportButton.addEventListener('click', exportImage);
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Export button not found');
     }
 });
-// 修复input和select元素
+
 function fixInputsAndSelects(element) {
     const inputs = element.querySelectorAll('input, select');
     inputs.forEach(input => {
@@ -146,7 +146,6 @@ async function exportImage() {
 
             document.body.removeChild(containerDiv);
 
-            // 更新进度
             updateProgress((i + 1) / tabs.length * 100);
         }
 
@@ -169,24 +168,20 @@ async function handleChart(containerDiv) {
         const originalChart = Chart.getChart(originalCanvas);
         
         if (originalChart) {
-            // 调整图表配置
+
             originalChart.options.scales.x.ticks.font = {
                 family: 'Arial, sans-serif',
-                size: 12,  // 减小字体大小
+                size: 12,
                 weight: 'bold'
             };
             originalChart.options.scales.x.ticks.color = 'white';
             
-            // 增加底部边距以为标签留出空间
             originalChart.options.layout.padding.bottom = 30;
-            
-            // 更新图表
+
             originalChart.update();
-            
-            // 等待渲染完成
+
             await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            // 将原始图表转换为图像
+
             const chartImage = new Image();
             chartImage.src = originalCanvas.toDataURL();
             
@@ -195,14 +190,13 @@ async function handleChart(containerDiv) {
                 chartImage.onerror = reject;
             });
 
-            // 创建图表容器
+
             const chartContainer = document.createElement('div');
             chartContainer.style.position = 'relative';
             chartContainer.style.width = '100%';
-            chartContainer.style.paddingBottom = '50px';  // 增加底部padding
+            chartContainer.style.paddingBottom = '50px';  
             chartContainer.appendChild(chartImage);
 
-            // 添加x轴标签
             const labels = originalChart.data.labels;
             const labelsContainer = document.createElement('div');
             labelsContainer.style.display = 'flex';
@@ -211,13 +205,13 @@ async function handleChart(containerDiv) {
             labelsContainer.style.position = 'absolute';
             labelsContainer.style.bottom = '0';
             labelsContainer.style.left = '0';
-            labelsContainer.style.padding = '0 10px';  // 添加左右padding
+            labelsContainer.style.padding = '0 10px';  
 
             labels.forEach(label => {
                 const labelElement = document.createElement('span');
                 labelElement.textContent = label;
                 labelElement.style.color = 'white';
-                labelElement.style.fontSize = '10px';  // 进一步减小字体大小
+                labelElement.style.fontSize = '10px';  
                 labelElement.style.textAlign = 'center';
                 labelElement.style.width = `${100 / labels.length}%`;
                 labelsContainer.appendChild(labelElement);
@@ -225,7 +219,7 @@ async function handleChart(containerDiv) {
 
             chartContainer.appendChild(labelsContainer);
 
-            // 替换克隆的canvas
+
             clonedCanvasContainer.innerHTML = '';
             clonedCanvasContainer.appendChild(chartContainer);
         }
@@ -233,7 +227,7 @@ async function handleChart(containerDiv) {
 }
 
 
-// 应用内联样式
+
 async function applyInlineStyles(element) {
     const elements = element.getElementsByTagName('*');
     for (let i = 0; i < elements.length; i++) {
@@ -241,19 +235,19 @@ async function applyInlineStyles(element) {
         const style = window.getComputedStyle(el);
         el.style.cssText = style.cssText;
 
-        // 特别处理grid布局
+
         if (style.display === 'grid') {
             el.style.display = 'grid';
             el.style.gridTemplateColumns = style.gridTemplateColumns;
             el.style.gridGap = style.gridGap;
         }
-		 // 确保input和select元素有足够的高度
+
         if (el.tagName === 'INPUT' || el.tagName === 'SELECT') {
             el.style.height = 'auto';
             el.style.minHeight = '30px';
         }
 
-        // 确保canvas元素有正确的尺寸
+
         if (el.tagName.toLowerCase() === 'canvas') {
             el.style.width = style.width;
             el.style.height = style.height;
@@ -261,7 +255,7 @@ async function applyInlineStyles(element) {
     }
 }
 
-// 替换select元素为自定义渲染
+
 function replaceSelectsWithCustomRender(container) {
     const selects = container.querySelectorAll('select');
     selects.forEach(select => {
@@ -283,7 +277,7 @@ function replaceSelectsWithCustomRender(container) {
 }
 
 
-// 激活特定的tab并等待内容加载
+
 async function activateTab(tabId) {
     return new Promise((resolve, reject) => {
         const tabButton = document.querySelector(`[data-tab="${tabId}"]`);
@@ -302,7 +296,7 @@ async function activateTab(tabId) {
             }
         }, 100);
 
-        // 设置超时，以防内容加载失败
+
         setTimeout(() => {
             clearInterval(checkInterval);
             reject(new Error(`Timeout waiting for tab content: ${tabId}`));
@@ -310,7 +304,7 @@ async function activateTab(tabId) {
     });
 }
 
-// 创建最终的canvas并拼接图片
+
 function createFinalCanvas(images) {
     const finalCanvas = document.createElement('canvas');
     const ctx = finalCanvas.getContext('2d');
@@ -339,26 +333,26 @@ async function addWatermark(canvas) {
         const watermarkImage = await loadWatermarkImage(watermarkPath);
         console.log('Watermark image loaded successfully');
 
-        // 计算水印大小（例如，画布宽度的20%）
+
         const watermarkWidth = canvas.width * 0.2;
         const watermarkHeight = (watermarkImage.height / watermarkImage.width) * watermarkWidth;
 
         console.log('Drawing watermark, canvas dimensions:', canvas.width, canvas.height);
         console.log('Watermark dimensions:', watermarkWidth, watermarkHeight);
 
-        // 在左上角添加水印
-        ctx.globalAlpha = 0.5; // 设置透明度
+
+        ctx.globalAlpha = 0.5;
         ctx.drawImage(watermarkImage, 10, 10, watermarkWidth, watermarkHeight);
 
-        // 在右下角添加水印
+
         ctx.drawImage(watermarkImage, canvas.width - watermarkWidth - 10, 
                       canvas.height - watermarkHeight - 10, watermarkWidth, watermarkHeight);
 
-        ctx.globalAlpha = 1.0; // 重置透明度
+        ctx.globalAlpha = 1.0; 
         console.log('Watermark added successfully');
     } catch (error) {
         console.error('Error adding watermark:', error);
-        // 如果加载图片失败，使用文本水印作为后备方案
+
         ctx.font = '20px Arial';
         ctx.fillStyle = 'rgba(128, 128, 128, 0.5)';
         ctx.fillText('deepwokenbuilder.com', 10, 30);
@@ -367,7 +361,7 @@ async function addWatermark(canvas) {
 
 }
 
-// 3. 修改 loadWatermarkImage 函数以处理跨域问题
+
 function loadWatermarkImage(imagePath) {
     return new Promise((resolve, reject) => {
         const img = new Image();
@@ -376,12 +370,12 @@ function loadWatermarkImage(imagePath) {
             console.error('Error loading watermark image:', e);
             reject(new Error('Failed to load watermark image'));
         };
-        img.crossOrigin = 'anonymous';  // 添加这行来处理可能的跨域问题
+        img.crossOrigin = 'anonymous';   
         img.src = imagePath;
     });
 }
 
-// 下载图片
+
 function downloadImage(canvas) {
     const dataURL = canvas.toDataURL('image/png');
     const link = document.createElement('a');
@@ -390,7 +384,7 @@ function downloadImage(canvas) {
     link.click();
 }
 
-// 显示加载指示器
+
 function showLoadingIndicator() {
     const loadingDiv = document.createElement('div');
     loadingDiv.id = 'loading-indicator';
@@ -407,7 +401,7 @@ function showLoadingIndicator() {
     document.body.appendChild(loadingDiv);
 }
 
-// 隐藏加载指示器
+
 function hideLoadingIndicator() {
     const loadingDiv = document.getElementById('loading-indicator');
     if (loadingDiv) {
@@ -415,7 +409,7 @@ function hideLoadingIndicator() {
     }
 }
 
-// 显示错误消息
+
 function showErrorMessage(message) {
     const modal = document.getElementById('custom-modal');
     const modalTitle = document.getElementById('modal-title');

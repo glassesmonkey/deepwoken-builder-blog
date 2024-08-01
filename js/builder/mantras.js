@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             obtainableMantrasContainer.appendChild(categoryDiv);
         });
 
-        // 添加按钮点击事件
+
         document.querySelectorAll('.category-button').forEach(button => {
             button.addEventListener('click', toggleCategory);
         });
@@ -135,11 +135,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const maxWidth = 400;
         const minWidth = 300;
 
-        // 重置tooltip的宽度，让它自适应内容
+
         tooltip.style.width = 'auto';
         tooltip.style.height = 'auto';
 
-        // 获取tooltip的实际尺寸
+
         const tooltipRect = tooltip.getBoundingClientRect();
         let tooltipWidth = Math.max(minWidth, Math.min(tooltipRect.width, maxWidth));
         let tooltipHeight = tooltipRect.height;
@@ -147,14 +147,13 @@ document.addEventListener('DOMContentLoaded', function () {
         let left = event.clientX + padding;
         let top = event.clientY + padding;
 
-        // 检查右边界
+
         if (left + tooltipWidth > window.innerWidth) {
             left = event.clientX - tooltipWidth - padding;
         }
 
-        // 检查下边界
+
         if (top + tooltipHeight > window.innerHeight) {
-            // 如果tooltip高度超过了视口高度的80%，我们将其限制在80%
             if (tooltipHeight > window.innerHeight * 0.8) {
                 tooltipHeight = window.innerHeight * 0.8;
                 tooltip.style.height = `${tooltipHeight}px`;
@@ -176,22 +175,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let targetCategory = category;
 
-        // 检查当前类别是否已达到上限
+
         if (selectedMantras[category].length >= mantraLimits[category]) {
-            // 如果达到上限，检查 Wildcard 是否有空位
+
             if (selectedMantras['Wildcard'].length < mantraLimits['Wildcard']) {
                 targetCategory = 'Wildcard';
             } else {
-                // 如果 Wildcard 也满了，那么继续添加到原类别
+
                 targetCategory = category;
             }
         }
 
-        // 添加 mantra 到目标类别
+
         addObtainedMantra(mantra, targetCategory);
         disableMantra(event.target);
 
-        // 更新计数器
         updateMantraCount(targetCategory);
         window.selectedMantras = JSON.parse(JSON.stringify(selectedMantras));
         console.log("Updated window.selectedMantras after selection:", JSON.parse(JSON.stringify(window.selectedMantras)));
@@ -324,12 +322,12 @@ document.addEventListener('DOMContentLoaded', function () {
         let left = event.clientX + padding;
         let top = event.clientY + padding;
 
-        // 检查右边界
+
         if (left + tooltipWidth > window.innerWidth) {
             left = event.clientX - tooltipWidth - padding;
         }
 
-        // 检查下边界
+
         if (top + tooltipHeight > window.innerHeight) {
             top = event.clientY - tooltipHeight - padding;
         }
@@ -338,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
         tooltip.style.top = `${top}px`;
     }
     tooltip = createTooltip();
-    // 添加鼠标移动事件监听器
+
     document.addEventListener('mousemove', function (event) {
         if (tooltip.style.display === 'block') {
             positionTooltip(event);
