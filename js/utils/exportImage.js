@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     const exportButton = document.getElementById('exportImage');
     if (exportButton) {
@@ -92,6 +92,10 @@ function downloadImage(canvas) {
 }
 
 async function exportImage() {
+    const script = document.createElement('script');
+    script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+    document.head.appendChild(script);
+    await new Promise(resolve => script.onload = resolve);
     const tabs = ['stats-tab', 'talents-tab', 'mantras-tab', 'weapons-tab', 'summary-tab'];
     const images = [];
 
@@ -135,7 +139,7 @@ async function exportImage() {
                 width: 1000,
                 height: containerDiv.scrollHeight,
                 backgroundColor: null,
-				onclone: (clonedDoc) => {
+                onclone: (clonedDoc) => {
                     const clonedElement = clonedDoc.getElementById(tabId);
                     if (clonedElement) {
                         fixInputsAndSelects(clonedElement);
@@ -166,7 +170,7 @@ async function handleChart(containerDiv) {
 
     if (originalCanvas && clonedCanvasContainer) {
         const originalChart = Chart.getChart(originalCanvas);
-        
+
         if (originalChart) {
 
             originalChart.options.scales.x.ticks.font = {
@@ -175,7 +179,7 @@ async function handleChart(containerDiv) {
                 weight: 'bold'
             };
             originalChart.options.scales.x.ticks.color = 'white';
-            
+
             originalChart.options.layout.padding.bottom = 30;
 
             originalChart.update();
@@ -184,7 +188,7 @@ async function handleChart(containerDiv) {
 
             const chartImage = new Image();
             chartImage.src = originalCanvas.toDataURL();
-            
+
             await new Promise((resolve, reject) => {
                 chartImage.onload = resolve;
                 chartImage.onerror = reject;
@@ -194,7 +198,7 @@ async function handleChart(containerDiv) {
             const chartContainer = document.createElement('div');
             chartContainer.style.position = 'relative';
             chartContainer.style.width = '100%';
-            chartContainer.style.paddingBottom = '50px';  
+            chartContainer.style.paddingBottom = '50px';
             chartContainer.appendChild(chartImage);
 
             const labels = originalChart.data.labels;
@@ -205,13 +209,13 @@ async function handleChart(containerDiv) {
             labelsContainer.style.position = 'absolute';
             labelsContainer.style.bottom = '0';
             labelsContainer.style.left = '0';
-            labelsContainer.style.padding = '0 10px';  
+            labelsContainer.style.padding = '0 10px';
 
             labels.forEach(label => {
                 const labelElement = document.createElement('span');
                 labelElement.textContent = label;
                 labelElement.style.color = 'white';
-                labelElement.style.fontSize = '10px';  
+                labelElement.style.fontSize = '10px';
                 labelElement.style.textAlign = 'center';
                 labelElement.style.width = `${100 / labels.length}%`;
                 labelsContainer.appendChild(labelElement);
@@ -345,10 +349,10 @@ async function addWatermark(canvas) {
         ctx.drawImage(watermarkImage, 10, 10, watermarkWidth, watermarkHeight);
 
 
-        ctx.drawImage(watermarkImage, canvas.width - watermarkWidth - 10, 
-                      canvas.height - watermarkHeight - 10, watermarkWidth, watermarkHeight);
+        ctx.drawImage(watermarkImage, canvas.width - watermarkWidth - 10,
+            canvas.height - watermarkHeight - 10, watermarkWidth, watermarkHeight);
 
-        ctx.globalAlpha = 1.0; 
+        ctx.globalAlpha = 1.0;
         console.log('Watermark added successfully');
     } catch (error) {
         console.error('Error adding watermark:', error);
@@ -370,7 +374,7 @@ function loadWatermarkImage(imagePath) {
             console.error('Error loading watermark image:', e);
             reject(new Error('Failed to load watermark image'));
         };
-        img.crossOrigin = 'anonymous';   
+        img.crossOrigin = 'anonymous';
         img.src = imagePath;
     });
 }
@@ -421,7 +425,7 @@ function showErrorMessage(message) {
         modalContent.textContent = message;
         modal.classList.remove('hidden');
 
-        modalClose.onclick = function() {
+        modalClose.onclick = function () {
             modal.classList.add('hidden');
         };
     } else {

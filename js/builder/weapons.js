@@ -36,15 +36,17 @@ function applyWeaponCategoryStyle() {
         const optgroups = select.querySelectorAll('optgroup');
         optgroups.forEach(optgroup => {
             if (optgroup.label.startsWith('Light Weapons - Daggers')) {
-                optgroup.style.color = '#ffd700';             } else {
-                optgroup.style.color = '#ffd700';             }
+                optgroup.style.color = '#ffd700';
+            } else {
+                optgroup.style.color = '#ffd700';
+            }
             optgroup.style.fontWeight = 'bold';
-            
-                        const options = optgroup.querySelectorAll('option');
+
+            const options = optgroup.querySelectorAll('option');
             options.forEach(option => {
-                option.style.color = '#F9F6EE';                 
-                option.style.fontWeight = '';                 
-                
+                option.style.color = '#F9F6EE';
+                option.style.fontWeight = '';
+
             });
         });
     });
@@ -94,7 +96,7 @@ function displayWeaponDetails(weapon1, weapon2) {
                 <p><strong>Swing Speed:</strong> ${weapon1.swing_speed}</p>
                 <p><strong>Scaled Damage:</strong> ${weapon1.scaled_damage}</p>
             </div>`;
-    
+
     if (weapon2) {
         html += `
             <div>
@@ -110,7 +112,7 @@ function displayWeaponDetails(weapon1, weapon2) {
                 <p><strong>Scaled Damage:</strong> ${weapon2.scaled_damage}</p>
             </div>`;
     }
-    
+
     html += `</div>`;
     detailsDiv.innerHTML = html;
     detailsDiv.classList.remove('hidden');
@@ -131,7 +133,7 @@ function calculateDamage(weapon, attributeLevel, proficiency, stars, starType, a
     let penetration = parseFloat(weapon.penetration) || 0;
     let weight = parseFloat(weapon.weight);
 
-        if (starType === 'damage') {
+    if (starType === 'damage') {
         baseDamage *= (1 + 0.02 * stars);
     } else if (starType === 'penetration') {
         penetration += Math.min(5 * stars, 14);
@@ -139,18 +141,18 @@ function calculateDamage(weapon, attributeLevel, proficiency, stars, starType, a
         weight *= (1 + 0.04 * stars);
     }
 
-        const scalingMatch = weapon.scaling.match(/(\w+):\s*(\d+(\.\d+)?)/);
+    const scalingMatch = weapon.scaling.match(/(\w+):\s*(\d+(\.\d+)?)/);
     const scalingAttribute = scalingMatch ? scalingMatch[1] : '';
     const scalingValue = scalingMatch ? parseFloat(scalingMatch[2]) : 0;
     const scaledDamage = 0.00075 * (baseDamage * scalingValue * attributeLevel * (1 + (proficiency * 0.065))) + baseDamage;
 
-        penetration = Math.min(penetration + additionalPenetration, 50);      const effectiveDamage = scaledDamage * (1 + penetration / 100);
+    penetration = Math.min(penetration + additionalPenetration, 50); const effectiveDamage = scaledDamage * (1 + penetration / 100);
 
-        const bleedDamage = effectiveDamage * 0.3 * (bleedChance / 100);
+    const bleedDamage = effectiveDamage * 0.3 * (bleedChance / 100);
     const totalDamage = effectiveDamage + bleedDamage;
     const dps = totalDamage * parseFloat(weapon.swing_speed) * 2;
 
-    return { 
+    return {
         weapon: weapon.name,
         baseDamage,
         scaledDamage,
@@ -203,71 +205,22 @@ function displayResult(result1, result2) {
     resultDiv.classList.remove('hidden');
 }
 
-function updateChart(result1, result2) {
-    const ctx = document.getElementById('damageChart').getContext('2d');
-    
-    if (window.damageChart instanceof Chart) {
-        window.damageChart.destroy();
-    }
-
-    const datasets = [
-        {
-            label: result1.weapon,
-            data: [result1.baseDamage, result1.scaledDamage, result1.effectiveDamage, result1.bleedDamage, result1.totalDamage, result1.dps],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-        }
-    ];
-
-    if (result2) {
-        datasets.push({
-            label: result2.weapon,
-            data: [result2.baseDamage, result2.scaledDamage, result2.effectiveDamage, result2.bleedDamage, result2.totalDamage, result2.dps],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-        });
-    }
-
-    window.damageChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Base Damage', 'Scaled Damage', 'Effective Damage', 'Bleed Damage', 'Total Damage', 'DPS'],
-            datasets: datasets
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        color: 'white'
-                    }
-                },
-                x: {
-                    ticks: {
-                        color: 'white'
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    labels: {
-                        color: 'white'
-                    }
-                }
-            }
-        }
+function loadChartJS() {
+    return new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+      script.onload = resolve;
+      document.head.appendChild(script);
     });
-}
+  }
 
 function addWeaponEventListeners() {
     document.getElementById('weapon1').addEventListener('change', updateWeaponDetails);
     document.getElementById('weapon2').addEventListener('change', updateWeaponDetails);
 
-    document.getElementById('calculateDamage').addEventListener('click', function(e) {
+    document.getElementById('calculateDamage').addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const weapon1 = JSON.parse(document.getElementById('weapon1').value || 'null');
         const weapon2 = JSON.parse(document.getElementById('weapon2').value || 'null');
         const attributeLevel = parseInt(document.getElementById('attributeLevel').value);
@@ -276,7 +229,7 @@ function addWeaponEventListeners() {
         const starType = document.getElementById('starType').value;
         const additionalPenetration = parseInt(document.getElementById('additionalPenetration').value) || 0;
         const bleedChance = parseInt(document.getElementById('bleedChance').value) || 0;
-        
+
         if (weapon1 && !isNaN(attributeLevel) && !isNaN(proficiency)) {
             const result1 = calculateDamage(weapon1, attributeLevel, proficiency, stars, starType, additionalPenetration, bleedChance);
             let result2 = null;
@@ -289,86 +242,13 @@ function addWeaponEventListeners() {
     });
 }
 
-const exampleWeaponsData = `
-{
-    "Light Weapons": {
-        "Daggers": [
-            {
-                "name": "Stiletto",
-                "requirements": "0 LHT",
-                "damage": "11",
-                "penetration": "N/A",
-                "chip_damage": "N/A",
-                "scaling": "LHT: 3",
-                "weight": "2",
-                "range": "6",
-                "swing_speed": "1.25x",
-                "scaled_damage": "14.4"
-            },
-            {
-                "name": "Gilded Knife",
-                "requirements": "25 LHT",
-                "damage": "13",
-                "penetration": "N/A",
-                "chip_damage": "N/A",
-                "scaling": "LHT: 8",
-                "weight": "4",
-                "range": "6",
-                "swing_speed": "1.23x",
-                "scaled_damage": "23.8"
-            }
-        ],
-        "Fists": [
-            {
-                "name": "Iron Cestus",
-                "requirements": "0 LHT",
-                "damage": "13.5",
-                "penetration": "N/A",
-                "chip_damage": "N/A",
-                "scaling": "LHT: 7",
-                "weight": "5",
-                "range": "6",
-                "swing_speed": "1.11x",
-                "scaled_damage": "23.4"
-            }
-        ]
-    },
-    "Medium Weapons": {
-        "Swords": [
-            {
-                "name": "Sword",
-                "requirements": "0 MED",
-                "damage": "18",
-                "penetration": "N/A",
-                "chip_damage": "N/A",
-                "scaling": "MED: 2.5",
-                "weight": "5",
-                "range": "8",
-                "swing_speed": "1x",
-                "scaled_damage": "22.7"
-            }
-        ],
-        "Spears": [
-            {
-                "name": "Irontusk",
-                "requirements": "0 MED",
-                "damage": "16.5",
-                "penetration": "10%",
-                "chip_damage": "N/A",
-                "scaling": "MED: 3",
-                "weight": "5",
-                "range": "9",
-                "swing_speed": "0.9x",
-                "scaled_damage": "21.7"
-            }
-        ]
-    }
-}`;
 
 
-function updateChart(result1, result2) {
+
+async function updateChart(result1, result2) {
+    await loadChartJS();
     const ctx = document.getElementById('damageChart').getContext('2d');
-    
+
     if (window.damageChart instanceof Chart) {
         window.damageChart.destroy();
     }
@@ -440,9 +320,9 @@ function addWeaponEventListeners() {
     document.getElementById('weapon1').addEventListener('change', updateWeaponDetails);
     document.getElementById('weapon2').addEventListener('change', updateWeaponDetails);
 
-    document.getElementById('calculateDamage').addEventListener('click', function(e) {
+    document.getElementById('calculateDamage').addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const weapon1 = JSON.parse(document.getElementById('weapon1').value || 'null');
         const weapon2 = JSON.parse(document.getElementById('weapon2').value || 'null');
         const attributeLevel = parseInt(document.getElementById('attributeLevel').value);
@@ -451,7 +331,7 @@ function addWeaponEventListeners() {
         const starType = document.getElementById('starType').value;
         const additionalPenetration = parseInt(document.getElementById('additionalPenetration').value) || 0;
         const bleedChance = parseInt(document.getElementById('bleedChance').value) || 0;
-        
+
         if (weapon1 && !isNaN(attributeLevel) && !isNaN(proficiency)) {
             const result1 = calculateDamage(weapon1, attributeLevel, proficiency, stars, starType, additionalPenetration, bleedChance);
             let result2 = null;
@@ -460,10 +340,10 @@ function addWeaponEventListeners() {
             }
             displayResult(result1, result2);
             updateChart(result1, result2);
-             
+
             const chartElement = document.getElementById('damageChart');
             if (chartElement) {
-                 
+
                 setTimeout(() => {
                     chartElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 100);
@@ -471,7 +351,7 @@ function addWeaponEventListeners() {
         }
     });
 }
-window.triggerDamageCalculation = function() {
+window.triggerDamageCalculation = function () {
     const calculateDamageButton = document.getElementById('calculateDamage');
     if (calculateDamageButton) {
         calculateDamageButton.click();
@@ -479,7 +359,7 @@ window.triggerDamageCalculation = function() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeWeaponsTab();
     loadBuildFromUrl();
 });
