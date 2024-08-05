@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepwoken Weapon Mechanics: Cracking the Code of Damage and Speed</title>
+
+    <meta name="description"
+        content="Dive deep into Deepwoken weapon mechanics! Unravel the mysteries of damage calculation and attack speed. Time to get your math on! 🧮⚔️">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'parchment': '#f0e6d2',
+                        'dark-parchment': '#d0c0a0',
+                        'ink': '#2c2c2c',
+                        'light-ink': '#4a4a4a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #2c2c2c;
+            color: #f0e6d2;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .deepwoken-nav-item {
+            color: #d1d5db;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.1rem;
+            padding: 0.5rem 0.75rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .deepwoken-nav-item:hover,
+        .deepwoken-nav-item.active {
+            color: #fbbf24;
+            border-color: #fbbf24;
+            background-color: rgba(251, 191, 36, 0.1);
+        }
+
+        .article-content h2 {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content a {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+
+        .article-content a:hover {
+            color: #93c5fd;
+        }
+    </style>
+</head>
+
+<body class="p-4">
+    <nav class="bg-gray-900 border-b-2 border-yellow-600 px-4 py-2 mb-6">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center">
+                <img class="h-10 w-auto mr-4" src="/assets/images/DeepwokenBuilder-yellow.png" alt="Deepwoken Builder">
+            </div>
+            <div class="hidden sm:flex space-x-1">
+                <a href="/index.html" class="deepwoken-nav-item">Home</a>
+                <a href="../guide-index.html" class="deepwoken-nav-item">talents</a>
+
+                <a href="/coming-soon.html" class="deepwoken-nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto bg-gray-800 rounded-lg p-8 shadow-lg">
+        <article>
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-yellow-400 mb-2">Deepwoken Weapon Mechanics: The Nerdy Guide to
+                    Hitting Things</h1>
+                <p class="text-gray-400">Published on <time datetime="2023-08-04">August 5, 2023</time> | By Alex</p>
+            </header>
+
+            <div class="article-content text-gray-300">
+
+                <p>
+                    What's up, Deepwoken mathmagicians and spreadsheet warriors? 🤓🗡️ Ever wondered why your tiny
+                    dagger sometimes hits like a truck, or why your massive hammer feels slower than your grandma's
+                    internet? Well, grab your calculators and put on your thinking caps, because we're about to dive
+                    deep into the nitty-gritty of Deepwoken weapon mechanics!
+                </p>
+
+                <h2>Damage Calculation: When Math Meets Mayhem</h2>
+
+                <p>
+                    Alright, let's break down how Deepwoken decides just how much "ouchie" your weapon does:
+                </p>
+
+                <h3>The Basic Formula</h3>
+                <p>
+                    For weapons with one scaled attribute (excluding bleed and modifiers), here's the magic formula:
+                </p>
+                <pre><code>Damage = 0.00075 x {BaseDamage x AttributeScaling x AttributeLevel x [1 + (Proficiency x 0.065)]} + BaseDamage</code></pre>
+
+                <p>Let's break this down for the non-mathlete:</p>
+                <ul>
+                    <li><strong>BaseDamage</strong>: The weapon's starting damage. Think of it as the weapon's
+                        "personality".</li>
+                    <li><strong>AttributeScaling</strong>: How well the weapon vibes with your stats.</li>
+                    <li><strong>AttributeLevel</strong>: Your level in the relevant attribute. Gym time pays off!</li>
+                    <li><strong>Proficiency</strong>: Your skill with the weapon. Practice makes perfect!</li>
+                </ul>
+
+                <h3>Damage Multipliers: Because Basic Math Was Too Easy</h3>
+                <p>
+                    But wait, there's more! When you factor in damage multipliers:
+                </p>
+                <pre><code>MultipliedDamage = WeaponDamage x (1 + DamageModifiers%/100)</code></pre>
+
+                <h3>Bleed Damage: Making Your Enemies Leak</h3>
+                <p>
+                    For our vampire wannabes, here's how bleed damage works:
+                </p>
+                <pre><code>BleedDamage = WeaponDamage x 1.3</code></pre>
+                <p>Or if you want to get fancy with multipliers:</p>
+                <pre><code>BleedMultipliedDamage = WeaponDamage x (1 + [DamageModifiers% + 30%]/100)</code></pre>
+
+                <h2>Attack Speed: The Art of Swoosh</h2>
+
+                <p>
+                    Ever wondered why some weapons feel like they're moving through molasses? Let's talk attack speed!
+                </p>
+
+                <h3>The Speed Formula</h3>
+                <p>
+                    Here's how to calculate how long it takes for your weapon to go swoosh:
+                </p>
+                <pre><code>Attack Speed (in seconds) = (1 / SwingSpeed) / 2</code></pre>
+
+                <p>In human speak:</p>
+                <ul>
+                    <li>A weapon with 0.5x swing speed takes about 1 second to swing</li>
+                    <li>A weapon with 1.0x swing speed takes about 0.5 seconds to swing</li>
+                </ul>
+
+                <h3>DPS: For the Spreadsheet Lovers</h3>
+                <p>
+                    Want to know your Damage Per Second? Here's a simple formula (excluding bleed, endlag, and ping):
+                </p>
+                <pre><code>DPS = Weapon Damage x SwingSpeed x 2</code></pre>
+
+                <h2>Pro Tips for Weapon Mechanic Mastery</h2>
+                <ul>
+                    <li>Balancing Act: High damage often means lower speed. Find your sweet spot!</li>
+                    <li>Stat Synergy: Match your weapon's scaling to your highest stats for maximum pain</li>
+                    <li>Proficiency Matters: Don't neglect your weapon skills. Every point counts!</li>
+                    <li>Bleed is Your Friend: For sustained damage, bleed effects can be a game-changer</li>
+                    <li>Speed Kills: Sometimes, a faster weapon with lower damage can outperform a slow heavy-hitter
+                    </li>
+                </ul>
+
+                <h2>Fun Facts to Impress Your Friends</h2>
+                <ul>
+                    <li>Changing stances doesn't affect swing speed. It's all about that base (speed)!</li>
+                    <li>The weapon with the highest base damage? Hivelord's Hubris and Divine Greatsword, both at a
+                        whopping 30!</li>
+                    <li>The fastest swing speed belongs to the Divine Dagger at 1.3x. It's basically teleporting at this
+                        point.</li>
+                </ul>
+
+                <h2>Conclusion: Knowledge is Power (and Damage)</h2>
+                <p>
+                    Understanding weapon mechanics in Deepwoken isn't just for the nerds (though we love you, nerds!).
+                    It's about maximizing your potential and becoming a true weapon master. Whether you're calculating
+                    optimal DPS or just trying to figure out why your sword feels like a wet noodle, remember: in
+                    Deepwoken, math is your secret weapon!
+                </p>
+
+                <p>
+                    Want to put all this knowledge to the test? Flex those big brain muscles with our <a
+                        href="../index.html">Deepwoken Builder Tool</a>! It's like a playground for your newfound weapon
+                    mechanic wisdom. May the math be with you!
+                </p>
+            </div>
+        </article>
+    </main>
+
+    <div class="max-w-3xl mx-auto mt-8">
+        <h3 class="text-2xl font-bold text-yellow-400 mb-4">Related Articles</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <a href="./Deepwoken-weapons-build-guides-7.html" class="block p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300">
+                <h4 class="text-lg font-semibold text-yellow-400 mb-2">Exclusive and Legendary Weapons in Deepwoken: The Ultimate Flex</h4>
+                <p class="text-gray-400">Discover the rarest and most powerful weapons in Deepwoken! From boss drops to dev-only items, these are the ultimate flex weapons. Time to become a legend! 🗡️✨</p>
+            </a>
+            <a href="./Deepwoken-weapons-build-guides-9.html" class="block p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300">
+                <h4 class="text-lg font-semibold text-yellow-400 mb-2">Deepwoken Weapon Trivia: Mind-Blowing Facts and Epic Records</h4>
+                <p class="text-gray-400">Discover mind-blowing Deepwoken weapon facts and records! From the heaviest hitter to the speediest slasher, prepare to have your mind blown! 🤯⚔️</p>
+            </a>
+        </div>
+    </div>
+
+    <footer class="mt-12 text-center text-gray-500">
+        <p>&copy; 2023 Deepwoken Builder. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
