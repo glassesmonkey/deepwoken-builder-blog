@@ -4,19 +4,37 @@
     <loc>https://deepwokenbuilder.com/coming-soon.html</loc>
     <lastmod>2024-08-05T21:45:23+00:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.40</priority>
+    <priority>0.50</priority>
   </url>
   <url>
     <loc>https://deepwokenbuilder.com/guide-index.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2024-08-07T19:39:45+00:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://deepwokenbuilder.com/</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
+    <loc>https://deepwokenbuilder.com/index.html</loc>
+    <lastmod>2024-08-07T19:39:45+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>1</priority>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/deepwoken builder/Deepwoken-build-guides-1.html</loc>
+    <lastmod>2024-08-07T19:39:45+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/deepwoken builder/Deepwoken-build-guides-2.html</loc>
+    <lastmod>2024-08-07T19:39:45+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/oaths/Deepwoken-build-oaths-guides-1.html</loc>
+    <lastmod>2024-08-07T19:39:45+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
   </url>
   <url>
     <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-1.html</loc>
