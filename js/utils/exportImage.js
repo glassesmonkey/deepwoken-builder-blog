@@ -1,13 +1,85 @@
-
 document.addEventListener('DOMContentLoaded', function () {
-
     const exportButton = document.getElementById('exportImage');
+    const exportImageMobileBtn = document.getElementById('exportImageMobile');
     if (exportButton) {
-        exportButton.addEventListener('click', exportImage);
+        exportButton.addEventListener('click', showExportModal);
+    } else {
+        console.error('Export button not found');
+    }
+    if (exportImageMobileBtn) {
+        exportImageMobileBtn.addEventListener('click', showExportModal);
     } else {
         console.error('Export button not found');
     }
 });
+
+function showExportModal() {
+    const modal = document.createElement('div');
+    modal.id = 'export-modal';
+    modal.classList.add('fixed', 'inset-0', 'bg-gray-600', 'bg-opacity-50', 'overflow-y-auto', 'h-full', 'w-full', 'flex', 'items-center', 'justify-center');
+    
+    const modalContent = document.createElement('div');
+    modalContent.classList.add('bg-white', 'p-5', 'border', 'w-96', 'shadow-lg', 'rounded-md');
+    
+    const title = document.createElement('h3');
+    title.classList.add('text-lg', 'font-medium', 'leading-6', 'text-gray-900', 'mb-2');
+    title.textContent = 'Select which tabs to export';
+    
+    const checkboxContainer = document.createElement('div');
+    checkboxContainer.id = 'tab-checkboxes';
+    checkboxContainer.classList.add('mb-4');
+    
+    const tabs = ['stats-tab', 'weapons-tab','talents-tab', 'mantras-tab',  'summary-tab'];
+    tabs.forEach(tab => {
+        const label = document.createElement('label');
+        label.classList.add('block', 'mb-2');
+        label.innerHTML = `
+            <input type="checkbox" name="export-tabs" value="${tab}" checked>
+            ${tab.replace('-tab', '').charAt(0).toUpperCase() + tab.replace('-tab', '').slice(1)}
+        `;
+        checkboxContainer.appendChild(label);
+    });
+    
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('flex', 'justify-end');
+    
+    const cancelButton = document.createElement('button');
+    cancelButton.id = 'export-cancel';
+    cancelButton.classList.add('px-4', 'py-2', 'bg-gray-300', 'text-black', 'rounded', 'mr-2');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.addEventListener('click', hideExportModal);
+    
+    const confirmButton = document.createElement('button');
+    confirmButton.id = 'export-confirm';
+    confirmButton.classList.add('px-4', 'py-2', 'bg-blue-500', 'text-white', 'rounded');
+    confirmButton.textContent = 'Export';
+    confirmButton.addEventListener('click', handleExport);
+    
+    buttonContainer.appendChild(cancelButton);
+    buttonContainer.appendChild(confirmButton);
+    
+    modalContent.appendChild(title);
+    modalContent.appendChild(checkboxContainer);
+    modalContent.appendChild(buttonContainer);
+    modal.appendChild(modalContent);
+    
+    document.body.appendChild(modal);
+}
+
+function hideExportModal() {
+    const modal = document.getElementById('export-modal');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+async function handleExport() {
+    const selectedTabs = Array.from(document.querySelectorAll('input[name="export-tabs"]:checked'))
+        .map(checkbox => checkbox.value);
+    
+    hideExportModal();
+    await exportImage(selectedTabs);
+}
 
 function fixInputsAndSelects(element) {
     const inputs = element.querySelectorAll('input, select');
@@ -19,8 +91,6 @@ function fixInputsAndSelects(element) {
         input.style.boxSizing = 'border-box';
     });
 }
-
-
 
 function createOverlay() {
     const overlay = document.createElement('div');
@@ -80,6 +150,7 @@ function updateProgress(progress) {
         progressBarInner.style.width = `${progress}%`;
     }
 }
+
 function downloadImage(canvas) {
     updateProgress(100);
     setTimeout(() => {
@@ -91,20 +162,19 @@ function downloadImage(canvas) {
     }, 500);
 }
 
-async function exportImage() {
+async function exportImage(selectedTabs) {
     const script = document.createElement('script');
     script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
     document.head.appendChild(script);
     await new Promise(resolve => script.onload = resolve);
-    const tabs = ['stats-tab', 'talents-tab', 'mantras-tab', 'weapons-tab', 'summary-tab'];
     const images = [];
 
     const overlay = createOverlay();
     document.body.appendChild(overlay);
 
     try {
-        for (let i = 0; i < tabs.length; i++) {
-            const tabId = tabs[i];
+        for (let i = 0; i < selectedTabs.length; i++) {
+            const tabId = selectedTabs[i];
             await activateTab(tabId);
             await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -125,9 +195,14 @@ async function exportImage() {
             await applyInlineStyles(containerDiv);
 
             if (tabId === 'weapons-tab') {
-                window.triggerDamageCalculation();
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                await handleChart(containerDiv);
+                const chartCanvas = containerDiv.querySelector('#damageChart');
+                if (chartCanvas) {
+                    window.triggerDamageCalculation();
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    await handleChart(containerDiv);
+                } else {
+                    console.log('Chart canvas not found in weapons tab, skipping chart handling');
+                }
             }
 
             await document.fonts.ready;
@@ -150,7 +225,7 @@ async function exportImage() {
 
             document.body.removeChild(containerDiv);
 
-            updateProgress((i + 1) / tabs.length * 100);
+            updateProgress((i + 1) / selectedTabs.length * 100);
         }
 
         const finalCanvas = createFinalCanvas(images);
@@ -167,12 +242,10 @@ async function exportImage() {
 async function handleChart(containerDiv) {
     const originalCanvas = document.getElementById('damageChart');
     const clonedCanvasContainer = containerDiv.querySelector('#damageChart').parentNode;
-
-    if (originalCanvas && clonedCanvasContainer) {
+    if (typeof Chart !== 'undefined' && originalCanvas && clonedCanvasContainer) {
         const originalChart = Chart.getChart(originalCanvas);
 
         if (originalChart) {
-
             originalChart.options.scales.x.ticks.font = {
                 family: 'Arial, sans-serif',
                 size: 12,
@@ -193,7 +266,6 @@ async function handleChart(containerDiv) {
                 chartImage.onload = resolve;
                 chartImage.onerror = reject;
             });
-
 
             const chartContainer = document.createElement('div');
             chartContainer.style.position = 'relative';
@@ -223,14 +295,13 @@ async function handleChart(containerDiv) {
 
             chartContainer.appendChild(labelsContainer);
 
-
             clonedCanvasContainer.innerHTML = '';
             clonedCanvasContainer.appendChild(chartContainer);
         }
+    } else {
+        console.log('Chart or canvas not available, skipping chart handling');
     }
 }
-
-
 
 async function applyInlineStyles(element) {
     const elements = element.getElementsByTagName('*');
@@ -238,7 +309,6 @@ async function applyInlineStyles(element) {
         const el = elements[i];
         const style = window.getComputedStyle(el);
         el.style.cssText = style.cssText;
-
 
         if (style.display === 'grid') {
             el.style.display = 'grid';
@@ -251,14 +321,12 @@ async function applyInlineStyles(element) {
             el.style.minHeight = '30px';
         }
 
-
         if (el.tagName.toLowerCase() === 'canvas') {
             el.style.width = style.width;
             el.style.height = style.height;
         }
     }
 }
-
 
 function replaceSelectsWithCustomRender(container) {
     const selects = container.querySelectorAll('select');
@@ -280,8 +348,6 @@ function replaceSelectsWithCustomRender(container) {
     });
 }
 
-
-
 async function activateTab(tabId) {
     return new Promise((resolve, reject) => {
         const tabButton = document.querySelector(`[data-tab="${tabId}"]`);
@@ -300,14 +366,12 @@ async function activateTab(tabId) {
             }
         }, 100);
 
-
         setTimeout(() => {
             clearInterval(checkInterval);
             reject(new Error(`Timeout waiting for tab content: ${tabId}`));
         }, 5000);
     });
 }
-
 
 function createFinalCanvas(images) {
     const finalCanvas = document.createElement('canvas');
@@ -337,17 +401,14 @@ async function addWatermark(canvas) {
         const watermarkImage = await loadWatermarkImage(watermarkPath);
         console.log('Watermark image loaded successfully');
 
-
         const watermarkWidth = canvas.width * 0.2;
         const watermarkHeight = (watermarkImage.height / watermarkImage.width) * watermarkWidth;
 
         console.log('Drawing watermark, canvas dimensions:', canvas.width, canvas.height);
         console.log('Watermark dimensions:', watermarkWidth, watermarkHeight);
 
-
         ctx.globalAlpha = 0.5;
         ctx.drawImage(watermarkImage, 10, 10, watermarkWidth, watermarkHeight);
-
 
         ctx.drawImage(watermarkImage, canvas.width - watermarkWidth - 10,
             canvas.height - watermarkHeight - 10, watermarkWidth, watermarkHeight);
@@ -362,9 +423,7 @@ async function addWatermark(canvas) {
         ctx.fillText('deepwokenbuilder.com', 10, 30);
         ctx.fillText('deepwokenbuilder.com', canvas.width - 200, canvas.height - 10);
     }
-
 }
-
 
 function loadWatermarkImage(imagePath) {
     return new Promise((resolve, reject) => {
@@ -379,7 +438,6 @@ function loadWatermarkImage(imagePath) {
     });
 }
 
-
 function downloadImage(canvas) {
     const dataURL = canvas.toDataURL('image/png');
     const link = document.createElement('a');
@@ -387,7 +445,6 @@ function downloadImage(canvas) {
     link.href = dataURL;
     link.click();
 }
-
 
 function showLoadingIndicator() {
     const loadingDiv = document.createElement('div');
@@ -405,14 +462,12 @@ function showLoadingIndicator() {
     document.body.appendChild(loadingDiv);
 }
 
-
 function hideLoadingIndicator() {
     const loadingDiv = document.getElementById('loading-indicator');
     if (loadingDiv) {
         loadingDiv.remove();
     }
 }
-
 
 function showErrorMessage(message) {
     const modal = document.getElementById('custom-modal');

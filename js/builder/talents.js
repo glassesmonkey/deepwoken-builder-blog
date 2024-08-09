@@ -1,7 +1,9 @@
+
 const selectedTalents = {};
 window.selectedTalents = window.selectedTalents || {};
 
 function initializeTalentsTab() {
+  console.log('initializeTalentsTab called');
     window.selectedTalents = window.selectedTalents || {};
     const talentCategories = document.querySelectorAll('#available-talents > .mb-4 > .talent-category');
     const talentItems = document.querySelectorAll('#available-talents .talent-list li');
@@ -20,8 +22,52 @@ function initializeTalentsTab() {
     });
 
     updateSelectedTalents();
+    initializeSearch(); 
 }
+function initializeSearch() {
 
+  const searchInput = document.getElementById('talent-search');
+  if (!searchInput) {
+      console.error('Search input not found');
+      return;
+  }
+
+  searchInput.addEventListener('focus', function() {
+    if (this.style.display !== 'none') {
+      this.style.caretColor = 'white';
+    }
+  });
+  searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const talentItems = document.querySelectorAll('#available-talents .talent-list li');
+      const categories = document.querySelectorAll('#available-talents > .mb-4');
+
+      talentItems.forEach(item => {
+          const talentName = item.textContent.toLowerCase();
+          if (talentName.includes(searchTerm)) {
+              item.style.display = '';
+          } else {
+              item.style.display = 'none';
+          }
+      });
+
+      // Always show category buttons, but hide/show talent lists
+      categories.forEach(category => {
+          const talentList = category.querySelector('.talent-list');
+          const visibleTalents = talentList.querySelectorAll('li:not([style="display: none;"])');
+          
+          // Always keep the category button visible
+          category.style.display = '';
+          
+          // Hide/show the talent list based on whether there are visible talents
+          if (visibleTalents.length === 0) {
+              talentList.style.display = 'none';
+          } else {
+              talentList.style.display = '';
+          }
+      });
+  });
+}
 function toggleTalent(talentElement) {
     const categoryElement = talentElement.closest('.mb-4');
     if (!categoryElement) {
@@ -87,7 +133,6 @@ function updateSelectedTalents() {
     });
   
     innerHTML += '</div>';
-    //console.log('New innerHTML:', innerHTML);
     selectedTalentsDiv.innerHTML = innerHTML;
 }
 

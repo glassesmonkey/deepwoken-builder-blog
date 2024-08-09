@@ -518,7 +518,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     setTimeout(() => {
-        console.log("Binding export button click event");
+        //console.log("Binding export button click event");
         document.querySelectorAll('.exportBuildLink').forEach(button => {
             button.addEventListener('click', function(event) {
                 console.log("Export button clicked");
