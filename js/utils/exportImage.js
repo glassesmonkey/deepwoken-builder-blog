@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     const exportButton = document.getElementById('exportImage');
+    const exportImageMobileBtn = document.getElementById('exportImageMobile');
     if (exportButton) {
         exportButton.addEventListener('click', showExportModal);
+    } else {
+        console.error('Export button not found');
+    }
+    if (exportImageMobileBtn) {
+        exportImageMobileBtn.addEventListener('click', showExportModal);
     } else {
         console.error('Export button not found');
     }
@@ -23,7 +29,7 @@ function showExportModal() {
     checkboxContainer.id = 'tab-checkboxes';
     checkboxContainer.classList.add('mb-4');
     
-    const tabs = ['stats-tab', 'talents-tab', 'mantras-tab', 'weapons-tab', 'summary-tab'];
+    const tabs = ['stats-tab', 'weapons-tab','talents-tab', 'mantras-tab',  'summary-tab'];
     tabs.forEach(tab => {
         const label = document.createElement('label');
         label.classList.add('block', 'mb-2');
