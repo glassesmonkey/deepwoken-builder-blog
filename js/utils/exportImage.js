@@ -125,9 +125,14 @@ async function exportImage() {
             await applyInlineStyles(containerDiv);
 
             if (tabId === 'weapons-tab') {
-                window.triggerDamageCalculation();
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                await handleChart(containerDiv);
+                const chartCanvas = containerDiv.querySelector('#damageChart');
+                if (chartCanvas) {
+                    window.triggerDamageCalculation();
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    await handleChart(containerDiv);
+                } else {
+                    console.log('Chart canvas not found in weapons tab, skipping chart handling');
+                }
             }
 
             await document.fonts.ready;
@@ -167,67 +172,75 @@ async function exportImage() {
 async function handleChart(containerDiv) {
     const originalCanvas = document.getElementById('damageChart');
     const clonedCanvasContainer = containerDiv.querySelector('#damageChart').parentNode;
-
-    if (originalCanvas && clonedCanvasContainer) {
+    if (typeof Chart !== 'undefined' && originalCanvas && clonedCanvasContainer) {
         const originalChart = Chart.getChart(originalCanvas);
 
         if (originalChart) {
-
-            originalChart.options.scales.x.ticks.font = {
-                family: 'Arial, sans-serif',
-                size: 12,
-                weight: 'bold'
-            };
-            originalChart.options.scales.x.ticks.color = 'white';
-
-            originalChart.options.layout.padding.bottom = 30;
-
-            originalChart.update();
-
-            await new Promise(resolve => setTimeout(resolve, 1000));
-
-            const chartImage = new Image();
-            chartImage.src = originalCanvas.toDataURL();
-
-            await new Promise((resolve, reject) => {
-                chartImage.onload = resolve;
-                chartImage.onerror = reject;
-            });
-
-
-            const chartContainer = document.createElement('div');
-            chartContainer.style.position = 'relative';
-            chartContainer.style.width = '100%';
-            chartContainer.style.paddingBottom = '50px';
-            chartContainer.appendChild(chartImage);
-
-            const labels = originalChart.data.labels;
-            const labelsContainer = document.createElement('div');
-            labelsContainer.style.display = 'flex';
-            labelsContainer.style.justifyContent = 'space-between';
-            labelsContainer.style.width = '100%';
-            labelsContainer.style.position = 'absolute';
-            labelsContainer.style.bottom = '0';
-            labelsContainer.style.left = '0';
-            labelsContainer.style.padding = '0 10px';
-
-            labels.forEach(label => {
-                const labelElement = document.createElement('span');
-                labelElement.textContent = label;
-                labelElement.style.color = 'white';
-                labelElement.style.fontSize = '10px';
-                labelElement.style.textAlign = 'center';
-                labelElement.style.width = `${100 / labels.length}%`;
-                labelsContainer.appendChild(labelElement);
-            });
-
-            chartContainer.appendChild(labelsContainer);
-
-
-            clonedCanvasContainer.innerHTML = '';
-            clonedCanvasContainer.appendChild(chartContainer);
+            if (originalCanvas && clonedCanvasContainer) {
+                const originalChart = Chart.getChart(originalCanvas);
+        
+                if (originalChart) {
+        
+                    originalChart.options.scales.x.ticks.font = {
+                        family: 'Arial, sans-serif',
+                        size: 12,
+                        weight: 'bold'
+                    };
+                    originalChart.options.scales.x.ticks.color = 'white';
+        
+                    originalChart.options.layout.padding.bottom = 30;
+        
+                    originalChart.update();
+        
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+        
+                    const chartImage = new Image();
+                    chartImage.src = originalCanvas.toDataURL();
+        
+                    await new Promise((resolve, reject) => {
+                        chartImage.onload = resolve;
+                        chartImage.onerror = reject;
+                    });
+        
+        
+                    const chartContainer = document.createElement('div');
+                    chartContainer.style.position = 'relative';
+                    chartContainer.style.width = '100%';
+                    chartContainer.style.paddingBottom = '50px';
+                    chartContainer.appendChild(chartImage);
+        
+                    const labels = originalChart.data.labels;
+                    const labelsContainer = document.createElement('div');
+                    labelsContainer.style.display = 'flex';
+                    labelsContainer.style.justifyContent = 'space-between';
+                    labelsContainer.style.width = '100%';
+                    labelsContainer.style.position = 'absolute';
+                    labelsContainer.style.bottom = '0';
+                    labelsContainer.style.left = '0';
+                    labelsContainer.style.padding = '0 10px';
+        
+                    labels.forEach(label => {
+                        const labelElement = document.createElement('span');
+                        labelElement.textContent = label;
+                        labelElement.style.color = 'white';
+                        labelElement.style.fontSize = '10px';
+                        labelElement.style.textAlign = 'center';
+                        labelElement.style.width = `${100 / labels.length}%`;
+                        labelsContainer.appendChild(labelElement);
+                    });
+        
+                    chartContainer.appendChild(labelsContainer);
+        
+        
+                    clonedCanvasContainer.innerHTML = '';
+                    clonedCanvasContainer.appendChild(chartContainer);
+                }
+            }
         }
+    } else {
+        console.log('Chart or canvas not available, skipping chart handling');
     }
+
 }
 
 

@@ -189,6 +189,43 @@
             transform: rotate(180deg);
         }
 
+        /* Add this to your existing styles */
+        .layout-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 250px;
+            background-color: #1a202c;
+            padding: 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .main-content {
+            flex: 1;
+            max-width: 1200px;
+            margin-left: 250px;
+            /* Add left margin to make space for the sidebar */
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+                /* Hide sidebar on mobile */
+            }
+
+            .main-content {
+                margin-left: 0;
+                /* Remove left margin on mobile */
+            }
+        }
     </style>
 </head>
 
@@ -227,344 +264,377 @@
         <img src="/assets/icons/logo.webp" alt="Deepwoken Builder Logo" class="w-12 h-12 mr-4">
         <h1 class="text-3xl font-bold text-yellow-400">Deepwoken Builder</h1>
     </header>
-    <div class="builder-container max-w-4xl mx-auto p-2 sm:p-4 bg-ink rounded-lg">
-        <div class="tabs flex bg-dark-parchment rounded-t-lg overflow-x-auto">
-            <button
-                class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
-                data-tab="stats-tab">
-                Stats
-            </button>
-            <button
-                class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
-                data-tab="weapons-tab">
-                Weapons
-            </button>
-            <button
-                class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
-                data-tab="talents-tab">
-                Talents
-            </button>
-            <button
-                class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
-                data-tab="mantras-tab">
-                Mantras
-            </button>
 
-            <button
-                class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
-                data-tab="summary-tab">
-                Summary
-            </button>
+    <div class="layout-container">
+        <div class="sidebar">
+            <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+                <option>Local builds--Featured coming soon!</option>
+            </select>
+            <div class="grid grid-cols-1 gap-2">
+                <button
+                    class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    Export build as link
+                </button>
+                <!-- <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    Save loaded build
+                </button> -->
+                <button id="exportImage"
+                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    Export as Image 🔥🔥🔥
+                </button>
+            </div>
         </div>
-        <!--stats  div -->
-        <div class="content bg-dark-parchment p-4  space-y-4">
-            <div id="stats-tab" class="tab-content">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
-                    <div class="col-span-1 md:col-span-2">
-                        <h2 class="text-2xl font-bold mb-4 text-yellow-400">Character Stats</h2>
-                    </div>
-                    <!-- Basic Info -->
-                    <div class="col-span-1 md:col-span-2 bg-gray-800 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Basic Info</h3>
-                        <input type="text" id="build-name" placeholder="Build Name"
-                            class="w-full p-2 mb-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
-                        <input type="text" id="build-description" placeholder="Build Description"
-                            class="w-full p-2 mb-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
-                        <input type="text" id="build-author" placeholder="Author"
-                            class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
-                    </div>
+
+        <div class="main-content">
+            <div class="builder-container max-w-4xl mx-auto p-2 sm:p-4 bg-ink rounded-lg">
+                <div class="tabs flex bg-dark-parchment rounded-t-lg overflow-x-auto">
+                    <button
+                        class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
+                        data-tab="stats-tab">
+                        Stats
+                    </button>
+                    <button
+                        class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
+                        data-tab="weapons-tab">
+                        Weapons
+                    </button>
+                    <button
+                        class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
+                        data-tab="talents-tab">
+                        Talents
+                    </button>
+                    <button
+                        class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
+                        data-tab="mantras-tab">
+                        Mantras
+                    </button>
+
+                    <button
+                        class="tab-button flex-1 px-4 py-3 text-sm font-medium text-ink transition-colors duration-200 ease-in-out border-b-2 border-transparent hover:border-ink focus:outline-none focus:border-ink"
+                        data-tab="summary-tab">
+                        Summary
+                    </button>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
-                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Meta Stats</h3>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div>
-                                <label class="block mb-1 text-sm text-gray-400">Race</label>
-                                <select id="race-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
-                                    <option value="Etrean">Etrean (AGL ⇑, INT ⇑)</option>
-                                    <option value="Celtor">Celtor (INT ⇑, CHA ⇑)</option>
-                                    <option value="Adret">Adret (WIL ⇑, CHA ⇑)</option>
-                                    <option value="Canor">Canor (STR ⇑, CHA ⇑)</option>
-                                    <option value="Gremor">Gremor (STR ⇑, FOR ⇑)</option>
-                                    <option value="Khan">Khan (STR ⇑, AGL ⇑)</option>
-                                    <option value="Felinor">Felinor (AGL ⇑, CHA ⇑)</option>
-                                    <option value="Chrysid">Chrysid (AGL ⇑, CHA ⇑)</option>
-                                    <option value="Vesperian">Vesperian (FOR ⇑, WIL ⇑)</option>
-                                    <option value="Capra">Capra (INT ⇑, WIL ⇑)</option>
-                                    <option value="Ganymede">Ganymede (INT ⇑, WIL ⇑)</option>
-                                    <option value="Tiran">Tiran (AGL ⇑, WIL ⇑)</option>
-                                    <option value="Drakkard">Drakkard (FOR ⇑, AGL ⇑)</option>
-                                    <option value="Lightborn">Lightborn (ALL but CHA ⇑ )</option>
-                                </select>
+                <!--stats  div -->
+                <div class="content bg-dark-parchment p-4  space-y-4">
+                    <div id="stats-tab" class="tab-content">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                            <div class="col-span-1 md:col-span-2">
+                                <h2 class="text-2xl font-bold mb-4 text-yellow-400">Character Stats</h2>
                             </div>
-                            <div>
-                                <label class="block mb-1 text-sm text-gray-400">Bell</label>
-                                <select id="bell-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
-                                    <option>Blood Scourge</option>
-                                    <option>Payback</option>
-                                    <option>Crazy Slots</option>
-                                    <option>Shard Bow</option>
-                                    <option>Run It Back</option>
-                                    <option>Gravity Field</option>
-                                    <option>Preservation</option>
-                                    <option>Smokescreen</option>
-                                    <option>Smite</option>
-                                    <option>Resurrection</option>
-                                    <option>Wind Up</option>
-                                    <option>Sacred Field</option>
-                                    <option>Portals</option>
-                                    <option>Jar Of Souls</option>
-                                    <option>Dimensional Travel</option>
-                                    <option>Teleportation</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block mb-1 text-sm text-gray-400">Outfit</label>
-                                <select id="outfit-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
-                                    <option>Black Diver</option>
-                                    <option>Ignition Deepdelver</option>
-                                    <option>Prophet's Cloak</option>
-                                    <option>Authority Commander</option>
-                                    <option>Legion Centurion</option>
-                                    <option>Navaen Warchief</option>
-                                    <option>Justicar's Armour</option>
-                                    <option>Summer Dragoon</option>
-                                    <option>Ferryman's Coat</option>
-                                    <option>Royal Etrean Guard</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block mb-1 text-sm text-gray-400">Origin</label>
-                                <select id="origin-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
-                                    <option>Castaway</option>
-                                    <option>Lone Warrior</option>
-                                    <option>Deepbound</option>
-                                    <option>Voidwalker</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block mb-1 text-sm text-gray-400">Murmur</label>
-                                <select id="murmur-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
-                                    <option>Ardour</option>
-                                    <option>Tacet</option>
-                                    <option>Rhythm</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block mb-1 text-sm text-gray-400">Oath</label>
-                                <select id="oath-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
-                                    <option>Oathless</option>
-                                    <option>Blindseer</option>
-                                    <option>Visionshaper</option>
-                                    <option>Starkindred</option>
-                                    <option>Arcwarder</option>
-                                    <option>Linkstrider</option>
-                                    <option>Jetstriker</option>
-                                    <option>Dawnwalker</option>
-                                    <option>Contractor</option>
-                                    <option>Silentheart</option>
-                                    <option>Fadetrimmer</option>
-                                    <option>Saltchemist</option>
-                                </select>
+                            <!-- Basic Info -->
+                            <div class="col-span-1 md:col-span-2 bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-2 text-yellow-400">Basic Info</h3>
+                                <input type="text" id="build-name" placeholder="Build Name"
+                                    class="w-full p-2 mb-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
+                                <input type="text" id="build-description" placeholder="Build Description"
+                                    class="w-full p-2 mb-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
+                                <input type="text" id="build-author" placeholder="Author"
+                                    class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
-                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Power</h3>
-                        <p class="text-sm">Power: <span id="power" class="text-white">0</span></p>
-                        <p class="text-sm">Next Power: <span id="next-power" class="text-white">30</span> points</p>
-                    </div>
-
-                    <!-- Weapon Stats -->
-                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Weapon Stats</h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="text-sm text-gray-400">Light Wep.</div>
-                            <input type="number" id="light-wep-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Medium Wep.</div>
-                            <input type="number" id="medium-wep-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Heavy Wep.</div>
-                            <input type="number" id="heavy-wep-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
-                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Stats</h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="text-sm text-gray-400">Strength</div>
-                            <input type="number" id="strength-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                data-base="0">
-                            <div class="text-sm text-gray-400">Fortitude</div>
-                            <input type="number" id="fortitude-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                data-base="0">
-                            <div class="text-sm text-gray-400">Agility</div>
-                            <input type="number" id="agility-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                data-base="0">
-                            <div class="text-sm text-gray-400">Intelligence</div>
-                            <input type="number" id="intelligence-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                data-base="0">
-                            <div class="text-sm text-gray-400">Willpower</div>
-                            <input type="number" id="willpower-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                data-base="0">
-                            <div class="text-sm text-gray-400">Charisma</div>
-                            <input type="number" id="charisma-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                data-base="0">
-                        </div>
-                    </div>
-
-
-
-                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Attunement Stats</h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="text-sm text-gray-400">Flamecharm</div>
-                            <input type="number" id="flamecharm-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Frostdraw</div>
-                            <input type="number" id="frostdraw-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Thundercall</div>
-                            <input type="number" id="thundercall-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Galebreath</div>
-                            <input type="number" id="galebreath-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Shadowcast</div>
-                            <input type="number" id="shadowcast-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                            <div class="text-sm text-gray-400">Ironsing</div>
-                            <input type="number" id="ironsing-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1" min="0"
-                                max="100">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
-                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Traits</h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="text-sm text-gray-400">Vitality</div>
-                            <input type="number" id="vitality-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
-                                data-special-trait min="0" max="6">
-                            <div class="text-sm text-gray-400">Erudition</div>
-                            <input type="number" id="erudition-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
-                                data-special-trait min="0" max="6">
-                            <div class="text-sm text-gray-400">Proficiency</div>
-                            <input type="number" id="proficiency-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
-                                data-special-trait min="0" max="6">
-                            <div class="text-sm text-gray-400">Songchant</div>
-                            <input type="number" id="songchant-input"
-                                class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
-                                data-special-trait min="0" max="6">
-                        </div>
-                    </div>
-                    <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Boons and Flaws</h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <div>
-                                <label class="block mb-1 text-sm text-gray-400">Boon 1</label>
-                                <select id="boon1-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
-                                    <option>None</option>
-                                    <option>Autodidact</option>
-                                    <option>Gourmet</option>
-                                    <option>Maverick</option>
-                                    <option>Packmule</option>
-                                    <option>Scrapper</option>
-                                    <option>Steadfast</option>
-                                    <option>Survivalist</option>
-                                    <option>Sly</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block mb-1 text-sm text-gray-400">Boon 2</label>
-                                <select id="boon2-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
-                                    <option>None</option>
-                                    <option>Autodidact</option>
-                                    <option>Gourmet</option>
-                                    <option>Maverick</option>
-                                    <option>Packmule</option>
-                                    <option>Scrapper</option>
-                                    <option>Steadfast</option>
-                                    <option>Survivalist</option>
-                                    <option>Sly</option>
-
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block mb-1 text-sm text-gray-400">Flaw 1</label>
-                                <select id="flaw1-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
-                                    <option>None</option>
-                                    <option>Deficient</option>
-                                    <option>Fugitive</option>
-                                    <option>Vegetarian</option>
-                                    <option>Glutton</option>
-                                    <option>Manic</option>
-                                    <option>Haemophilia</option>
-                                    <option>Squeamish</option>
-                                    <option>Obvious</option>
-                                    <option>Simple</option>
-                                    <option>Blind</option>
-
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block mb-1 text-sm text-gray-400">Flaw 2</label>
-                                <select id="flaw2-select" class="w-full p-2 rounded bg-gray-700 text-white text-sm">
-                                    <option>None</option>
-                                    <option>Deficient</option>
-                                    <option>Fugitive</option>
-                                    <option>Vegetarian</option>
-                                    <option>Glutton</option>
-                                    <option>Manic</option>
-                                    <option>Haemophilia</option>
-                                    <option>Squeamish</option>
-                                    <option>Obvious</option>
-                                    <option>Simple</option>
-                                    <option>Blind</option>
-
-                                </select>
+                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                            <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-2 text-yellow-400">Meta Stats</h3>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block mb-1 text-sm text-gray-400">Race</label>
+                                        <select id="race-select"
+                                            class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                            <option value="Etrean">Etrean (AGL ⇑, INT ⇑)</option>
+                                            <option value="Celtor">Celtor (INT ⇑, CHA ⇑)</option>
+                                            <option value="Adret">Adret (WIL ⇑, CHA ⇑)</option>
+                                            <option value="Canor">Canor (STR ⇑, CHA ⇑)</option>
+                                            <option value="Gremor">Gremor (STR ⇑, FOR ⇑)</option>
+                                            <option value="Khan">Khan (STR ⇑, AGL ⇑)</option>
+                                            <option value="Felinor">Felinor (AGL ⇑, CHA ⇑)</option>
+                                            <option value="Chrysid">Chrysid (AGL ⇑, CHA ⇑)</option>
+                                            <option value="Vesperian">Vesperian (FOR ⇑, WIL ⇑)</option>
+                                            <option value="Capra">Capra (INT ⇑, WIL ⇑)</option>
+                                            <option value="Ganymede">Ganymede (INT ⇑, WIL ⇑)</option>
+                                            <option value="Tiran">Tiran (AGL ⇑, WIL ⇑)</option>
+                                            <option value="Drakkard">Drakkard (FOR ⇑, AGL ⇑)</option>
+                                            <option value="Lightborn">Lightborn (ALL but CHA ⇑ )</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block mb-1 text-sm text-gray-400">Bell</label>
+                                        <select id="bell-select"
+                                            class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                            <option>Blood Scourge</option>
+                                            <option>Payback</option>
+                                            <option>Crazy Slots</option>
+                                            <option>Shard Bow</option>
+                                            <option>Run It Back</option>
+                                            <option>Gravity Field</option>
+                                            <option>Preservation</option>
+                                            <option>Smokescreen</option>
+                                            <option>Smite</option>
+                                            <option>Resurrection</option>
+                                            <option>Wind Up</option>
+                                            <option>Sacred Field</option>
+                                            <option>Portals</option>
+                                            <option>Jar Of Souls</option>
+                                            <option>Dimensional Travel</option>
+                                            <option>Teleportation</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block mb-1 text-sm text-gray-400">Outfit</label>
+                                        <select id="outfit-select"
+                                            class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                            <option>Black Diver</option>
+                                            <option>Ignition Deepdelver</option>
+                                            <option>Prophet's Cloak</option>
+                                            <option>Authority Commander</option>
+                                            <option>Legion Centurion</option>
+                                            <option>Navaen Warchief</option>
+                                            <option>Justicar's Armour</option>
+                                            <option>Summer Dragoon</option>
+                                            <option>Ferryman's Coat</option>
+                                            <option>Royal Etrean Guard</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block mb-1 text-sm text-gray-400">Origin</label>
+                                        <select id="origin-select"
+                                            class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                            <option>Castaway</option>
+                                            <option>Lone Warrior</option>
+                                            <option>Deepbound</option>
+                                            <option>Voidwalker</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block mb-1 text-sm text-gray-400">Murmur</label>
+                                        <select id="murmur-select"
+                                            class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                            <option>Ardour</option>
+                                            <option>Tacet</option>
+                                            <option>Rhythm</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block mb-1 text-sm text-gray-400">Oath</label>
+                                        <select id="oath-select"
+                                            class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                            <option>Oathless</option>
+                                            <option>Blindseer</option>
+                                            <option>Visionshaper</option>
+                                            <option>Starkindred</option>
+                                            <option>Arcwarder</option>
+                                            <option>Linkstrider</option>
+                                            <option>Jetstriker</option>
+                                            <option>Dawnwalker</option>
+                                            <option>Contractor</option>
+                                            <option>Silentheart</option>
+                                            <option>Fadetrimmer</option>
+                                            <option>Saltchemist</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                            <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-2 text-yellow-400">Power</h3>
+                                <p class="text-sm">Power: <span id="power" class="text-white">0</span></p>
+                                <p class="text-sm">Next Power: <span id="next-power" class="text-white">30</span> points
+                                </p>
+                            </div>
 
-                <!-- Investment Points -->
-                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
-                    <div class="col-span-1 md:col-span-2 bg-gray-800 p-4 rounded-lg">
-                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Investment Points</h3>
-                        <p class="text-sm text-gray-300">Investment Points: <span id="investment-points"
-                                class="text-white">325</span></p>
-                        <p class="text-sm text-gray-300">Points Spent: <span id="points-spent"
-                                class="text-white">5</span>
-                        </p>
-                    </div>
-                </div>
-                <!-- <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                            <!-- Weapon Stats -->
+                            <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-2 text-yellow-400">Weapon Stats</h3>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div class="text-sm text-gray-400">Light Wep.</div>
+                                    <input type="number" id="light-wep-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" max="100">
+                                    <div class="text-sm text-gray-400">Medium Wep.</div>
+                                    <input type="number" id="medium-wep-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" max="100">
+                                    <div class="text-sm text-gray-400">Heavy Wep.</div>
+                                    <input type="number" id="heavy-wep-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" max="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                            <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-2 text-yellow-400">Stats</h3>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div class="text-sm text-gray-400">Strength</div>
+                                    <input type="number" id="strength-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" data-base="0">
+                                    <div class="text-sm text-gray-400">Fortitude</div>
+                                    <input type="number" id="fortitude-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" data-base="0">
+                                    <div class="text-sm text-gray-400">Agility</div>
+                                    <input type="number" id="agility-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" data-base="0">
+                                    <div class="text-sm text-gray-400">Intelligence</div>
+                                    <input type="number" id="intelligence-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" data-base="0">
+                                    <div class="text-sm text-gray-400">Willpower</div>
+                                    <input type="number" id="willpower-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" data-base="0">
+                                    <div class="text-sm text-gray-400">Charisma</div>
+                                    <input type="number" id="charisma-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" data-base="0">
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-2 text-yellow-400">Attunement Stats</h3>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div class="text-sm text-gray-400">Flamecharm</div>
+                                    <input type="number" id="flamecharm-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" max="100">
+                                    <div class="text-sm text-gray-400">Frostdraw</div>
+                                    <input type="number" id="frostdraw-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" max="100">
+                                    <div class="text-sm text-gray-400">Thundercall</div>
+                                    <input type="number" id="thundercall-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" max="100">
+                                    <div class="text-sm text-gray-400">Galebreath</div>
+                                    <input type="number" id="galebreath-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" max="100">
+                                    <div class="text-sm text-gray-400">Shadowcast</div>
+                                    <input type="number" id="shadowcast-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" max="100">
+                                    <div class="text-sm text-gray-400">Ironsing</div>
+                                    <input type="number" id="ironsing-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        min="0" max="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                            <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-2 text-yellow-400">Traits</h3>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div class="text-sm text-gray-400">Vitality</div>
+                                    <input type="number" id="vitality-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        data-special-trait min="0" max="6">
+                                    <div class="text-sm text-gray-400">Erudition</div>
+                                    <input type="number" id="erudition-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        data-special-trait min="0" max="6">
+                                    <div class="text-sm text-gray-400">Proficiency</div>
+                                    <input type="number" id="proficiency-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        data-special-trait min="0" max="6">
+                                    <div class="text-sm text-gray-400">Songchant</div>
+                                    <input type="number" id="songchant-input"
+                                        class="stat-input bg-gray-700 text-white border border-gray-600 rounded p-1"
+                                        data-special-trait min="0" max="6">
+                                </div>
+                            </div>
+                            <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-2 text-yellow-400">Boons and Flaws</h3>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block mb-1 text-sm text-gray-400">Boon 1</label>
+                                        <select id="boon1-select"
+                                            class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                            <option>None</option>
+                                            <option>Autodidact</option>
+                                            <option>Gourmet</option>
+                                            <option>Maverick</option>
+                                            <option>Packmule</option>
+                                            <option>Scrapper</option>
+                                            <option>Steadfast</option>
+                                            <option>Survivalist</option>
+                                            <option>Sly</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block mb-1 text-sm text-gray-400">Boon 2</label>
+                                        <select id="boon2-select"
+                                            class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                            <option>None</option>
+                                            <option>Autodidact</option>
+                                            <option>Gourmet</option>
+                                            <option>Maverick</option>
+                                            <option>Packmule</option>
+                                            <option>Scrapper</option>
+                                            <option>Steadfast</option>
+                                            <option>Survivalist</option>
+                                            <option>Sly</option>
+
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block mb-1 text-sm text-gray-400">Flaw 1</label>
+                                        <select id="flaw1-select"
+                                            class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                            <option>None</option>
+                                            <option>Deficient</option>
+                                            <option>Fugitive</option>
+                                            <option>Vegetarian</option>
+                                            <option>Glutton</option>
+                                            <option>Manic</option>
+                                            <option>Haemophilia</option>
+                                            <option>Squeamish</option>
+                                            <option>Obvious</option>
+                                            <option>Simple</option>
+                                            <option>Blind</option>
+
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block mb-1 text-sm text-gray-400">Flaw 2</label>
+                                        <select id="flaw2-select"
+                                            class="w-full p-2 rounded bg-gray-700 text-white text-sm">
+                                            <option>None</option>
+                                            <option>Deficient</option>
+                                            <option>Fugitive</option>
+                                            <option>Vegetarian</option>
+                                            <option>Glutton</option>
+                                            <option>Manic</option>
+                                            <option>Haemophilia</option>
+                                            <option>Squeamish</option>
+                                            <option>Obvious</option>
+                                            <option>Simple</option>
+                                            <option>Blind</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Investment Points -->
+                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                            <div class="col-span-1 md:col-span-2 bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold mb-2 text-yellow-400">Investment Points</h3>
+                                <p class="text-sm text-gray-300">Investment Points: <span id="investment-points"
+                                        class="text-white">325</span></p>
+                                <p class="text-sm text-gray-300">Points Spent: <span id="points-spent"
+                                        class="text-white">5</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
                     <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
                         <option>Local builds</option>
                     </select>
@@ -578,404 +648,408 @@
                         </button>
                     </div>
                 </div> -->
-            </div>
-        </div>
-
-        <!-- talents-tab -->
-        <div id="talents-tab" class="tab-content hidden">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-dark-parchment text-ink">
-                <div class="col-span-1 md:col-span-2 mb-4">
-                    <input type="text" id="talent-search" placeholder="Search talents..."
-                        class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
-                </div>
-
-                <div id="available-talents"
-                    class="col-span-1 overflow-y-auto h-[calc(100vh-200px)] bg-gray-800 p-4 rounded-lg">
-                    <div class="mb-4">
-                        <button
-                            class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-blue-400 hover:text-white"
-                            data-category="Common">
-                            Common
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="chevron-down">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <ul class="talent-list hidden">
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Time To Go">Time To Go</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Kick Off">Kick Off</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Steady Footing">Steady Footing</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Exposed Durability">Exposed Durability</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Gale Trap">Gale Trap</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Aeronade">Aeronade</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Vacuum Punch">Vacuum Punch</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Suffocating Impact">Suffocating Impact</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Gale Coil">Gale Coil</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Apothecary">Apothecary</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Chain Reaction">Chain Reaction</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Chemist's Bag">Chemist's Bag</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Scaredy Cat">Scaredy Cat</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Endurance Runner">Endurance Runner</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Approaching Singularity">Approaching Singularity
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Fisher's Lure">Fisher's Lure</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Hook, Line, and Sinker">Hook,Line, and Sinker</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Proficient Baiting">Proficient Baiting</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Grand Feast">Grand Feast</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Sunken Predator">Sunken Predator</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Master Craftsman">Master Craftsman</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Deep Wound">Deep Wound</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Lowstride">Lowstride</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Lights Out">Lights Out</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Unseen Threat">Unseen Threat</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Triathlete">Triathlete</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Pitcher">Pitcher</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Authority Intimidation">Authority Intimidation</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Battle Tendency">Battle Tendency</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Braced Collapse">Braced Collapse/li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Moving Fortress">Moving Fortress</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Perseverance">Perseverance</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Bruiser's Mixup">Bruiser's Mixup</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Trained Fist">Trained Fist</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Brazen Blow">Brazen Blow</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Impairing Blow">Impairing Blow</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Swift Rebound">Swift Rebound</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Chaotic Charm">Chaotic Charm</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Charismatic Cast">Charismatic Cast</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Lasting Charisma">Lasting Charisma</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Tough Love">Tough Love</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Christmas Miracle">Christmas iracle</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Freezing Wight">Freezing Wight</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Harsh Response">Harsh Response</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Heavy Hitter">Heavy Hitter</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Give and Take">Give and Take</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Off Your Game">Off Your Game</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Cornered Fool">Cornered Fool</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Charged Return">Charged Return</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Ether Absorption">Ether
-                                Absorption</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Ether Blade">Ether Blade</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Ether Conduit">Ether Conduit
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Magical Resolve">Magical Resolve
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Mantra Permanence">Mantra
-                                Permanence</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Nullifying Clarity">Nullifying
-                                Clarity</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Meteor Impact">Meteor Impact
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Phoenix Impact">Phoenix Impact
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Dancing Steps">Dancing Steps
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Flamewalker">Flamewalker</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Hell's Partisan">Hell's Partisan
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Cauterized Wounds">Cauterized
-                                Wounds</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Azure Flames">Azure Flames</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Produce Spark">Produce Spark
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Unyielding Inferno">Unyielding
-                                Inferno</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Wildfire">Wildfire</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Temperature Shock">Temperature
-                                Shock</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Brain Rattler">Brain Rattler
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Dispatch">Dispatch</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Common" data-talent="Hammerfall">Hammer
-                                <!-- Add more Common talents here -->
-                        </ul>
-                    </div>
-
-                    <div class="mb-4">
-                        <button
-                            class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-purple-400"
-                            data-category="Rare">
-                            Rare
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="chevron-down">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <ul class="talent-list hidden">
-
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="An Ironsinger's Instinct">An
-                                Ironsinger's Instinct
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Phantom Edge">Phantom Edge</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Everchanging Aegis">Everchanging
-                                Aegis</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Overflowing Dam">Overflowing Dam
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Perfect Flash">Perfect Flash</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Neural Overload">Neural Overload
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Wyvern's Claw">Wyvern's Claw</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Aerogliding">Aerogliding</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Stifled Jump">Stifled Jump</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Placebo Effect">Placebo Effect
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Potion Quaffer">Potion Quaffer
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Wild Alchemy">Wild Alchemy</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Conditioned Runner">Conditioned
-                                Runner</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Carnivore">Carnivore</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Blackhole">Blackhole</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Energy Siphon">Energy Siphon</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Deepwoken">Deepwoken</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Spell Shout">Spell Shout</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="The Sound from Below">The Sound
-                                from Below</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Doomsday Engine">Doomsday Engine
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Frozen Web">Frozen Web</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Concussion">Concussion</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Concussive Force">Concussive Force
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Duelist's Dance">Duelist's Dance
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Precise Swing">Precise Swing</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Spine Cutter">Spine Cutter</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Steady Nerves">Steady Nerves</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Strong Hold">Strong Hold</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Strong Stern">Strong Stern</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Tap Dancer">Tap Dancer</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Concussive Flash">Concussive Flash
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Elemental Rebound">Elemental
-                                Rebound</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Eureka">Eureka</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Frozen Pin-Cushion">Frozen
-                                Pin-Cushion</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Saint Jay">Saint Jay</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Unyielding Frost">Unyielding Frost
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Alloyblood">Alloyblood</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Grand Skewer">Grand Skewer</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Decisive Winds">Decisive Winds
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Rush of Ancients">Rush of Ancients
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Stratos Step">Stratos Step</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Jetstream pursuit">Jetstream
-                                pursuit</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Rare" data-talent="Acceleration Points">Acceleration
-                                Points</li>
-                        </ul>
-                    </div>
-
-                    <div class="mb-4">
-                        <button
-                            class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-green-400"
-                            data-category="Advanced">
-                            Advanced
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="chevron-down">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <ul class="talent-list hidden">
-
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Advanced" data-talent="Ghost">Ghost</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Advanced" data-talent="Reinforced Armor">Reinforced
-                                Armor</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Advanced" data-talent="Ether Overdrive">Ether
-                                Overdrive</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Advanced" data-talent="Unyielding Frost">Unyielding
-                                Frost</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Advanced" data-talent="Neuroplasticity">
-                                Neuroplasticity</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Advanced" data-talent="Innate">Innate</li>
-                        </ul>
-                    </div>
-                    <div class="mb-4">
-                        <button
-                            class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-yellow-400"
-                            data-category="Oath">
-                            Oath
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="chevron-down">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <ul class="talent-list hidden">
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Oath" data-talent="All-Seeing Eye">All-Seeing Eye</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Oath" data-talent="Protagonist Syndrome">Protagonist
-                                Syndrome</li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Oath" data-talent="Luminous Flash">Luminous Flash
-                            </li>
-                            <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
-                                data-category="Oath" data-talent="Absolute Radiance">Absolute Radiance
-                            </li>
-                        </ul>
                     </div>
                 </div>
 
-                <div id="selected-talents" class="col-span-1 bg-gray-800 p-4 rounded-lg">
-                    <h3 class="text-2xl font-bold mb-4 text-white border-b border-gray-600 pb-2">Selected Talents</h3>
-                    <div class="space-y-4">
-                        <div class="talent-category">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg font-semibold text-gray-300">Common</span>
-                                <span class="text-lg font-bold text-blue-400 count">0</span>
-                            </div>
-                            <ul class="list-disc list-inside text-gray-400 space-y-1"></ul>
+                <!-- talents-tab -->
+                <div id="talents-tab" class="tab-content hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-dark-parchment text-ink">
+                        <div class="col-span-1 md:col-span-2 mb-4">
+                            <input type="text" id="talent-search" placeholder="Search talents..."
+                                class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-sm text-white">
                         </div>
-                        <div class="talent-category">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg font-semibold text-gray-300">Rare</span>
-                                <span class="text-lg font-bold text-purple-400 count">0</span>
+
+                        <div id="available-talents"
+                            class="col-span-1 overflow-y-auto h-[calc(100vh-200px)] bg-gray-800 p-4 rounded-lg">
+                            <div class="mb-4">
+                                <button
+                                    class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-blue-400 hover:text-white"
+                                    data-category="Common">
+                                    Common
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="chevron-down">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <ul class="talent-list hidden">
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Time To Go">Time To Go</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Kick Off">Kick Off</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Steady Footing">Steady Footing</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Exposed Durability">Exposed Durability</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Gale Trap">Gale Trap</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Aeronade">Aeronade</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Vacuum Punch">Vacuum Punch</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Suffocating Impact">Suffocating Impact</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Gale Coil">Gale Coil</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Apothecary">Apothecary</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Chain Reaction">Chain Reaction</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Chemist's Bag">Chemist's Bag</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Scaredy Cat">Scaredy Cat</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Endurance Runner">Endurance Runner</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Approaching Singularity">Approaching
+                                        Singularity
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Fisher's Lure">Fisher's Lure</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Hook, Line, and Sinker">Hook,Line, and
+                                        Sinker</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Proficient Baiting">Proficient Baiting</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Grand Feast">Grand Feast</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Sunken Predator">Sunken Predator</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Master Craftsman">Master Craftsman</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Deep Wound">Deep Wound</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Lowstride">Lowstride</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Lights Out">Lights Out</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Unseen Threat">Unseen Threat</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Triathlete">Triathlete</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Pitcher">Pitcher</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Authority Intimidation">Authority
+                                        Intimidation</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Battle Tendency">Battle Tendency</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Braced Collapse">Braced Collapse/li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Moving Fortress">Moving Fortress</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Perseverance">Perseverance</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Bruiser's Mixup">Bruiser's Mixup</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Trained Fist">Trained Fist</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Brazen Blow">Brazen Blow</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Impairing Blow">Impairing Blow</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Swift Rebound">Swift Rebound</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Chaotic Charm">Chaotic Charm</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Charismatic Cast">Charismatic Cast</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Lasting Charisma">Lasting Charisma</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Tough Love">Tough Love</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Christmas Miracle">Christmas iracle</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Freezing Wight">Freezing Wight</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Harsh Response">Harsh Response</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Heavy Hitter">Heavy Hitter</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Give and Take">Give and Take</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Off Your Game">Off Your Game</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Cornered Fool">Cornered Fool</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Charged Return">Charged Return</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Ether Absorption">Ether
+                                        Absorption</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Ether Blade">Ether Blade</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Ether Conduit">Ether Conduit
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Magical Resolve">Magical Resolve
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Mantra Permanence">Mantra
+                                        Permanence</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Nullifying Clarity">Nullifying
+                                        Clarity</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Meteor Impact">Meteor Impact
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Phoenix Impact">Phoenix Impact
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Dancing Steps">Dancing Steps
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Flamewalker">Flamewalker</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Hell's Partisan">Hell's Partisan
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Cauterized Wounds">Cauterized
+                                        Wounds</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Azure Flames">Azure Flames</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Produce Spark">Produce Spark
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Unyielding Inferno">Unyielding
+                                        Inferno</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Wildfire">Wildfire</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Temperature Shock">Temperature
+                                        Shock</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Brain Rattler">Brain Rattler
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Dispatch">Dispatch</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Common" data-talent="Hammerfall">Hammer
+                                        <!-- Add more Common talents here -->
+                                </ul>
                             </div>
-                            <ul class="list-disc list-inside text-gray-400 space-y-1"></ul>
+
+                            <div class="mb-4">
+                                <button
+                                    class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-purple-400"
+                                    data-category="Rare">
+                                    Rare
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="chevron-down">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <ul class="talent-list hidden">
+
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="An Ironsinger's Instinct">An
+                                        Ironsinger's Instinct
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Phantom Edge">Phantom Edge</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Everchanging Aegis">Everchanging
+                                        Aegis</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Overflowing Dam">Overflowing Dam
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Perfect Flash">Perfect Flash</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Neural Overload">Neural Overload
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Wyvern's Claw">Wyvern's Claw</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Aerogliding">Aerogliding</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Stifled Jump">Stifled Jump</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Placebo Effect">Placebo Effect
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Potion Quaffer">Potion Quaffer
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Wild Alchemy">Wild Alchemy</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Conditioned Runner">Conditioned
+                                        Runner</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Carnivore">Carnivore</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Blackhole">Blackhole</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Energy Siphon">Energy Siphon</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Deepwoken">Deepwoken</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Spell Shout">Spell Shout</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="The Sound from Below">The Sound
+                                        from Below</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Doomsday Engine">Doomsday Engine
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Frozen Web">Frozen Web</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Concussion">Concussion</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Concussive Force">Concussive Force
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Duelist's Dance">Duelist's Dance
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Precise Swing">Precise Swing</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Spine Cutter">Spine Cutter</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Steady Nerves">Steady Nerves</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Strong Hold">Strong Hold</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Strong Stern">Strong Stern</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Tap Dancer">Tap Dancer</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Concussive Flash">Concussive Flash
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Elemental Rebound">Elemental
+                                        Rebound</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Eureka">Eureka</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Frozen Pin-Cushion">Frozen
+                                        Pin-Cushion</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Saint Jay">Saint Jay</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Unyielding Frost">Unyielding Frost
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Alloyblood">Alloyblood</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Grand Skewer">Grand Skewer</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Decisive Winds">Decisive Winds
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Rush of Ancients">Rush of Ancients
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Stratos Step">Stratos Step</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Jetstream pursuit">Jetstream
+                                        pursuit</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Rare" data-talent="Acceleration Points">Acceleration
+                                        Points</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <button
+                                    class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-green-400"
+                                    data-category="Advanced">
+                                    Advanced
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="chevron-down">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <ul class="talent-list hidden">
+
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Advanced" data-talent="Ghost">Ghost</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Advanced" data-talent="Reinforced Armor">Reinforced
+                                        Armor</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Advanced" data-talent="Ether Overdrive">Ether
+                                        Overdrive</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Advanced" data-talent="Unyielding Frost">Unyielding
+                                        Frost</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Advanced" data-talent="Neuroplasticity">
+                                        Neuroplasticity</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Advanced" data-talent="Innate">Innate</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <button
+                                    class="talent-category flex items-center justify-between w-full text-left text-lg font-bold text-yellow-400"
+                                    data-category="Oath">
+                                    Oath
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="chevron-down">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <ul class="talent-list hidden">
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Oath" data-talent="All-Seeing Eye">All-Seeing Eye</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Oath" data-talent="Protagonist Syndrome">Protagonist
+                                        Syndrome</li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Oath" data-talent="Luminous Flash">Luminous Flash
+                                    </li>
+                                    <li class="cursor-pointer p-1 hover:bg-gray-700 text-gray-300 hover:text-white"
+                                        data-category="Oath" data-talent="Absolute Radiance">Absolute Radiance
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="talent-category">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg font-semibold text-gray-300">Advanced</span>
-                                <span class="text-lg font-bold text-green-400 count">0</span>
+
+                        <div id="selected-talents" class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                            <h3 class="text-2xl font-bold mb-4 text-white border-b border-gray-600 pb-2">Selected
+                                Talents</h3>
+                            <div class="space-y-4">
+                                <div class="talent-category">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-lg font-semibold text-gray-300">Common</span>
+                                        <span class="text-lg font-bold text-blue-400 count">0</span>
+                                    </div>
+                                    <ul class="list-disc list-inside text-gray-400 space-y-1"></ul>
+                                </div>
+                                <div class="talent-category">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-lg font-semibold text-gray-300">Rare</span>
+                                        <span class="text-lg font-bold text-purple-400 count">0</span>
+                                    </div>
+                                    <ul class="list-disc list-inside text-gray-400 space-y-1"></ul>
+                                </div>
+                                <div class="talent-category">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-lg font-semibold text-gray-300">Advanced</span>
+                                        <span class="text-lg font-bold text-green-400 count">0</span>
+                                    </div>
+                                    <ul class="list-disc list-inside text-gray-400 space-y-1"></ul>
+                                </div>
+                                <div class="talent-category">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-lg font-semibold text-gray-300">Oath</span>
+                                        <span class="text-lg font-bold text-yellow-400 count">0</span>
+                                    </div>
+                                    <ul class="list-disc list-inside text-gray-400 space-y-1"></ul>
+                                </div>
                             </div>
-                            <ul class="list-disc list-inside text-gray-400 space-y-1"></ul>
-                        </div>
-                        <div class="talent-category">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-lg font-semibold text-gray-300">Oath</span>
-                                <span class="text-lg font-bold text-yellow-400 count">0</span>
-                            </div>
-                            <ul class="list-disc list-inside text-gray-400 space-y-1"></ul>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                    <!-- <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
                 <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
                     <option>Local builds</option>
                 </select>
@@ -989,115 +1063,120 @@
                     </button>
                 </div>
             </div> -->
-        </div>
-
-
-        <!-- mantras-tab -->
-        <div id="mantras-tab" class="tab-content hidden">
-            <div class="grid grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
-                <!-- Left column (Obtainable Mantras) -->
-                <div class="col-span-1 bg-gray-800 rounded-lg p-4">
-                    <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtainable Mantras</h3>
-                    <div class="space-y-4" id="obtainable-mantras">
-                        <!-- Mantras will be dynamically inserted here -->
-                    </div>
                 </div>
 
-                <!-- Right column (Obtained Mantras) -->
-                <div class="col-span-1">
-                    <div class="bg-gray-800 rounded-lg p-4 mb-4">
-                        <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtained Mantras</h3>
-                        <div id="obtained-mantras-container" class="space-y-4">
-                            <!-- Obtained mantras will be dynamically inserted here -->
+
+                <!-- mantras-tab -->
+                <div id="mantras-tab" class="tab-content hidden">
+                    <div class="grid grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                        <!-- Left column (Obtainable Mantras) -->
+                        <div class="col-span-1 bg-gray-800 rounded-lg p-4">
+                            <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtainable Mantras</h3>
+                            <div class="space-y-4" id="obtainable-mantras">
+                                <!-- Mantras will be dynamically inserted here -->
+                            </div>
+                        </div>
+
+                        <!-- Right column (Obtained Mantras) -->
+                        <div class="col-span-1">
+                            <div class="bg-gray-800 rounded-lg p-4 mb-4">
+                                <h3 class="text-xl font-bold mb-4 text-yellow-400">Obtained Mantras</h3>
+                                <div id="obtained-mantras-container" class="space-y-4">
+                                    <!-- Obtained mantras will be dynamically inserted here -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- weapons-tab -->
-        <div id="weapons-tab" class="tab-content hidden">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
-                <div class="col-span-1 md:col-span-2">
-                    <h2 class="text-2xl font-bold mb-4 text-yellow-400">Weapon Damage Calculator</h2>
-                </div>
-                <div class="col-span-1">
-                    <div class="mb-4">
-                        <label for="weapon1" class="block text-sm font-bold mb-2">Weapon 1</label>
-                        <input type="text" id="weapon1-search" placeholder="Search weapons..."
-                            class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
-                        <select id="weapon1" class="w-full bg-gray-800 text-white rounded p-2">
-
-                            <option value="">Select a weapon</option>
-                        </select>
-                    </div>
-                    <div class="mb-4">
-                        <label for="weapon2" class="block text-sm font-bold mb-2">Weapon 2 (Optional)</label>
-                        <input type="text" id="weapon2-search" placeholder="Search weapons..."
-                            class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
-                        <select id="weapon2" class="w-full bg-gray-800 text-white rounded p-2">
-
-                            <option value="">Select a weapon</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-span-1">
-                    <div class="mb-4">
-                        <label for="attributeLevel" class="block text-sm font-bold mb-2">Attribute Level</label>
-                        <input type="number" id="attributeLevel" class="w-full bg-gray-800 text-white rounded p-2"
-                            min="0" max="100" value="0">
-                    </div>
-                    <div class="mb-4">
-                        <label for="proficiency" class="block text-sm font-bold mb-2">Weapon Proficiency</label>
-                        <input type="number" id="proficiency" class="w-full bg-gray-800 text-white rounded p-2" min="0"
-                            max="100" value="0">
-                    </div>
-                </div>
-                <div class="col-span-1 md:col-span-2">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="mb-4">
-                            <label for="stars" class="block text-sm font-bold mb-2">Weapon Stars</label>
-                            <input type="number" id="stars" class="w-full bg-gray-800 text-white rounded p-2" min="0"
-                                max="3" value="0">
+                <!-- weapons-tab -->
+                <div id="weapons-tab" class="tab-content hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 text-gray-300">
+                        <div class="col-span-1 md:col-span-2">
+                            <h2 class="text-2xl font-bold mb-4 text-yellow-400">Weapon Damage Calculator</h2>
                         </div>
-                        <div class="mb-4">
-                            <label for="starType" class="block text-sm font-bold mb-2">Star Type</label>
-                            <select id="starType" class="w-full bg-gray-800 text-white rounded p-2">
-                                <option value="damage">Damage</option>
-                                <option value="penetration">Penetration</option>
-                                <option value="weight">Weight</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-span-1 md:col-span-2">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="col-span-1">
                             <div class="mb-4">
-                                <label for="additionalPenetration" class="block text-sm font-bold mb-2">Additional
-                                    Penetration (%)</label>
-                                <input type="number" id="additionalPenetration"
-                                    class="w-full bg-gray-800 text-white rounded p-2" min="0" max="50" value="0">
+                                <label for="weapon1" class="block text-sm font-bold mb-2">Weapon 1</label>
+                                <input type="text" id="weapon1-search" placeholder="Search weapons..."
+                                    class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+                                <select id="weapon1" class="w-full bg-gray-800 text-white rounded p-2">
+
+                                    <option value="">Select a weapon</option>
+                                </select>
                             </div>
                             <div class="mb-4">
-                                <label for="bleedChance" class="block text-sm font-bold mb-2">Bleed Chance (%)</label>
-                                <input type="number" id="bleedChance" class="w-full bg-gray-800 text-white rounded p-2"
+                                <label for="weapon2" class="block text-sm font-bold mb-2">Weapon 2 (Optional)</label>
+                                <input type="text" id="weapon2-search" placeholder="Search weapons..."
+                                    class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+                                <select id="weapon2" class="w-full bg-gray-800 text-white rounded p-2">
+
+                                    <option value="">Select a weapon</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-span-1">
+                            <div class="mb-4">
+                                <label for="attributeLevel" class="block text-sm font-bold mb-2">Attribute Level</label>
+                                <input type="number" id="attributeLevel"
+                                    class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100" value="0">
+                            </div>
+                            <div class="mb-4">
+                                <label for="proficiency" class="block text-sm font-bold mb-2">Weapon Proficiency</label>
+                                <input type="number" id="proficiency" class="w-full bg-gray-800 text-white rounded p-2"
                                     min="0" max="100" value="0">
                             </div>
                         </div>
+                        <div class="col-span-1 md:col-span-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="mb-4">
+                                    <label for="stars" class="block text-sm font-bold mb-2">Weapon Stars</label>
+                                    <input type="number" id="stars" class="w-full bg-gray-800 text-white rounded p-2"
+                                        min="0" max="3" value="0">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="starType" class="block text-sm font-bold mb-2">Star Type</label>
+                                    <select id="starType" class="w-full bg-gray-800 text-white rounded p-2">
+                                        <option value="damage">Damage</option>
+                                        <option value="penetration">Penetration</option>
+                                        <option value="weight">Weight</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-span-1 md:col-span-2">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="mb-4">
+                                        <label for="additionalPenetration"
+                                            class="block text-sm font-bold mb-2">Additional
+                                            Penetration (%)</label>
+                                        <input type="number" id="additionalPenetration"
+                                            class="w-full bg-gray-800 text-white rounded p-2" min="0" max="50"
+                                            value="0">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="bleedChance" class="block text-sm font-bold mb-2">Bleed Chance
+                                            (%)</label>
+                                        <input type="number" id="bleedChance"
+                                            class="w-full bg-gray-800 text-white rounded p-2" min="0" max="100"
+                                            value="0">
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="calculateDamage"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Calculate Damage
+                            </button>
+                        </div>
+                        <div id="weaponDetails" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg">
+                        </div>
+                        <div id="result" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
+                        <div class="col-span-1 md:col-span-2">
+                            <canvas id="damageChart"></canvas>
+                        </div>
+                        <div id="result" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
+
+
                     </div>
-                    <button id="calculateDamage"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Calculate Damage
-                    </button>
-                </div>
-                <div id="weaponDetails" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
-                <div id="result" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
-                <div class="col-span-1 md:col-span-2">
-                    <canvas id="damageChart"></canvas>
-                </div>
-                <div id="result" class="col-span-1 md:col-span-2 hidden bg-gray-800 p-4 rounded-lg"></div>
-
-
-            </div>
-            <!-- <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                    <!-- <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
                 <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
                     <option>Local builds</option>
                 </select>
@@ -1111,50 +1190,33 @@
                     </button>
                 </div>
             </div>  -->
-        </div>
-        <!-- "summary-tab" -->
-        <!-- "summary-tab" -->
-        <div id="summary-tab" class="tab-content hidden">
-            <div class="grid grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
-                <div class="col-span-1">
-                    <h2 class="text-2xl font-bold mb-4 text-yellow-400">Character Summary</h2>
                 </div>
+                <!-- "summary-tab" -->
+                <!-- "summary-tab" -->
+                <div id="summary-tab" class="tab-content hidden">
+                    <div class="grid grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
+                        <div class="col-span-1">
+                            <h2 class="text-2xl font-bold mb-4 text-yellow-400">Character Summary</h2>
+                        </div>
 
-                <!-- User Summary Input -->
-                <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
-                    <h3 class="text-lg font-bold mb-2 text-yellow-400">Your Character Summary</h3>
-                    <p class="text-sm text-gray-400 mb-2">Use this space to describe your character build, strategy, or
-                        any other notes you want to remember:</p>
-                    <textarea id="user-summary"
-                        class="w-full h-64 p-2 bg-gray-700 text-white border border-gray-600 rounded-lg resize-y"
-                        placeholder="Enter your character summary here..."></textarea>
+                        <!-- User Summary Input -->
+                        <div class="col-span-1 bg-gray-800 p-4 rounded-lg">
+                            <h3 class="text-lg font-bold mb-2 text-yellow-400">Your Character Summary</h3>
+                            <p class="text-sm text-gray-400 mb-2">Use this space to describe your character build,
+                                strategy, or
+                                any other notes you want to remember:</p>
+                            <textarea id="user-summary"
+                                class="w-full h-64 p-2 bg-gray-700 text-white border border-gray-600 rounded-lg resize-y"
+                                placeholder="Enter your character summary here..."></textarea>
+                        </div>
+
+
+
+                    </div>
                 </div>
-
-
 
             </div>
         </div>
-        <!-- Save and Export Options -->
-        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4 bg-gray-900 text-gray-300">
-            <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
-                <option>Local builds--Featured comming soon!</option>
-            </select>
-            <div class="grid grid-cols-2 gap-2">
-                <button
-                    class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
-                    Export build as link
-                </button>
-                <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
-                    Save loaded build
-                </button>
-                <button id="exportImage"
-                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">Export as
-                    Image 🔥🔥🔥</button>
-            </div>
-        </div>
-    </div>
-
-
 
     </div>
 
