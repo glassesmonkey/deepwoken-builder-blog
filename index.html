@@ -1556,6 +1556,18 @@
             </div>
         </div>
     </div>
+    <div id="export-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <h3 class="text-lg font-medium leading-6 text-gray-900 mb-2">Select which tabs to export</h3>
+            <div id="tab-checkboxes" class="mb-4">
+                <!-- Checkboxes will be dynamically inserted here -->
+            </div>
+            <div class="flex justify-end">
+                <button id="export-cancel" class="px-4 py-2 bg-gray-300 text-black rounded mr-2">Cancel</button>
+                <button id="export-confirm" class="px-4 py-2 bg-blue-500 text-white rounded">Export</button>
+            </div>
+        </div>
+    </div>
 
     <style>
         .tab-button.active {
