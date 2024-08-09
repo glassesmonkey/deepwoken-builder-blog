@@ -1,6 +1,45 @@
 
 let weapons = {};
 
+function initializeWeaponSearch() {
+    const weaponPairs = [
+        { search: document.getElementById('weapon1-search'), select: document.getElementById('weapon1') },
+        { search: document.getElementById('weapon2-search'), select: document.getElementById('weapon2') }
+    ];
+
+    weaponPairs.forEach(pair => {
+        pair.search.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+
+            Array.from(pair.select.options).forEach(option => {
+                const weaponName = option.textContent.toLowerCase();
+                if (weaponName.includes(searchTerm)) {
+                    option.style.display = '';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+
+            pair.select.style.display = 'block';
+            pair.select.size = 5;
+        });
+
+        pair.select.addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            pair.search.value = selectedOption.textContent;
+            this.size = 1;
+            this.style.display = '';
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!pair.search.contains(event.target) && !pair.select.contains(event.target)) {
+                pair.select.size = 1;
+                pair.select.style.display = '';
+            }
+        });
+    });
+}
+
 function updateWeaponSelection(weaponId, weaponData) {
     const select = document.getElementById(weaponId);
     if (select && weaponData) {
@@ -13,27 +52,8 @@ function updateWeaponSelection(weaponId, weaponData) {
         }
     }
 }
-function initializeWeaponSearch() {
-    const weaponPairs = [
-        { search: document.getElementById('weapon1-search'), select: document.getElementById('weapon1') },
-        { search: document.getElementById('weapon2-search'), select: document.getElementById('weapon2') }
-    ];
 
-    weaponPairs.forEach(pair => {
-        pair.search.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            Array.from(pair.select.options).forEach(option => {
-                const weaponName = option.textContent.toLowerCase();
-                if (weaponName.includes(searchTerm) || searchTerm === '') {
-                    option.style.display = '';
-                } else {
-                    option.style.display = 'none';
-                }
-            });
-        });
-    });
-}
-
+// ... (rest of the code remains the same)
 function initializeWeaponsTab() {
     return new Promise((resolve, reject) => {
         fetch('./js/builder/weapons.json')
