@@ -192,41 +192,64 @@
 
         /* Add this to your existing styles */
         .layout-container {
-            display: flex;
-            justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 15px;
+    position: relative;
+}
+
+@media (min-width: 769px) {
+    .layout-container {
+        flex-direction: row;
+        justify-content: center;
+        padding: 0;
+    }
+}
+.sidebar {
+    display: none;
+    width: 250px;
+    background-color: #1a202c;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 769px) {
+    .sidebar {
+        display: block;
+        position: fixed;
+        left: 0; 
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 0 0.5rem 0.5rem 0;
+    }
+}
+
+        .mobile-actions {
+            width: 100%;
+            margin-bottom: 15px;
         }
 
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 250px;
-            background-color: #1a202c;
-            padding: 1rem;
-            border-radius: 0 0.5rem 0.5rem 0;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+        @media (min-width: 769px) {
+            .mobile-actions {
+                display: none;
+            }
         }
 
         .main-content {
-            flex: 1;
-            max-width: 1200px;
-            margin-left: 250px;
-            /* Add left margin to make space for the sidebar */
-        }
+    width: 100%;
+    max-width: 1200px;
+}
 
-        @media (max-width: 768px) {
-            .sidebar {
-                display: none;
-                /* Hide sidebar on mobile */
-            }
-
-            .main-content {
-                margin-left: 0;
-                /* Remove left margin on mobile */
-            }
-        }
+@media (min-width: 769px) {
+    .main-content {
+        margin-left: 0;
+        width: calc(100% - 265px); /* 减去侧边栏的宽度和一些间距 */
+        max-width: 935px; /* 1200px - 265px */
+    }
+}
     </style>
 </head>
 
@@ -234,9 +257,10 @@
     <nav class="deepwoken-navbar bg-gray-900 border-b-2 border-yellow-600 px-4 py-2">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center">
-                <img class="h-10 w-auto mr-4 deepwoken-pixel-art" src="assets/images/DeepwokenBuilder-yellow.png"
-                    alt="Deepwoken Builder">
-
+                <a href="/index.html">
+                    <img class="h-10 w-auto mr-4 deepwoken-pixel-art" src="assets/images/DeepwokenBuilder-yellow.png"
+                        alt="Deepwoken Builder">
+                </a>
             </div>
             <div class="hidden sm:flex space-x-1">
                 <a href="index.html" class="deepwoken-nav-item active">Builder Tool</a>
@@ -265,7 +289,21 @@
         <img src="/assets/icons/logo.webp" alt="Deepwoken Builder Logo" class="w-12 h-12 mr-4">
         <h1 class="text-3xl font-bold text-yellow-400">Deepwoken Builder</h1>
     </header>
-
+    <div class="mobile-actions bg-gray-900 p-4 md:hidden">
+        <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
+            <option>Local builds--Featured coming soon!</option>
+        </select>
+        <div class="grid grid-cols-2 gap-2">
+            <button
+                class="exportBuildLink bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
+                Export build as link
+            </button>
+            <button id="exportImage"
+                class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
+                Export as Image 🔥🔥🔥
+            </button>
+        </div>
+    </div>
     <div class="layout-container">
         <div class="sidebar">
             <select class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
