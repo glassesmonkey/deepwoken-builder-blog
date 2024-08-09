@@ -1,3 +1,4 @@
+
 let weapons = {};
 
 function updateWeaponSelection(weaponId, weaponData) {
@@ -11,6 +12,26 @@ function updateWeaponSelection(weaponId, weaponData) {
             }
         }
     }
+}
+function initializeWeaponSearch() {
+    const weaponPairs = [
+        { search: document.getElementById('weapon1-search'), select: document.getElementById('weapon1') },
+        { search: document.getElementById('weapon2-search'), select: document.getElementById('weapon2') }
+    ];
+
+    weaponPairs.forEach(pair => {
+        pair.search.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            Array.from(pair.select.options).forEach(option => {
+                const weaponName = option.textContent.toLowerCase();
+                if (weaponName.includes(searchTerm) || searchTerm === '') {
+                    option.style.display = '';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        });
+    });
 }
 
 function initializeWeaponsTab() {
@@ -361,5 +382,6 @@ window.triggerDamageCalculation = function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     initializeWeaponsTab();
+    initializeWeaponSearch();
     loadBuildFromUrl();
 });

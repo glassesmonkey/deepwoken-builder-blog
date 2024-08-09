@@ -188,6 +188,7 @@
         .category-button.active .chevron {
             transform: rotate(180deg);
         }
+
     </style>
 </head>
 
@@ -1022,13 +1023,19 @@
                 <div class="col-span-1">
                     <div class="mb-4">
                         <label for="weapon1" class="block text-sm font-bold mb-2">Weapon 1</label>
+                        <input type="text" id="weapon1-search" placeholder="Search weapons..."
+                            class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
                         <select id="weapon1" class="w-full bg-gray-800 text-white rounded p-2">
+
                             <option value="">Select a weapon</option>
                         </select>
                     </div>
                     <div class="mb-4">
                         <label for="weapon2" class="block text-sm font-bold mb-2">Weapon 2 (Optional)</label>
+                        <input type="text" id="weapon2-search" placeholder="Search weapons..."
+                            class="w-full p-2 mb-2 rounded bg-gray-700 text-white text-sm">
                         <select id="weapon2" class="w-full bg-gray-800 text-white rounded p-2">
+
                             <option value="">Select a weapon</option>
                         </select>
                     </div>
@@ -1434,37 +1441,42 @@
     </div>
     <div class="testimonials bg-gray-900 py-12">
         <div class="max-w-4xl mx-auto px-4">
-          <h2 class="text-3xl font-bold text-yellow-400 mb-8 text-center">What Our Users Say</h2>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
-              <p class="text-gray-300 mb-4">"Deepwoken Builder is a game-changer! I've risen from a noob to a top player thanks to this tool. The weapon comparison feature is mind-blowing!"</p>
-              <p class="text-yellow-400 font-bold">- XxShadowSlayerxX</p>
+            <h2 class="text-3xl font-bold text-yellow-400 mb-8 text-center">What Our Users Say</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                    <p class="text-gray-300 mb-4">"Deepwoken Builder is a game-changer! I've risen from a noob to a top
+                        player thanks to this tool. The weapon comparison feature is mind-blowing!"</p>
+                    <p class="text-yellow-400 font-bold">- XxShadowSlayerxX</p>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                    <p class="text-gray-300 mb-4">"I love how I can experiment with different builds without risking my
+                        character in-game. The talent selection system is so intuitive!"</p>
+                    <p class="text-yellow-400 font-bold">- DeepwokenMaster99</p>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                    <p class="text-gray-300 mb-4">"The build guides are pure gold. I've learned so many strategies I
+                        never even thought of. This site is a must for any serious Deepwoken player."</p>
+                    <p class="text-yellow-400 font-bold">- EtherealWarrior</p>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                    <p class="text-gray-300 mb-4">"Exporting my builds as images is so cool! I love sharing my creations
+                        with my guild. Deepwoken Builder has become an essential part of our strategy sessions."</p>
+                    <p class="text-yellow-400 font-bold">- GuildMasterFlex</p>
+                </div>
             </div>
-            
-            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
-              <p class="text-gray-300 mb-4">"I love how I can experiment with different builds without risking my character in-game. The talent selection system is so intuitive!"</p>
-              <p class="text-yellow-400 font-bold">- DeepwokenMaster99</p>
+
+            <div class="mt-12 text-center">
+                <a href="#"
+                    class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded transition duration-300">
+                    Try Deepwoken Builder Now
+                </a>
             </div>
-            
-            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
-              <p class="text-gray-300 mb-4">"The build guides are pure gold. I've learned so many strategies I never even thought of. This site is a must for any serious Deepwoken player."</p>
-              <p class="text-yellow-400 font-bold">- EtherealWarrior</p>
-            </div>
-            
-            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
-              <p class="text-gray-300 mb-4">"Exporting my builds as images is so cool! I love sharing my creations with my guild. Deepwoken Builder has become an essential part of our strategy sessions."</p>
-              <p class="text-yellow-400 font-bold">- GuildMasterFlex</p>
-            </div>
-          </div>
-          
-          <div class="mt-12 text-center">
-            <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded transition duration-300">
-              Try Deepwoken Builder Now
-            </a>
-          </div>
         </div>
-      </div>
+    </div>
 
     <div id="custom-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
         <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
@@ -1503,16 +1515,12 @@
             });
         });
     </script>
-
-
-
     <script src="./js/utils/exportImage.js"></script>
     <script src="js/main.js"></script>
-    <script src="./js/builder/talents.js"></script>
     <script src="./js/switchtab.js"></script>
     <script src="./js/builder/mantras.js"></script>
     <script src="./js/builder/weapons.js"></script>
-
+    <script src="./js/builder/talents.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
     <script src="./js/utils/exportURL.js"></script>
 </body>

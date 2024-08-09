@@ -343,5 +343,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     window.selectedMantras = selectedMantras;
-    console.log("Initial window.selectedMantras:", JSON.parse(JSON.stringify(window.selectedMantras)));
+    //console.log("Initial window.selectedMantras:", JSON.parse(JSON.stringify(window.selectedMantras)));
 });
