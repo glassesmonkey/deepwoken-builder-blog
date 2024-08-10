@@ -1,7 +1,8 @@
 import os
 import datetime
 from urllib.parse import urljoin
-
+import os
+import sys
 def generate_sitemap(root_dir, base_url):
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n'
     sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -25,7 +26,12 @@ def generate_sitemap(root_dir, base_url):
     return sitemap
 
 # 使用示例
-root_directory = 'E:\MakeDollor\deepwoken builder\mycode\deepwoken-builder-blog'
+# 获取当前脚本的绝对路径
+script_path = os.path.abspath(__file__)
+
+# 获取脚本所在的目录
+root_directory = os.path.dirname(script_path)
+
 base_url = 'https://deepwokenbuilder.com/'
 sitemap_content = generate_sitemap(root_directory, base_url)
 
