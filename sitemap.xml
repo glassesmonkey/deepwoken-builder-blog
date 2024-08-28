@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://deepwokenbuilder.com/guide-index.html</loc>
+    <lastmod>2024-08-10T12:10:32+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/index.html</loc>
+    <lastmod>2024-08-10T10:49:23+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
     <loc>https://deepwokenbuilder.com/coming-soon.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
+    <lastmod>2024-08-09T18:25:37+00:00</lastmod>
     <changefreq>monthly</changefreq>
+<<<<<<< HEAD
     <priority>0.50</priority>
   </url>
   <url>
@@ -33,126 +46,151 @@
   <url>
     <loc>https://deepwokenbuilder.com/oaths/Deepwoken-build-oaths-guides-1.html</loc>
     <lastmod>2024-08-07T19:39:45+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-1.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-10.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-11.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-2.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-3.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-4.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-5.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-6.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-7.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-8.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-9.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-1.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
+=======
     <priority>0.70</priority>
   </url>
   <url>
     <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-2.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
+    <lastmod>2024-08-09T18:28:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
     <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-3.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-4.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-5.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-6.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-7.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
+    <lastmod>2024-08-09T18:28:04+00:00</lastmod>
+>>>>>>> 8c03ec36ce0d4b3fd5c39c2cb12177d6f024b8c6
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
     <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-8.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
+    <lastmod>2024-08-09T18:28:30+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-4.html</loc>
+    <lastmod>2024-08-09T18:28:07+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-5.html</loc>
+    <lastmod>2024-08-09T18:28:13+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
     <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-9.html</loc>
-    <lastmod>2024-08-05T21:45:23+00:00</lastmod>
+    <lastmod>2024-08-09T18:28:41+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-6.html</loc>
+    <lastmod>2024-08-09T18:28:16+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-7.html</loc>
+    <lastmod>2024-08-09T18:28:20+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/weapons/Deepwoken-weapons-build-guides-1.html</loc>
+    <lastmod>2024-08-10T11:41:43+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/deepwoken builder/Deepwoken-build-guides-1.html</loc>
+    <lastmod>2024-08-10T12:12:26+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/deepwoken builder/Deepwoken-build-guides-2.html</loc>
+    <lastmod>2024-08-10T12:14:48+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/deepwoken builder/Deepwoken-build-guides-3.html</loc>
+    <lastmod>2024-08-10T12:15:39+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/oaths/Deepwoken-build-oaths-guides-1.html</loc>
+    <lastmod>2024-08-06T18:32:54+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-8.html</loc>
+    <lastmod>2024-08-06T09:14:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-4.html</loc>
+    <lastmod>2024-08-06T09:14:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-5.html</loc>
+    <lastmod>2024-08-06T09:14:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-9.html</loc>
+    <lastmod>2024-08-06T09:14:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-2.html</loc>
+    <lastmod>2024-08-06T09:14:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-3.html</loc>
+    <lastmod>2024-08-06T09:14:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-11.html</loc>
+    <lastmod>2024-08-06T09:14:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-10.html</loc>
+    <lastmod>2024-08-06T09:14:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-1.html</loc>
+    <lastmod>2024-08-06T09:14:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-6.html</loc>
+    <lastmod>2024-08-06T09:14:35+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://deepwokenbuilder.com/talents/Deepwoken-Talents-build-guides-7.html</loc>
+    <lastmod>2024-08-06T09:14:35+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
